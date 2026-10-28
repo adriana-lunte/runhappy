@@ -5,6 +5,10 @@ Design source of truth: Figma **UI Library | Runhappy**.
 
 **Stack:** SvelteKit · Svelte 5 · TypeScript · Tailwind CSS v4 · Zod · Storybook
 
+**First app: Report Card** — a copy of [report-card.runhappyapps.com](https://report-card.runhappyapps.com/):
+a venue types its website and gets a graded report on how easy it is to book a party. For now it runs on
+**sample data**: the check is simulated and always opens the same invented report (`src/lib/report/sample.ts`).
+
 ## Getting started
 
 Requirements: Node.js 20 or newer.
@@ -106,6 +110,15 @@ WCAG AA accessibility and a story. Full checklist in [CLAUDE.md](CLAUDE.md).
 Screens live in `src/pages` (e.g. `HomePage.svelte`) and only use components.
 The files in `src/routes` stay thin: they load data and render the page.
 
+| Route             | Page           | What it does                                                         |
+| ----------------- | -------------- | -------------------------------------------------------------------- |
+| `/`               | `HomePage`     | Website form. The server action validates it with Zod and redirects. |
+| `/r/sample/check` | `CheckingPage` | The 7 checking steps (simulated), then opens the report.             |
+| `/r/sample`       | `ReportPage`   | The graded report (sample data).                                     |
+
+Report data: `src/lib/schemas/report.ts` (Zod schema, same structure as the original tool),
+`src/lib/report/` (sample report, category copy, score helpers, links).
+
 ### Imports
 
 ```ts
@@ -113,6 +126,16 @@ import { Button } from '#components/Button';
 import HomePage from '#pages/HomePage.svelte';
 import { signUpSchema } from '#lib/schemas/sign-up';
 ```
+
+## Deploy (Vercel)
+
+The app uses `@sveltejs/adapter-vercel`. Code lives on GitHub: `adriana-lunte/runhappy` (branch `main`).
+
+1. In Vercel: **Add New → Project → Import** the `adriana-lunte/runhappy` repository.
+2. Framework preset: **SvelteKit** (detected). Build command `npm run build`, no environment variables needed yet.
+3. Deploy. From then on every push to `main` publishes a new version; other branches get preview links.
+
+Run `npm run lint`, `npm run check` and `npm run test` before pushing.
 
 ## Documentation
 

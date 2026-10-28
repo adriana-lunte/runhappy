@@ -432,6 +432,38 @@ Reference: example screens on the Colors page → Sidebar (`15:1590`): 258 wide,
   fills; the sidebar instances override them with `ui/base/foreground`.
 - Library published by Adriana on 2026-10-28.
 
+### Report Card app (2026-10-28)
+
+Asked by Adriana: replicate report-card.runhappyapps.com, in a tidy GitHub repository, published on Vercel. Plan
+approved: sample data first; the map on the checking screen left out; code in this same project
+(design system + app); repository `adriana-lunte/runhappy`.
+
+- Studied the original with a test report (site chosen by Adriana: mommypoppins.com/new-jersey): home, checking
+  screen (map, 7 steps, desktop and phone screenshots), report (grade ring, categories, things to fix, findings with
+  "What to do" and "What we saw", ads and tracking, Book a call). Its data structure was used for the Zod schema.
+- **Sample report:** an invented venue ("Sample Fun Center", example.com), same rubric and totals as the test
+  (C−, 25 of 43). The real venue's results are not stored in the repo.
+- **New components** (Report Card group in Storybook, not in Figma yet): StatusIcon, ScoreRing, ScoreRow,
+  FixList, FindingCard / FindingRow, Callout, FeatureCard, SiteHeader, ProgressSteps, BrowserFrame.
+  Button now exports `buttonClasses()` so links can look like buttons; its hover uses `not-disabled:` so it
+  also works on links.
+- **New tokens:** `--size-score-ring` 128, `--size-score-ring-small` 36, `--size-page` 1152 (from the original).
+- Mapped to library styles: page `ui/surface/surface-200`, cards `surface-100`, sunken panels `surface-150`,
+  rings yellow dark / red / green, grade `UI/Headline/6`, titles `UI/Subtitle/1–3`.
+- Found by the accessibility tests: `brand/text/secondary` on `surface-150` is 4.47:1 (needs 4.5). On those panels
+  secondary text uses `ui/ui elements/muted-foreground` (4.97:1 light).
+- Repository: git initialised, 3 commits, remote `origin` = github.com/adriana-lunte/runhappy. The push needs
+  Adriana's GitHub sign-in (not saved on this computer). Vercel import is done by Adriana.
+
+**To confirm:**
+
+- **Dark mode on sunken panels:** `surface-150` dark is #3a3a32, lighter than the cards (#121214); secondary
+  text on it is about 4.1:1 in dark mode (fails). Options: a different panel color, or fix the dark value in Figma.
+- Score ring thresholds: half or less = red, under 80% = yellow, otherwise green (guessed from the original).
+- Copy of the checking steps other than step 2 (only step 2 was seen on the original).
+- "Book a call" uses the tertiary button look (the original is white with a gray border).
+- Figma: none of these screens or components exist in the library yet.
+
 ### Tooltip (2026-10-23)
 
 Design approved by Adriana: dark bubble `brand/background/inverse` + `brand/text/inverse` (inverts in dark mode),
