@@ -459,7 +459,7 @@ approved: sample data first; the map on the checking screen left out; code in th
   drawing; Button got an `iconRegular` prop). The three cards became a section "What we check, step by step":
   numbered cards (`step` prop on FeatureCard, inside an `<ol>`). First a yellow circle with the number; then
   changed by Adriana: no circle, a "Step 1" heading; then a yellow Tag "Step 1" above the icon (Tag
-  got `announceType` to skip its hidden type word), title back to `UI/Subtitle/3`. Titles rewritten as steps: "Try to book a party", "Check your tracking", "Look up your ads". Card texts unchanged. Hero text rewritten so it does not repeat the steps: "Enter your website and get a graded report card in about two minutes, with a clear fix for every problem we find."
+  got `announceType` to skip its hidden type word), title back to `UI/Subtitle/3`. Titles rewritten as steps: "Try to book a party", "Check your tracking", "Look up your ads". Card texts unchanged; later set one size smaller (`UI/Body/4`, 13/17) by Adriana. Hero text rewritten so it does not repeat the steps: "Enter your website and get a graded report card in about two minutes, with a clear fix for every problem we find."
 
 - Hero illustration (provided by Adriana, `src/lib/assets/report-card.webp`): centered, decorative (empty alt).
   First above the overline at 128; then (Adriana) under the overline at 192, new token `--size-hero-image`.

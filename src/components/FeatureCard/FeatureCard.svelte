@@ -3,7 +3,7 @@
 	Not in Figma yet: modeled on report-card.runhappyapps.com (home page cards, 2026-10-28).
 
 	A white card that explains one thing: icon, title and a short text. Static, not clickable.
-	Background ui/surface/surface-100, radius sm, title UI/Subtitle/3, text UI/Body/3 in brand/text/secondary.
+	Background ui/surface/surface-100, radius sm, title UI/Subtitle/3, text UI/Body/4 in brand/text/secondary (was Body/3, Adriana 2026-10-28).
 	With `step` (decided 2026-10-28): a yellow Tag "Step 1" sits above the icon. Put numbered cards in an <ol>.
 -->
 <script lang="ts" module>
@@ -41,6 +41,6 @@
 		<svelte:element this={`h${level}`} class="type-ui-subtitle-3 text-ui-base-foreground">
 			{title}
 		</svelte:element>
-		<p class="type-ui-body-3-regular text-brand-text-secondary">{text}</p>
+		<p class="type-ui-body-4-regular text-brand-text-secondary">{text}</p>
 	</div>
 </div>
