@@ -1,6 +1,6 @@
 <!--
 	HomePage — Report Card home (modeled on report-card.runhappyapps.com, 2026-10-28).
-	Hero with the website field, three cards that explain what is checked, and the "we never book" note.
+	Hero with the website field, "What we check, step by step" (three numbered cards) and the "we never book" note.
 	The form posts to the route's action, which validates with Zod (src/lib/schemas/report.ts).
 -->
 <script lang="ts" module>
@@ -32,17 +32,17 @@
 	const features = [
 		{
 			icon: CursorClickIcon,
-			title: 'Booking a party',
+			title: 'Try to book a party',
 			text: 'We go from your homepage to your birthday and group-event pages, on desktop and on a phone, and see whether a parent can pick a date, see a price and book.'
 		},
 		{
 			icon: CalendarCheckIcon,
-			title: 'Measuring bookings',
+			title: 'Check your tracking',
 			text: 'We check which tracking tags your site loads — Meta, Google Analytics, Google Ads — and whether they reach the booking page.'
 		},
 		{
 			icon: MegaphoneIcon,
-			title: 'Your ads',
+			title: 'Look up your ads',
 			text: 'We look up what you’re running in the Meta Ad Library and Google’s Ads Transparency Center, and where those ads send people.'
 		}
 	];
@@ -89,10 +89,15 @@
 			>
 		</form>
 
-		<section aria-label="What we check" class="grid gap-12 sm:grid-cols-3">
-			{#each features as feature (feature.title)}
-				<FeatureCard {...feature} />
-			{/each}
+		<section aria-labelledby="steps-title" class="flex flex-col gap-16">
+			<h2 id="steps-title" class="text-center type-ui-subtitle-2 text-ui-base-foreground">
+				What we check, step by step
+			</h2>
+			<ol class="grid gap-12 sm:grid-cols-3">
+				{#each features as feature, i (feature.title)}
+					<li><FeatureCard {...feature} step={i + 1} level={3} class="h-full" /></li>
+				{/each}
+			</ol>
 		</section>
 
 		<p class="text-center type-ui-body-3-regular text-brand-text-secondary">
