@@ -4,8 +4,7 @@
 
 	A white card that explains one thing: icon, title and a short text. Static, not clickable.
 	Background ui/surface/surface-100, radius sm, title UI/Subtitle/3, text UI/Body/3 in brand/text/secondary.
-	With `step` (decided 2026-10-28): a yellow Tag "Step 1" sits above the icon and the title is smaller
-	(UI/Body/3 Semibold). Put numbered cards in an <ol>.
+	With `step` (decided 2026-10-28): a yellow Tag "Step 1" sits above the icon. Put numbered cards in an <ol>.
 -->
 <script lang="ts" module>
 	import type { PhosphorIcon } from '#components/Icon';
@@ -39,13 +38,7 @@
 	{/if}
 	<Icon {icon} class="size-24 text-ui-base-foreground" />
 	<div class="flex flex-col gap-6">
-		<svelte:element
-			this={`h${level}`}
-			class={[
-				'text-ui-base-foreground',
-				step !== undefined ? 'type-ui-body-3-semibold' : 'type-ui-subtitle-3'
-			]}
-		>
+		<svelte:element this={`h${level}`} class="type-ui-subtitle-3 text-ui-base-foreground">
 			{title}
 		</svelte:element>
 		<p class="type-ui-body-3-regular text-brand-text-secondary">{text}</p>

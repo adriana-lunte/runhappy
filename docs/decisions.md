@@ -459,11 +459,11 @@ approved: sample data first; the map on the checking screen left out; code in th
   drawing; Button got an `iconRegular` prop). The three cards became a section "What we check, step by step":
   numbered cards (`step` prop on FeatureCard, inside an `<ol>`). First a yellow circle with the number; then
   changed by Adriana: no circle, a "Step 1" heading; then a yellow Tag "Step 1" above the icon (Tag
-  got `announceType` to skip its hidden type word), title in `UI/Body/3 Semibold`. Titles rewritten as steps: "Try to book a party", "Check your tracking", "Look up your ads". Card texts unchanged.
+  got `announceType` to skip its hidden type word), title back to `UI/Subtitle/3`. Titles rewritten as steps: "Try to book a party", "Check your tracking", "Look up your ads". Card texts unchanged.
 
 **To confirm:**
 
-- Home steps section: section title `UI/Subtitle/2`, centered; step title stays `UI/Body/3 Semibold` (it was the size under "Step N"); could go back to `UI/Subtitle/3`.
+- Home steps section: section title `UI/Subtitle/2`, centered.
 - **Dark mode on sunken panels:** `surface-150` dark is #3a3a32, lighter than the cards (#121214); secondary
   text on it is about 4.1:1 in dark mode (fails). Options: a different panel color, or fix the dark value in Figma.
 - Score ring thresholds: half or less = red, under 80% = yellow, otherwise green (guessed from the original).
