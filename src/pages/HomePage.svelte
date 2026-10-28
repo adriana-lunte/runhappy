@@ -35,7 +35,6 @@
 	import { SiteHeader } from '#components/SiteHeader';
 	import { TextField } from '#components/TextField';
 	import { markIntroSeen, shouldSkipIntro } from '#lib/intro.ts';
-	import { bookCallUrl } from '#lib/report/config.ts';
 
 	let { homeHref, values = {}, errors = {}, intro = true }: HomePageProps = $props();
 
@@ -77,15 +76,10 @@
 
 <!-- The page stays out of reach (inert) while the intro covers it. -->
 <div class="min-h-dvh bg-ui-surface-surface-200" inert={showIntro}>
-	<SiteHeader
-		product="Report Card"
-		{homeHref}
-		action={{ label: 'Book a call', href: `${bookCallUrl}&utm_content=header`, external: true }}
-	/>
+	<SiteHeader product="Report Card" {homeHref} />
 
 	<main class="mx-auto flex max-w-2xl flex-col gap-48 px-16 py-48">
 		<section class="flex flex-col items-center gap-16 text-center">
-			<p class="type-ui-overline-1 text-brand-text-secondary uppercase">Runhappy report card</p>
 			<!-- Decorative: the title already says what the page is. -->
 			<img src={reportCardImage} alt="" class="size-(--size-hero-image)" />
 			<h1 class="type-ui-headline-6 text-balance text-ui-base-foreground">
