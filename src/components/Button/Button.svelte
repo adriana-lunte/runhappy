@@ -16,6 +16,8 @@
 		iconLeft?: PhosphorIcon;
 		/** Icon after the label (any Phosphor icon). Decorative: hidden from screen readers. */
 		iconRight?: PhosphorIcon;
+		/** Draws the icons with Phosphor's Regular drawing. Only for carets (chevrons), as in the icon rule. */
+		iconRegular?: boolean;
 		/** Native button type. Defaults to "button" so it never submits a form by accident. */
 		type?: 'button' | 'submit' | 'reset';
 	}
@@ -64,6 +66,7 @@
 		variant = 'primary',
 		iconLeft: IconLeft,
 		iconRight: IconRight,
+		iconRegular = false,
 		type = 'button',
 		disabled = false,
 		class: className,
@@ -74,10 +77,10 @@
 
 <button {type} {disabled} class={[buttonClasses(variant), className]} {...rest}>
 	{#if IconLeft}
-		<Icon icon={IconLeft} class="size-20" />
+		<Icon icon={IconLeft} regular={iconRegular} class="size-20" />
 	{/if}
 	{@render children?.()}
 	{#if IconRight}
-		<Icon icon={IconRight} class="size-20" />
+		<Icon icon={IconRight} regular={iconRegular} class="size-20" />
 	{/if}
 </button>

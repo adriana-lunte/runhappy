@@ -16,8 +16,8 @@
 
 <script lang="ts">
 	import {
-		ArrowRightIcon,
 		CalendarCheckIcon,
+		CaretRightIcon,
 		CursorClickIcon,
 		MegaphoneIcon
 	} from 'phosphor-svelte';
@@ -84,7 +84,9 @@
 				{error}
 				required
 			/>
-			<Button type="submit" iconRight={ArrowRightIcon} class="w-full">Grade my site</Button>
+			<Button type="submit" iconRight={CaretRightIcon} iconRegular class="w-full"
+				>Grade my site</Button
+			>
 		</form>
 
 		<section aria-label="What we check" class="grid gap-12 sm:grid-cols-3">

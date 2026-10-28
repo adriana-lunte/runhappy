@@ -1,6 +1,6 @@
 <script module lang="ts">
 	import { defineMeta } from '@storybook/addon-svelte-csf';
-	import { PlusIcon as Plus } from 'phosphor-svelte';
+	import { CaretRightIcon, PlusIcon as Plus } from 'phosphor-svelte';
 	import { expect, fn, userEvent, within } from 'storybook/test';
 	import Button from './Button.svelte';
 
@@ -71,6 +71,13 @@
 				<Button {variant} iconLeft={Plus} iconRight={Plus} disabled>Add Tool</Button>
 			{/each}
 		</div>
+	{/snippet}
+</Story>
+
+<!-- A caret after the label uses the Regular drawing (chevron), as in the icon rule. -->
+<Story name="With chevron" args={{ iconRight: CaretRightIcon, iconRegular: true }}>
+	{#snippet template(args)}
+		<Button {...args}>Grade my site</Button>
 	{/snippet}
 </Story>
 
