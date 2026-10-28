@@ -25,6 +25,8 @@
 		 * (Figma: "CaretDown Regular", "CaretUp Regular"… — chevrons instead of triangles).
 		 */
 		regular?: boolean;
+		/** Uses Phosphor's Bold drawing: a thicker line. For now only the "Grade my site" chevron (Adriana, 2026-10-28). */
+		bold?: boolean;
 		/** Only for icons that carry meaning on their own. Without it the icon is hidden from screen readers. */
 		label?: string;
 		/** Size and color, e.g. "size-16 text-ui-base-foreground". */
@@ -37,15 +39,16 @@
 		icon: Glyph,
 		duotone = false,
 		regular = false,
+		bold = false,
 		label,
 		class: className
 	}: IconProps = $props();
 </script>
 
-<!-- The duotone drawing, like the Figma set (yellow layer shown or hidden), or Regular for control carets. -->
+<!-- The duotone drawing, like the Figma set (yellow layer shown or hidden), or Regular / Bold line drawings. -->
 <Glyph
-	weight={regular ? 'regular' : 'duotone'}
-	class={['shrink-0', !regular && (duotone ? 'icon-duotone' : 'icon-plain'), className]}
+	weight={bold ? 'bold' : regular ? 'regular' : 'duotone'}
+	class={['shrink-0', !regular && !bold && (duotone ? 'icon-duotone' : 'icon-plain'), className]}
 	aria-hidden={label ? undefined : 'true'}
 	aria-label={label}
 />
