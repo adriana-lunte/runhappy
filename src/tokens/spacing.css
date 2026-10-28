@@ -36,4 +36,9 @@
 	/* Sidebar column width, open (Figma example screens: 258) and collapsed to icons (approved 2026-10-28: 76). */
 	--size-sidebar: 16.125rem;
 	--size-sidebar-collapsed: 4.75rem;
+	/* Report Card score rings (report-card.runhappyapps.com: 128 overall grade, 36 per category). Added 2026-10-28, to confirm. */
+	--size-score-ring: 8rem;
+	--size-score-ring-small: 2.25rem;
+	/* Report Card page width (original: 1152 max) and its readable text column. Added 2026-10-28, to confirm. */
+	--size-page: 72rem;
 }

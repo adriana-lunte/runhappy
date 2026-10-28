@@ -35,4 +35,8 @@
 	input[type='search']::-webkit-search-decoration {
 		appearance: none;
 	}
+	/* Disclosures (<details>) draw their own caret: hide Safari's marker (others hide it with list-none). */
+	summary::-webkit-details-marker {
+		display: none;
+	}
 }
