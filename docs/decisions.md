@@ -472,6 +472,8 @@ approved: sample data first; the map on the checking screen left out; code in th
   skipped entirely with reduced motion, hint "Click anywhere to start". Rebuilt in code from Figma's motion data
   (`src/components/Screensaver/labels.ts`, 226 labels, Web Animations API) instead of a video: sharp at any size,
   about 100 KB. The 1728 × 1117 frame is scaled to cover the screen; the title sits outside it so it wraps on phones.
+  Changed from Figma (Adriana): once the labels cover the screen (3 s in) they wait 2 s before falling; labels
+  that land with a bounce finish it first. The loop is 14 s.
 
 **To confirm:**
 

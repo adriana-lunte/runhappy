@@ -4,11 +4,13 @@
 	https://www.figma.com/design/ple2zsyYjnhOhYJw8MxTkj/Marketing?node-id=26-2
 
 	Full-screen intro shown before the home page (decided 2026-10-28): "Runhappy." labels fall, pile up under the
-	title and drop away, in a 12-second loop. Any click, tap or key closes it. The page decides when it shows
+	title and drop away. Any click, tap or key closes it. The page decides when it shows
 	(once per visit, never with reduced motion: see src/lib/intro.ts).
 
 	The animation is rebuilt from Figma's motion data (labels.ts) with the Web Animations API. The Figma frame is a
 	fixed 1728 × 1117 stage, scaled to cover the screen. The title sits outside the stage so it can wrap on phones.
+	Change from Figma (Adriana, 2026-10-28): when the labels cover the screen (3 s in), they wait 2 s before
+	falling, so the loop lasts 14 s instead of 12.
 -->
 <script lang="ts" module>
 	export interface ScreensaverProps {
@@ -56,6 +58,11 @@
 	// Every animation starts at the same moment, so the labels stay in step with each other and with the title.
 	const startTime = typeof document === 'undefined' ? 0 : Number(document.timeline.currentTime);
 
+	// The 2-second wait once the labels cover the screen (3 s into Figma's 12 s loop).
+	const coverAt = 0.25;
+	const holdMs = 2000;
+	const duration = loopMs + holdMs;
+
 	type Kind = 'x' | 'y' | 'rotate' | 'opacity';
 	const frame: Record<Kind, (value: number, scale: number) => Keyframe> = {
 		x: (value, s) => ({ translate: `${value * s}px 0` }),
@@ -64,17 +71,35 @@
 		opacity: (value) => ({ opacity: value })
 	};
 
+	/**
+	 * Where a track waits: its last keyframe before the screen is covered. Labels that land with a small bounce
+	 * (moves under 20 within the next few frames) finish bouncing first, then wait.
+	 */
+	function holdIndex([values, times]: Track) {
+		let hold = times.findLastIndex((time) => time <= coverAt);
+		while (times[hold + 1] <= 0.32 && Math.abs(values[hold + 1] - values[hold]) < 20) hold += 1;
+		return hold;
+	}
+
 	/** Plays one Figma track on an element, looping forever. `scale` only applies to moves (x, y). */
 	function play(node: HTMLElement, options: { track: Track; kind: Kind; scale?: number }) {
 		let animation: Animation;
-		function start({ track: [values, times, eases], kind, scale: s = 1 }: typeof options) {
+		function start({ track, kind, scale: s = 1 }: typeof options) {
 			animation?.cancel();
-			const keyframes = values.map((value, i) => ({
-				...frame[kind](value, s),
-				offset: times[i],
-				easing: easings[eases?.[i] ?? 'l']
-			}));
-			animation = node.animate(keyframes, { duration: loopMs, iterations: Infinity });
+			const [values, times, eases] = track;
+			const hold = holdIndex(track);
+			const keyframes = values.flatMap((value, i) => {
+				const ms = times[i] * loopMs + (i > hold ? holdMs : 0);
+				const key = { ...frame[kind](value, s), offset: ms / duration };
+				const easing = easings[eases?.[i] ?? 'l'];
+				// At the hold point the value stays still for holdMs, then the track carries on as in Figma.
+				if (i !== hold) return [{ ...key, easing }];
+				return [
+					{ ...key, easing: 'linear' },
+					{ ...key, offset: (ms + holdMs) / duration, easing }
+				];
+			});
+			animation = node.animate(keyframes, { duration, iterations: Infinity });
 			animation.startTime = startTime;
 		}
 		start(options);
