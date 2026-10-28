@@ -62,8 +62,8 @@
 				How easy is it to book a party with you?
 			</h1>
 			<p class="type-ui-body-1-regular text-brand-text-secondary">
-				Enter your website. We walk through booking a birthday or group event the way a parent
-				would, check your ads and tracking, and grade what we find — with a fix for every problem.
+				Enter your website and get a graded report card in about two minutes, with a clear fix for
+				every problem we find.
 			</p>
 		</section>
 
