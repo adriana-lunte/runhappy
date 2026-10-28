@@ -18,7 +18,7 @@
 </script>
 
 <script lang="ts">
-	import { ArrowRightIcon, CaretRightIcon } from 'phosphor-svelte';
+	import { CaretRightIcon } from 'phosphor-svelte';
 	import { buttonClasses } from '#components/Button';
 	import { FindingCard, FindingRow } from '#components/Finding';
 	import { FixList } from '#components/FixList';
@@ -171,7 +171,7 @@
 						rel="noopener"
 						class="inline-flex items-center gap-4 rounded-xs type-ui-body-3-medium text-ui-base-foreground underline underline-offset-2 focus-ring"
 					>
-						Want these fixed? Book a call <Icon icon={ArrowRightIcon} class="size-16" />
+						Want these fixed? Book a call <Icon icon={CaretRightIcon} regular class="size-16" />
 					</a>
 				{/snippet}
 			</FixList>
