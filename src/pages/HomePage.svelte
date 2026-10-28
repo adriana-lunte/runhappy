@@ -1,17 +1,19 @@
 <!--
 	HomePage — Report Card home (modeled on report-card.runhappyapps.com, 2026-10-28).
-	Hero (report card illustration, title, text) with the website field, "What we check, step by step" (three
-	numbered cards) and the "we never book" note.
+	Hero (report card illustration, title, text) with the form (first and last name, email, website),
+	"What we check, step by step" (three numbered cards) and the "we never book" note.
 	The form posts to the route's action, which validates with Zod (src/lib/schemas/report.ts).
 -->
 <script lang="ts" module>
+	import type { GradeFormValues } from '#lib/schemas/report.ts';
+
 	export interface HomePageProps {
 		/** Link to this page (logo). */
 		homeHref: string;
 		/** What the visitor typed, kept when the form comes back with an error. */
-		url?: string;
-		/** Error from the server validation. */
-		error?: string;
+		values?: GradeFormValues;
+		/** One error per field, from the server validation. */
+		errors?: GradeFormValues;
 	}
 </script>
 
@@ -29,7 +31,7 @@
 	import { TextField } from '#components/TextField';
 	import { bookCallUrl } from '#lib/report/config.ts';
 
-	let { homeHref, url = '', error }: HomePageProps = $props();
+	let { homeHref, values = {}, errors = {} }: HomePageProps = $props();
 
 	const features = [
 		{
@@ -76,16 +78,42 @@
 			novalidate
 			class="flex flex-col gap-12 rounded-sm bg-ui-surface-surface-100 p-12"
 		>
+			<div class="grid gap-12 sm:grid-cols-2">
+				<TextField
+					label="First name"
+					name="firstName"
+					autocomplete="given-name"
+					value={values.firstName}
+					error={errors.firstName}
+					required
+				/>
+				<TextField
+					label="Last name"
+					name="lastName"
+					autocomplete="family-name"
+					value={values.lastName}
+					error={errors.lastName}
+					required
+				/>
+			</div>
+			<TextField
+				label="Email"
+				name="email"
+				type="email"
+				autocomplete="email"
+				value={values.email}
+				error={errors.email}
+				required
+			/>
 			<TextField
 				label="Your venue’s website"
-				hideLabel
 				name="url"
 				type="url"
 				inputmode="url"
 				autocomplete="url"
 				placeholder="yourvenue.com"
-				value={url}
-				{error}
+				value={values.url}
+				error={errors.url}
 				required
 			/>
 			<Button type="submit" iconRight={CaretRightIcon} iconRegular class="w-full"

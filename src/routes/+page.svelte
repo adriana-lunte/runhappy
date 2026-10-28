@@ -14,4 +14,4 @@
 	/>
 </svelte:head>
 
-<HomePage homeHref={resolve('/')} url={form?.url} error={form?.error} />
+<HomePage homeHref={resolve('/')} values={form?.values} errors={form?.errors} />

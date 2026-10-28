@@ -464,8 +464,14 @@ approved: sample data first; the map on the checking screen left out; code in th
 - Hero illustration (provided by Adriana, `src/lib/assets/report-card.webp`): centered, decorative (empty alt).
   First above the overline at 128; then (Adriana) under the overline at 192, new token `--size-hero-image`.
 
+- Home form (Adriana): First name and Last name (one row on desktop), Email, then the website, all required,
+  labels visible. Name and email are only validated for now, not stored (`gradeFormSchema`).
+
 **To confirm:**
 
+- Home form error copy: "Enter your first name", "Enter your last name", "Enter your email",
+  "Enter an email like name@yourvenue.com".
+- Where the name and email go (CRM, email, database): not decided; nothing is stored yet.
 - Home steps section: section title `UI/Subtitle/2`, centered.
 - **Dark mode on sunken panels:** `surface-150` dark is #3a3a32, lighter than the cards (#121214); secondary
   text on it is about 4.1:1 in dark mode (fails). Options: a different panel color, or fix the dark value in Figma.

@@ -71,8 +71,19 @@ export const reportSchema = z.object({
 });
 export type Report = z.infer<typeof reportSchema>;
 
-/** The website field on the home page. Accepts "yourvenue.com" or a full address. */
-export const siteFormSchema = z.object({
+/**
+ * The form on the home page: who is asking and their website (decided 2026-10-28: all four required).
+ * For now the name and email are only validated, not stored anywhere.
+ */
+export const gradeFormSchema = z.object({
+	firstName: z.string().trim().min(1, 'Enter your first name'),
+	lastName: z.string().trim().min(1, 'Enter your last name'),
+	email: z
+		.string()
+		.trim()
+		.min(1, 'Enter your email')
+		.pipe(z.email({ error: 'Enter an email like name@yourvenue.com' })),
+	/** Accepts "yourvenue.com" or a full address. */
 	url: z
 		.string()
 		.trim()
@@ -86,4 +97,6 @@ export const siteFormSchema = z.object({
 			})
 		)
 });
-export type SiteForm = z.infer<typeof siteFormSchema>;
+export type GradeForm = z.infer<typeof gradeFormSchema>;
+/** What the visitor typed, and one error per field, when the form comes back. */
+export type GradeFormValues = Partial<Record<keyof GradeForm, string>>;

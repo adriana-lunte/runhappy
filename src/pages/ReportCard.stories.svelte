@@ -27,8 +27,12 @@
 <Story name="Home with error">
 	{#snippet template()}<HomePage
 			homeHref="#"
-			url="not a site"
-			error="Enter a website like yourvenue.com"
+			values={{ firstName: '', lastName: 'Rivera', email: 'sam@', url: 'not a site' }}
+			errors={{
+				firstName: 'Enter your first name',
+				email: 'Enter an email like name@yourvenue.com',
+				url: 'Enter a website like yourvenue.com'
+			}}
 		/>{/snippet}
 </Story>
 
