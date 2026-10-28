@@ -11,6 +11,7 @@
 		tags: ['autodocs'],
 		args: { type: 'consultation' },
 		argTypes: {
+			announceType: { control: 'boolean' },
 			type: { control: 'inline-radio', options: types },
 			children: { control: false }
 		},
@@ -30,7 +31,7 @@
 
 <Story name="Default">
 	{#snippet template(args)}
-		<Tag type={args.type}>Call today</Tag>
+		<Tag type={args.type} announceType={args.announceType}>Call today</Tag>
 	{/snippet}
 </Story>
 
@@ -53,5 +54,18 @@
 				<Tag {type}>in 3 days</Tag>
 			{/each}
 		</div>
+	{/snippet}
+</Story>
+
+<!-- Without the hidden type word: the color is decoration and the text says it all. -->
+<Story
+	name="Without type word"
+	parameters={{ controls: { disable: true } }}
+	play={async ({ canvasElement }) => {
+		await expect(within(canvasElement).getByText('Step 1')).toHaveTextContent(/^Step 1$/);
+	}}
+>
+	{#snippet template()}
+		<Tag announceType={false}>Step 1</Tag>
 	{/snippet}
 </Story>

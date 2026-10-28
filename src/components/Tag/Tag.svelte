@@ -15,6 +15,11 @@
 	export interface TagProps {
 		/** What the tag means. Sets the color and the word screen readers hear first. */
 		type?: TagType;
+		/**
+		 * Reads the type word before the text ("Overdue: in 3 days"). Turn it off when the color is only
+		 * decoration and the text says it all, e.g. "Step 1" on the Report Card home.
+		 */
+		announceType?: boolean;
 		/** Visible text, e.g. "in 3 days". */
 		children: Snippet;
 		/** Layout classes (margin, alignment). */
@@ -23,7 +28,12 @@
 </script>
 
 <script lang="ts">
-	let { type = 'consultation', children, class: className }: TagProps = $props();
+	let {
+		type = 'consultation',
+		announceType = true,
+		children,
+		class: className
+	}: TagProps = $props();
 
 	// Text on brand colors uses ui-base-primary-foreground (color rule 1, stays dark in dark mode).
 	// Overdue keeps Figma's white text: 5.0:1 light, 6.3:1 dark.
@@ -51,6 +61,8 @@
 		className
 	]}
 >
-	<span class="sr-only">{typeLabels[type]}:</span>
+	{#if announceType}
+		<span class="sr-only">{typeLabels[type]}:</span>
+	{/if}
 	{@render children()}
 </span>

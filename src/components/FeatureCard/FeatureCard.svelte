@@ -4,8 +4,8 @@
 
 	A white card that explains one thing: icon, title and a short text. Static, not clickable.
 	Background ui/surface/surface-100, radius sm, title UI/Subtitle/3, text UI/Body/3 in brand/text/secondary.
-	With `step` (decided 2026-10-28): the heading reads "Step 1" in UI/Subtitle/3 and the title goes under it,
-	smaller (UI/Body/3 Semibold). Put numbered cards in an <ol>.
+	With `step` (decided 2026-10-28): a yellow Tag "Step 1" sits above the icon and the title is smaller
+	(UI/Body/3 Semibold). Put numbered cards in an <ol>.
 -->
 <script lang="ts" module>
 	import type { PhosphorIcon } from '#components/Icon';
@@ -17,7 +17,7 @@
 		title: string;
 		/** Short explanation. */
 		text: string;
-		/** Step number. Shows "Step N" as the heading, with the title under it. */
+		/** Step number. Shows a yellow "Step N" tag above the icon. */
 		step?: number;
 		/** Heading level of the title, so the page outline stays right. */
 		level?: 2 | 3;
@@ -28,20 +28,25 @@
 
 <script lang="ts">
 	import { Icon } from '#components/Icon';
+	import { Tag } from '#components/Tag';
 
 	let { icon, title, text, step, level = 2, class: className }: FeatureCardProps = $props();
 </script>
 
 <div class={['flex flex-col gap-12 rounded-sm bg-ui-surface-surface-100 p-20', className]}>
+	{#if step !== undefined}
+		<Tag announceType={false} class="self-start">Step {step}</Tag>
+	{/if}
 	<Icon {icon} class="size-24 text-ui-base-foreground" />
 	<div class="flex flex-col gap-6">
-		<svelte:element this={`h${level}`} class="flex flex-col gap-2 text-ui-base-foreground">
-			{#if step !== undefined}
-				<span class="type-ui-subtitle-3">Step {step}<span class="sr-only">:</span></span>
-				<span class="type-ui-body-3-semibold">{title}</span>
-			{:else}
-				<span class="type-ui-subtitle-3">{title}</span>
-			{/if}
+		<svelte:element
+			this={`h${level}`}
+			class={[
+				'text-ui-base-foreground',
+				step !== undefined ? 'type-ui-body-3-semibold' : 'type-ui-subtitle-3'
+			]}
+		>
+			{title}
 		</svelte:element>
 		<p class="type-ui-body-3-regular text-brand-text-secondary">{text}</p>
 	</div>
