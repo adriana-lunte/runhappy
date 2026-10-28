@@ -461,12 +461,11 @@ approved: sample data first; the map on the checking screen left out; code in th
   changed by Adriana: no circle, a "Step 1" heading; then a yellow Tag "Step 1" above the icon (Tag
   got `announceType` to skip its hidden type word), title back to `UI/Subtitle/3`. Titles rewritten as steps: "Try to book a party", "Check your tracking", "Look up your ads". Card texts unchanged. Hero text rewritten so it does not repeat the steps: "Enter your website and get a graded report card in about two minutes, with a clear fix for every problem we find."
 
-- Hero illustration (provided by Adriana, `src/lib/assets/report-card.webp`): above the overline, centered,
-  decorative (empty alt), 128 wide reusing `--size-score-ring`.
+- Hero illustration (provided by Adriana, `src/lib/assets/report-card.webp`): centered, decorative (empty alt).
+  First above the overline at 128; then (Adriana) under the overline at 192, new token `--size-hero-image`.
 
 **To confirm:**
 
-- Hero illustration: if its size should stay independent of the grade ring, it needs its own size token.
 - Home steps section: section title `UI/Subtitle/2`, centered.
 - **Dark mode on sunken panels:** `surface-150` dark is #3a3a32, lighter than the cards (#121214); secondary
   text on it is about 4.1:1 in dark mode (fails). Options: a different panel color, or fix the dark value in Figma.

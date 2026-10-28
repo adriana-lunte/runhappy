@@ -59,9 +59,9 @@
 
 	<main class="mx-auto flex max-w-2xl flex-col gap-48 px-16 py-48">
 		<section class="flex flex-col items-center gap-16 text-center">
-			<!-- Decorative: the title already says what the page is. Same size as the report's grade ring (Adriana, 2026-10-28). -->
-			<img src={reportCardImage} alt="" class="size-(--size-score-ring)" />
 			<p class="type-ui-overline-1 text-brand-text-secondary uppercase">Runhappy report card</p>
+			<!-- Decorative: the title already says what the page is. -->
+			<img src={reportCardImage} alt="" class="size-(--size-hero-image)" />
 			<h1 class="type-ui-headline-6 text-balance text-ui-base-foreground">
 				How easy is it to book a party with you?
 			</h1>
