@@ -74,8 +74,8 @@
 	{/snippet}
 </Story>
 
-<!-- A caret after the label uses a line drawing (chevron): Bold here, as on the Report Card home. -->
-<Story name="With chevron" args={{ iconRight: CaretRightIcon, iconWeight: 'bold' }}>
+<!-- A caret after the label uses the Regular drawing (chevron), as in the icon rule. -->
+<Story name="With chevron" args={{ iconRight: CaretRightIcon, iconRegular: true }}>
 	{#snippet template(args)}
 		<Button {...args}>Grade my site</Button>
 	{/snippet}

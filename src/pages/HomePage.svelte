@@ -134,7 +134,7 @@
 				error={errors.url}
 				required
 			/>
-			<Button type="submit" iconRight={CaretRightIcon} iconWeight="bold" class="w-full"
+			<Button type="submit" iconRight={CaretRightIcon} iconRegular class="w-full"
 				>Grade my site</Button
 			>
 		</form>
