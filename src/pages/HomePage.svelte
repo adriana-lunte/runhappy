@@ -1,6 +1,7 @@
 <!--
 	HomePage — Report Card home (modeled on report-card.runhappyapps.com, 2026-10-28).
-	Hero with the website field, "What we check, step by step" (three numbered cards) and the "we never book" note.
+	Hero (report card illustration, title, text) with the website field, "What we check, step by step" (three
+	numbered cards) and the "we never book" note.
 	The form posts to the route's action, which validates with Zod (src/lib/schemas/report.ts).
 -->
 <script lang="ts" module>
@@ -21,6 +22,7 @@
 		CursorClickIcon,
 		MegaphoneIcon
 	} from 'phosphor-svelte';
+	import reportCardImage from '#lib/assets/report-card.webp';
 	import { Button } from '#components/Button';
 	import { FeatureCard } from '#components/FeatureCard';
 	import { SiteHeader } from '#components/SiteHeader';
@@ -57,6 +59,8 @@
 
 	<main class="mx-auto flex max-w-2xl flex-col gap-48 px-16 py-48">
 		<section class="flex flex-col items-center gap-16 text-center">
+			<!-- Decorative: the title already says what the page is. Same size as the report's grade ring (Adriana, 2026-10-28). -->
+			<img src={reportCardImage} alt="" class="size-(--size-score-ring)" />
 			<p class="type-ui-overline-1 text-brand-text-secondary uppercase">Runhappy report card</p>
 			<h1 class="type-ui-headline-6 text-balance text-ui-base-foreground">
 				How easy is it to book a party with you?
