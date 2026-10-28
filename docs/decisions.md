@@ -467,8 +467,17 @@ approved: sample data first; the map on the checking screen left out; code in th
 - Home form (Adriana): First name and Last name (one row on desktop), Email, then the website, all required,
   labels visible. Name and email are only validated for now, not stored (`gradeFormSchema`).
 
+- **Screensaver intro** (Adriana): full-screen intro before the home page with the Figma loop "Runhappy — 12s
+  seamless loop" (Marketing file, node 26:2). Once per visit (sessionStorage), closed by any click, tap or key,
+  skipped entirely with reduced motion, hint "Click anywhere to start". Rebuilt in code from Figma's motion data
+  (`src/components/Screensaver/labels.ts`, 226 labels, Web Animations API) instead of a video: sharp at any size,
+  about 100 KB. The 1728 × 1117 frame is scaled to cover the screen; the title sits outside it so it wraps on phones.
+
 **To confirm:**
 
+- Screensaver hint style: dark pill (`ui/base/foreground` background, `UI/Button` text) so it reads over the
+  labels. Title on phones uses `UI/Headline/6` (Display/XL from small tablets up). Background follows the theme
+  (white in light mode, as in Figma; dark in dark mode).
 - Home form error copy: "Enter your first name", "Enter your last name", "Enter your email",
   "Enter an email like name@yourvenue.com".
 - Where the name and email go (CRM, email, database): not decided; nothing is stored yet.

@@ -16,6 +16,12 @@
 					theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 				}
 				document.documentElement.dataset.theme = theme;
+				// Report Card intro already closed in this tab: keep it hidden (same key as src/lib/intro.ts).
+				try {
+					if (sessionStorage.getItem('runhappy-intro-seen') !== null) {
+						document.documentElement.dataset.introSeen = '';
+					}
+				} catch (e) {}
 			})();
 		</script>
 		%sveltekit.head%

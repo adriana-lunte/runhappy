@@ -19,6 +19,8 @@
 
 /* Dark mode utilities: dark:bg-… applies inside any [data-theme='dark'] container. */
 @custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
+/* Report Card intro already closed in this tab (set by src/app.html and src/lib/intro.ts). */
+@custom-variant intro-seen (&:where([data-intro-seen] *));
 
 @layer base {
 	html {

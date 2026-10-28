@@ -21,12 +21,13 @@
 </script>
 
 <Story name="Home">
-	{#snippet template()}<HomePage homeHref="#" />{/snippet}
+	{#snippet template()}<HomePage homeHref="#" intro={false} />{/snippet}
 </Story>
 
 <Story name="Home with error">
 	{#snippet template()}<HomePage
 			homeHref="#"
+			intro={false}
 			values={{ firstName: '', lastName: 'Rivera', email: 'sam@', url: 'not a site' }}
 			errors={{
 				firstName: 'Enter your first name',

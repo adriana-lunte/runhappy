@@ -2,6 +2,7 @@
 	HomePage — Report Card home (modeled on report-card.runhappyapps.com, 2026-10-28).
 	Hero (report card illustration, title, text) with the form (first and last name, email, website),
 	"What we check, step by step" (three numbered cards) and the "we never book" note.
+	Before it, once per visit, the Screensaver intro covers the page until a click, tap or key.
 	The form posts to the route's action, which validates with Zod (src/lib/schemas/report.ts).
 -->
 <script lang="ts" module>
@@ -14,6 +15,8 @@
 		values?: GradeFormValues;
 		/** One error per field, from the server validation. */
 		errors?: GradeFormValues;
+		/** Shows the screensaver intro first (once per visit, see src/lib/intro.ts). Off in stories. */
+		intro?: boolean;
 	}
 </script>
 
@@ -24,14 +27,30 @@
 		CursorClickIcon,
 		MegaphoneIcon
 	} from 'phosphor-svelte';
+	import { onMount } from 'svelte';
 	import reportCardImage from '#lib/assets/report-card.webp';
 	import { Button } from '#components/Button';
 	import { FeatureCard } from '#components/FeatureCard';
+	import { Screensaver } from '#components/Screensaver';
 	import { SiteHeader } from '#components/SiteHeader';
 	import { TextField } from '#components/TextField';
+	import { markIntroSeen, shouldSkipIntro } from '#lib/intro.ts';
 	import { bookCallUrl } from '#lib/report/config.ts';
 
-	let { homeHref, values = {}, errors = {} }: HomePageProps = $props();
+	let { homeHref, values = {}, errors = {}, intro = true }: HomePageProps = $props();
+
+	const heading = 'How easy is it to book a party with you?';
+
+	// Rendered on the server too, so a first visit never flashes the page; hidden at once when skipped.
+	// svelte-ignore state_referenced_locally
+	let showIntro = $state(intro);
+	onMount(() => {
+		if (shouldSkipIntro()) showIntro = false;
+	});
+	function closeIntro() {
+		markIntroSeen();
+		showIntro = false;
+	}
 
 	const features = [
 		{
@@ -52,7 +71,12 @@
 	];
 </script>
 
-<div class="min-h-dvh bg-ui-surface-surface-200">
+{#if showIntro}
+	<Screensaver title={heading} onclose={closeIntro} />
+{/if}
+
+<!-- The page stays out of reach (inert) while the intro covers it. -->
+<div class="min-h-dvh bg-ui-surface-surface-200" inert={showIntro}>
 	<SiteHeader
 		product="Report Card"
 		{homeHref}
@@ -65,7 +89,7 @@
 			<!-- Decorative: the title already says what the page is. -->
 			<img src={reportCardImage} alt="" class="size-(--size-hero-image)" />
 			<h1 class="type-ui-headline-6 text-balance text-ui-base-foreground">
-				How easy is it to book a party with you?
+				{heading}
 			</h1>
 			<p class="type-ui-body-1-regular text-brand-text-secondary">
 				Enter your website and get a graded report card in about two minutes, with a clear fix for
