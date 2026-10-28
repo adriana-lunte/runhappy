@@ -4,8 +4,8 @@
 
 	A white card that explains one thing: icon, title and a short text. Static, not clickable.
 	Background ui/surface/surface-100, radius sm, title UI/Subtitle/3, text UI/Body/3 in brand/text/secondary.
-	With `step`, a yellow circle with the step number sits next to the icon (decided 2026-10-28). Put numbered cards
-	in an <ol>: the list tells screen readers the order, so the circle is hidden from them.
+	With `step` (decided 2026-10-28): the heading reads "Step 1" in UI/Subtitle/3 and the title goes under it,
+	smaller (UI/Body/3 Semibold). Put numbered cards in an <ol>.
 -->
 <script lang="ts" module>
 	import type { PhosphorIcon } from '#components/Icon';
@@ -17,7 +17,7 @@
 		title: string;
 		/** Short explanation. */
 		text: string;
-		/** Step number, shown in a yellow circle next to the icon. */
+		/** Step number. Shows "Step N" as the heading, with the title under it. */
 		step?: number;
 		/** Heading level of the title, so the page outline stays right. */
 		level?: 2 | 3;
@@ -33,20 +33,15 @@
 </script>
 
 <div class={['flex flex-col gap-12 rounded-sm bg-ui-surface-surface-100 p-20', className]}>
-	<div class="flex items-center gap-12">
-		{#if step !== undefined}
-			<span
-				class="flex size-24 items-center justify-center rounded-full bg-ui-base-primary type-ui-body-4-semibold text-ui-base-primary-foreground"
-				aria-hidden="true"
-			>
-				{step}
-			</span>
-		{/if}
-		<Icon {icon} class="size-24 text-ui-base-foreground" />
-	</div>
+	<Icon {icon} class="size-24 text-ui-base-foreground" />
 	<div class="flex flex-col gap-6">
-		<svelte:element this={`h${level}`} class="type-ui-subtitle-3 text-ui-base-foreground">
-			{title}
+		<svelte:element this={`h${level}`} class="flex flex-col gap-2 text-ui-base-foreground">
+			{#if step !== undefined}
+				<span class="type-ui-subtitle-3">Step {step}<span class="sr-only">:</span></span>
+				<span class="type-ui-body-3-semibold">{title}</span>
+			{:else}
+				<span class="type-ui-subtitle-3">{title}</span>
+			{/if}
 		</svelte:element>
 		<p class="type-ui-body-3-regular text-brand-text-secondary">{text}</p>
 	</div>

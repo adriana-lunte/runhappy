@@ -21,7 +21,7 @@
 			docs: {
 				description: {
 					component:
-						'White card with an icon, a title and a short text. Static. With `step`, a yellow circle shows the step number (use the cards inside an <ol>). Not in Figma yet.'
+						'White card with an icon, a title and a short text. Static. With `step`, the heading reads “Step N” and the title goes under it (use the cards inside an <ol>). Not in Figma yet.'
 				}
 			}
 		}

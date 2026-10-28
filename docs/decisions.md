@@ -457,12 +457,13 @@ approved: sample data first; the map on the checking screen left out; code in th
 
 - **Home page, later the same day (Adriana):** the "Grade my site" button ends in a chevron (CaretRight, Regular
   drawing; Button got an `iconRegular` prop). The three cards became a section "What we check, step by step":
-  numbered cards (yellow circle with the number next to the icon, `step` prop on FeatureCard, inside an `<ol>`),
-  titles rewritten as steps: "Try to book a party", "Check your tracking", "Look up your ads". Card texts unchanged.
+  numbered cards (`step` prop on FeatureCard, inside an `<ol>`). First a yellow circle with the number; then
+  changed by Adriana: no circle, the heading reads "Step 1" (`UI/Subtitle/3`) with the title under it
+  (`UI/Body/3 Semibold`). Titles rewritten as steps: "Try to book a party", "Check your tracking", "Look up your ads". Card texts unchanged.
 
 **To confirm:**
 
-- Home steps section: title style `UI/Subtitle/2`, centered; number in the circle `UI/Body/4 Semibold`, circle 24.
+- Home steps section: section title `UI/Subtitle/2`, centered; step title under "Step N" in `UI/Body/3 Semibold`.
 - **Dark mode on sunken panels:** `surface-150` dark is #3a3a32, lighter than the cards (#121214); secondary
   text on it is about 4.1:1 in dark mode (fails). Options: a different panel color, or fix the dark value in Figma.
 - Score ring thresholds: half or less = red, under 80% = yellow, otherwise green (guessed from the original).
