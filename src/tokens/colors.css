@@ -1,0 +1,171 @@
+/*
+ * Color tokens — Runhappy
+ * Source of truth: Figma "UI Library | Runhappy", collection "Colors" (modes: light, dark).
+ * Naming rule: Figma path lowercased, "/" and spaces become "-".
+ *   e.g. "ui/base/primary-foreground" -> --ui-base-primary-foreground
+ *
+ * This is the ONLY file in the project allowed to contain hex values.
+ * Components never use these variables directly: use the Tailwind classes
+ * defined in theme.css (e.g. bg-ui-base-primary, text-brand-text-primary).
+ */
+
+:root {
+	/* brand / neutral */
+	--brand-neutral-white: #ffffff;
+	--brand-neutral-warm-gray-light: #f5f5f1;
+	--brand-neutral-warm-gray-mid: #e5e5db;
+	--brand-neutral-warm-gray: #6d6d6d;
+	--brand-neutral-off-black: #202020;
+
+	/* brand / accent */
+	--brand-accent-yellow: #fed54e;
+	--brand-accent-yellow-dark: #eeb600;
+	--brand-accent-yellow-background: #f7f0d7;
+
+	/* brand / secondary */
+	--brand-secondary-green: #25c17b;
+	--brand-secondary-green-background: #dff5eb;
+	--brand-secondary-pink: #f98cee;
+	--brand-secondary-pink-background: #f5e6f4;
+
+	/* brand / background */
+	--brand-background-default: #ffffff;
+	--brand-background-subtle: #f5f5f1;
+	--brand-background-muted: #e5e5db;
+	--brand-background-yellow-light: #f7f0d7;
+	--brand-background-green-light-secondary: #dff5eb;
+	--brand-background-pink: #f5e6f4;
+	--brand-background-inverse: #202020;
+	--brand-background-yellow-accent: #fed54e;
+
+	/* brand / text */
+	--brand-text-primary: #202020;
+	--brand-text-secondary: #6d6d6d;
+	--brand-text-inverse: #ffffff;
+	--brand-text-accent: #eeb600;
+	--brand-text-green: #25c17b;
+	--brand-text-pink: #f98cee;
+	--brand-text-text-link: #b43c00;
+
+	/* ui / base */
+	--ui-base-background: #ffffff;
+	--ui-base-foreground: #202020;
+	--ui-base-border: #f5f5f1;
+	--ui-base-input: #878785;
+	--ui-base-ring: #eeb600;
+	--ui-base-hover: #e5e5db;
+	--ui-base-primary: #fed54e;
+	--ui-base-primary-foreground: #202020;
+	--ui-base-primary-hover: #eeb600;
+	--ui-base-secondary: #202020;
+	--ui-base-secondary-foreground: #f5f5f1;
+
+	/* ui / ui elements */
+	--ui-ui-elements-card: #f5f5f1;
+	--ui-ui-elements-card-foreground: #202020;
+	--ui-ui-elements-popover: #f5f5f1;
+	--ui-ui-elements-popover-foreground: #202020;
+	--ui-ui-elements-muted: #e5e5db;
+	--ui-ui-elements-muted-foreground: #666666;
+	--ui-ui-elements-accent: #fed54e;
+	--ui-ui-elements-accent-foreground: #202020;
+
+	/* ui / surface */
+	--ui-surface-surface-100: #ffffff;
+	--ui-surface-surface-150: #efefe7;
+	--ui-surface-surface-200: #f5f5f1;
+	--ui-surface-surface-300: #6d6d6d;
+	--ui-surface-surface-content: #202020;
+
+	/* ui / status */
+	--ui-status-success: #dff5eb;
+	--ui-status-success-foreground: #187b4e;
+	--ui-status-success-border: #1bb670;
+	--ui-status-destructive: #fef0f0;
+	--ui-status-destructive-foreground: #dd1313;
+	--ui-status-destructive-border: #ef4444;
+
+	/* shadow / overlay-color — used only by shadow-overlay (shadows.css), not exposed as a Tailwind color */
+	--shadow-overlay-color: rgb(32 32 32 / 0.12);
+}
+
+/* Dark mode: set data-theme="dark" on <html> (or any container). */
+[data-theme='dark'] {
+	/* brand / neutral */
+	--brand-neutral-white: #1a1a18;
+	--brand-neutral-warm-gray-light: #32322c;
+	--brand-neutral-warm-gray-mid: #262522;
+	--brand-neutral-warm-gray: #9a9a92;
+	--brand-neutral-off-black: #f5f3ec;
+
+	/* brand / accent */
+	--brand-accent-yellow: #f2c94c;
+	--brand-accent-yellow-dark: #eeb600;
+	--brand-accent-yellow-background: #3a341f;
+
+	/* brand / secondary */
+	--brand-secondary-green: #2dd68a;
+	--brand-secondary-green-background: #1f4d3e;
+	--brand-secondary-pink: #f178dc;
+	--brand-secondary-pink-background: #55314e;
+
+	/* brand / background */
+	--brand-background-default: #1a1a18;
+	--brand-background-subtle: #242420;
+	--brand-background-muted: #2e2e29;
+	--brand-background-yellow-light: #3a341f;
+	--brand-background-green-light-secondary: #1f4d3e;
+	--brand-background-pink: #55314e;
+	--brand-background-inverse: #f5f3ec;
+	--brand-background-yellow-accent: #f2c94c;
+
+	/* brand / text */
+	--brand-text-primary: #f5f3ec;
+	--brand-text-secondary: #9a9a92;
+	--brand-text-inverse: #1a1a18;
+	--brand-text-accent: #f2c94c;
+	--brand-text-green: #2dd68a;
+	--brand-text-pink: #f178dc;
+	--brand-text-text-link: #eb7248;
+
+	/* ui / base */
+	--ui-base-background: #1a1a18;
+	--ui-base-foreground: #f5f5f1;
+	--ui-base-border: #2c2c28;
+	--ui-base-input: #707068;
+	--ui-base-ring: #eeb600;
+	--ui-base-hover: #33322c;
+	--ui-base-primary: #fed54e;
+	--ui-base-primary-foreground: #202020;
+	--ui-base-primary-hover: #eeb600;
+	--ui-base-secondary: #302f2b;
+	--ui-base-secondary-foreground: #b5b4ac;
+
+	/* ui / ui elements */
+	--ui-ui-elements-card: #1f1f22;
+	--ui-ui-elements-card-foreground: #f5f5f1;
+	--ui-ui-elements-popover: #1f1f22;
+	--ui-ui-elements-popover-foreground: #f5f5f1;
+	--ui-ui-elements-muted: #2a2a26;
+	--ui-ui-elements-muted-foreground: #9c9b93;
+	--ui-ui-elements-accent: #fed54e;
+	--ui-ui-elements-accent-foreground: #202020;
+
+	/* ui / surface */
+	--ui-surface-surface-100: #121214;
+	--ui-surface-surface-150: #3a3a32;
+	--ui-surface-surface-200: #1b1b1e;
+	--ui-surface-surface-300: #2e2e2a;
+	--ui-surface-surface-content: #f5f5f1;
+
+	/* ui / status */
+	--ui-status-success: #14342a;
+	--ui-status-success-foreground: #34d399;
+	--ui-status-success-border: #22c57d;
+	--ui-status-destructive: #3b1d1d;
+	--ui-status-destructive-foreground: #f87171;
+	--ui-status-destructive-border: #f87171;
+
+	/* shadow / overlay-color — used only by shadow-overlay (shadows.css), not exposed as a Tailwind color */
+	--shadow-overlay-color: rgb(0 0 0 / 0.48);
+}

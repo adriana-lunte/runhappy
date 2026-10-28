@@ -1,0 +1,9 @@
+/*
+ * Border widths — Runhappy
+ * Source: Figma "_Checkbox base" (raw stroke weights there, not variables yet).
+ * Used through Tailwind's variable syntax, e.g. inset-ring-(length:--border-control).
+ */
+:root {
+	--border-control: 0.09375rem; /* 1.5px — checkbox / radio, idle */
+	--border-control-hover: 0.1875rem; /* 3px — checkbox / radio, hover */
+}

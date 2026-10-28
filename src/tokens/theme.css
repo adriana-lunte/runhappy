@@ -1,0 +1,90 @@
+/*
+ * Theme — connects the Runhappy color tokens (colors.css) to Tailwind.
+ *
+ * Every Figma color becomes a Tailwind color with the same name:
+ *   --ui-base-primary  ->  bg-ui-base-primary, text-ui-base-primary, border-ui-base-primary…
+ * Tailwind's default palette (red-500, blue-200…) is removed on purpose:
+ * if a color is not in Figma, it does not exist in code.
+ *
+ * `inline` makes the utilities read the live variable, so dark mode just works.
+ */
+@theme inline {
+	--color-*: initial;
+	--color-transparent: transparent;
+	--color-current: currentColor;
+
+	/* brand / neutral */
+	--color-brand-neutral-white: var(--brand-neutral-white);
+	--color-brand-neutral-warm-gray-light: var(--brand-neutral-warm-gray-light);
+	--color-brand-neutral-warm-gray-mid: var(--brand-neutral-warm-gray-mid);
+	--color-brand-neutral-warm-gray: var(--brand-neutral-warm-gray);
+	--color-brand-neutral-off-black: var(--brand-neutral-off-black);
+
+	/* brand / accent */
+	--color-brand-accent-yellow: var(--brand-accent-yellow);
+	--color-brand-accent-yellow-dark: var(--brand-accent-yellow-dark);
+	--color-brand-accent-yellow-background: var(--brand-accent-yellow-background);
+
+	/* brand / secondary */
+	--color-brand-secondary-green: var(--brand-secondary-green);
+	--color-brand-secondary-green-background: var(--brand-secondary-green-background);
+	--color-brand-secondary-pink: var(--brand-secondary-pink);
+	--color-brand-secondary-pink-background: var(--brand-secondary-pink-background);
+
+	/* brand / background */
+	--color-brand-background-default: var(--brand-background-default);
+	--color-brand-background-subtle: var(--brand-background-subtle);
+	--color-brand-background-muted: var(--brand-background-muted);
+	--color-brand-background-yellow-light: var(--brand-background-yellow-light);
+	--color-brand-background-green-light-secondary: var(--brand-background-green-light-secondary);
+	--color-brand-background-pink: var(--brand-background-pink);
+	--color-brand-background-inverse: var(--brand-background-inverse);
+	--color-brand-background-yellow-accent: var(--brand-background-yellow-accent);
+
+	/* brand / text */
+	--color-brand-text-primary: var(--brand-text-primary);
+	--color-brand-text-secondary: var(--brand-text-secondary);
+	--color-brand-text-inverse: var(--brand-text-inverse);
+	--color-brand-text-accent: var(--brand-text-accent);
+	--color-brand-text-green: var(--brand-text-green);
+	--color-brand-text-pink: var(--brand-text-pink);
+	--color-brand-text-text-link: var(--brand-text-text-link);
+
+	/* ui / base */
+	--color-ui-base-background: var(--ui-base-background);
+	--color-ui-base-foreground: var(--ui-base-foreground);
+	--color-ui-base-border: var(--ui-base-border);
+	--color-ui-base-input: var(--ui-base-input);
+	--color-ui-base-ring: var(--ui-base-ring);
+	--color-ui-base-hover: var(--ui-base-hover);
+	--color-ui-base-primary: var(--ui-base-primary);
+	--color-ui-base-primary-foreground: var(--ui-base-primary-foreground);
+	--color-ui-base-primary-hover: var(--ui-base-primary-hover);
+	--color-ui-base-secondary: var(--ui-base-secondary);
+	--color-ui-base-secondary-foreground: var(--ui-base-secondary-foreground);
+
+	/* ui / ui elements */
+	--color-ui-ui-elements-card: var(--ui-ui-elements-card);
+	--color-ui-ui-elements-card-foreground: var(--ui-ui-elements-card-foreground);
+	--color-ui-ui-elements-popover: var(--ui-ui-elements-popover);
+	--color-ui-ui-elements-popover-foreground: var(--ui-ui-elements-popover-foreground);
+	--color-ui-ui-elements-muted: var(--ui-ui-elements-muted);
+	--color-ui-ui-elements-muted-foreground: var(--ui-ui-elements-muted-foreground);
+	--color-ui-ui-elements-accent: var(--ui-ui-elements-accent);
+	--color-ui-ui-elements-accent-foreground: var(--ui-ui-elements-accent-foreground);
+
+	/* ui / surface */
+	--color-ui-surface-surface-100: var(--ui-surface-surface-100);
+	--color-ui-surface-surface-150: var(--ui-surface-surface-150);
+	--color-ui-surface-surface-200: var(--ui-surface-surface-200);
+	--color-ui-surface-surface-300: var(--ui-surface-surface-300);
+	--color-ui-surface-surface-content: var(--ui-surface-surface-content);
+
+	/* ui / status */
+	--color-ui-status-success: var(--ui-status-success);
+	--color-ui-status-success-foreground: var(--ui-status-success-foreground);
+	--color-ui-status-success-border: var(--ui-status-success-border);
+	--color-ui-status-destructive: var(--ui-status-destructive);
+	--color-ui-status-destructive-foreground: var(--ui-status-destructive-foreground);
+	--color-ui-status-destructive-border: var(--ui-status-destructive-border);
+}

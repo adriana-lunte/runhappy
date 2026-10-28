@@ -1,0 +1,12 @@
+/*
+ * Shadow tokens — Runhappy (approved by Adriana, 2026-10-23)
+ * Source of truth: Figma effect style "shadow/overlay"; its color is the variable
+ * "shadow/overlay-color" (Colors collection, light + dark) → --shadow-overlay-color in colors.css.
+ *
+ * Runhappy is flat: cards and fields use borders and warm grays, not shadows.
+ * There is ONE shadow, for elements that float above the page: tooltip, menus, modals.
+ */
+@theme static {
+	--shadow-*: initial;
+	--shadow-overlay: 0 0.25rem 1rem 0 var(--shadow-overlay-color);
+}

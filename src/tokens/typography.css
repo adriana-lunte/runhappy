@@ -1,0 +1,95 @@
+/*
+ * Typography primitives — Runhappy
+ * Source of truth: Figma "UI Library | Runhappy", variable collection "Typography" (same names:
+ * font-size/14 ↔ --font-size-14, line-height/21 ↔ --line-height-21…) and the UI/* text styles bound to it.
+ *
+ * These are the building blocks of the text styles in text-styles.css.
+ * Components do NOT use them directly: use a `type-*` class instead.
+ *
+ * Sizes are in rem (1rem = 16px) so text scales with the user's browser
+ * font-size setting (WCAG 1.4.4). The number in the name is the Figma px value.
+ */
+
+/* Families and weights are registered in Tailwind's theme, so they also work as
+   utilities (font-sans, font-medium). Everything else in Tailwind's font
+   namespaces is cleared so only Runhappy values exist. */
+@theme static {
+	--font-*: initial;
+	--font-sans: 'Geist Variable', 'Geist', system-ui, sans-serif;
+	/* Used by the "UI/Headline Serif" styles. They were Fields, which has no files for Runhappy;
+	   switched to Geist in Figma and code (decided by Adriana, 2026-10-23). The name is kept to match Figma. */
+	--font-serif: 'Geist Variable', 'Geist', system-ui, sans-serif;
+	--font-mono: 'Geist Mono Variable', 'Geist Mono', ui-monospace, monospace;
+	/* Neue Haas Grotesk (Commercial Type): only the TRIAL version exists today, and its license
+	   forbids @font-face web embedding. So no font files are bundled: the browser uses the font
+	   only if it is installed on the computer, otherwise Geist. See docs/decisions.md. */
+	--font-web-text: 'Haas Grot Text Trial', 'Geist Variable', system-ui, sans-serif;
+	--font-web-display: 'Haas Grot Disp Trial', 'Geist Variable', system-ui, sans-serif;
+
+	--font-weight-*: initial;
+	--font-weight-normal: 400;
+	--font-weight-medium: 500;
+	--font-weight-semibold: 600;
+
+	/* No raw font-size, line-height or tracking utilities: use type-* classes. */
+	--text-*: initial;
+	--leading-*: initial;
+	--tracking-*: initial;
+}
+
+:root {
+	/* Font size (name = Figma px) */
+	--font-size-9: 0.5625rem;
+	--font-size-11: 0.6875rem;
+	--font-size-13: 0.8125rem;
+	--font-size-14: 0.875rem;
+	--font-size-15: 0.9375rem;
+	--font-size-16: 1rem;
+	--font-size-18: 1.125rem;
+	--font-size-22: 1.375rem;
+	--font-size-24: 1.5rem;
+	--font-size-30: 1.875rem;
+	--font-size-32: 2rem;
+	--font-size-36: 2.25rem;
+	--font-size-40: 2.5rem;
+	--font-size-48: 3rem;
+	--font-size-60: 3.75rem;
+	--font-size-72: 4.5rem;
+	--font-size-96: 6rem;
+
+	/* Line height — fixed (UI styles, name = Figma px) */
+	--line-height-15: 0.9375rem;
+	--line-height-17: 1.0625rem;
+	--line-height-20: 1.25rem;
+	--line-height-21: 1.3125rem;
+	--line-height-23: 1.4375rem;
+	--line-height-24: 1.5rem;
+	--line-height-27: 1.6875rem;
+	--line-height-33: 2.0625rem;
+	--line-height-45: 2.8125rem;
+	--line-height-54: 3.375rem;
+	--line-height-72: 4.5rem;
+	--line-height-90: 5.625rem;
+	--line-height-108: 6.75rem;
+	--line-height-144: 9rem;
+
+	/* Line height — relative (Web styles, name = Figma %) */
+	--line-height-ratio-100: 1;
+	--line-height-ratio-105: 1.05;
+	--line-height-ratio-110: 1.1;
+	--line-height-ratio-118: 1.18;
+	--line-height-ratio-120: 1.2;
+	--line-height-ratio-125: 1.25;
+	--line-height-ratio-140: 1.4;
+
+	/* Letter spacing — UI styles (Figma px) */
+	--letter-spacing-tight: -0.03125rem; /* -0.5px */
+	--letter-spacing-normal: 0;
+	--letter-spacing-wider: 0.0625rem; /* 1px */
+
+	/* Letter spacing — Web styles (Figma %, relative to font size) */
+	--letter-spacing-minus-3pct: -0.03em;
+	--letter-spacing-minus-2pct: -0.02em;
+	--letter-spacing-minus-1pct: -0.01em;
+	--letter-spacing-plus-6pct: 0.06em;
+}

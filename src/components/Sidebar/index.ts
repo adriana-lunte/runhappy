@@ -1,0 +1,10 @@
+export { default as Sidebar } from './Sidebar.svelte';
+export { default as SidebarSection } from './SidebarSection.svelte';
+export { default as SidebarItem } from './SidebarItem.svelte';
+export { default as SidebarGroup } from './SidebarGroup.svelte';
+export { default as UserItem } from './UserItem.svelte';
+export type { SidebarProps } from './Sidebar.svelte';
+export type { SidebarSectionProps } from './SidebarSection.svelte';
+export type { SidebarItemProps } from './SidebarItem.svelte';
+export type { SidebarGroupProps, SidebarGroupLink } from './SidebarGroup.svelte';
+export type { UserItemProps } from './UserItem.svelte';

@@ -1,0 +1,39 @@
+/*
+ * Spacing tokens — Runhappy (decided by Adriana, 2026-10-23)
+ * Source of truth: Figma "UI Library | Runhappy", variable collection "Spacing".
+ *
+ * Named by their value in px, like the typography tokens:
+ *   Figma spacing/16  ↔  --spacing-16  ↔  p-16, gap-16, size-16 … = 16px
+ * ⚠ This is NOT Tailwind's default (where p-4 = 16px). Here the number IS the px value.
+ *
+ * Only these values exist. Any other number (p-5, gap-7…) produces no CSS and is flagged by
+ * `npm run lint:tokens`.
+ *   2–16: inside components (padding, gaps, icon sizes)
+ *   20–64: layout (sections, pages)
+ */
+@theme static {
+	--spacing-*: initial;
+	--spacing-0: 0;
+	--spacing-2: 0.125rem;
+	--spacing-4: 0.25rem;
+	--spacing-6: 0.375rem;
+	--spacing-8: 0.5rem;
+	--spacing-10: 0.625rem;
+	--spacing-12: 0.75rem;
+	--spacing-14: 0.875rem;
+	--spacing-16: 1rem;
+	--spacing-20: 1.25rem;
+	--spacing-24: 1.5rem;
+	--spacing-32: 2rem;
+	--spacing-40: 2.5rem;
+	--spacing-48: 3rem;
+	--spacing-64: 4rem;
+
+	/* Component sizes that are not spacing. */
+	--container-tooltip: 15rem; /* Tooltip max width (approved design: ~240) */
+	/* Dropdown panel max height: about 6 options, then the list scrolls (confirmed 2026-10-28). */
+	--size-dropdown-panel: 20rem;
+	/* Sidebar column width, open (Figma example screens: 258) and collapsed to icons (approved 2026-10-28: 76). */
+	--size-sidebar: 16.125rem;
+	--size-sidebar-collapsed: 4.75rem;
+}

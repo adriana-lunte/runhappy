@@ -1,0 +1,30 @@
+/*
+ * Icons — Runhappy (decided by Adriana, 2026-10-27)
+ * Library: Phosphor (phosphor-svelte), the same 1,512 icons as the Figma "Icons" page.
+ *
+ * The Figma set only has Phosphor's DUOTONE drawings (a line drawing + a filled layer in brand yellow).
+ * Phosphor's duotone drawing is not always the same as its regular one (e.g. CaretDown is a triangle
+ * in duotone, a chevron in regular). So code always uses the duotone drawing, like Figma, and these
+ * utilities decide what happens with the filled layer. Use them through <Icon />, not directly.
+ *
+ * Rule: yellow layer only where the icon communicates (Info, active items, menu/content icons);
+ * no yellow on action icons inside controls (search, clear, chevrons, button icons, checks).
+ *
+ * Exception (Adriana, 2026-10-27): carets inside controls use Phosphor's Regular drawing (chevron ∨),
+ * not the duotone triangle. Figma: "CaretDown Regular", "CaretUp Regular"… Code: <Icon … regular />.
+ */
+
+/* Filled layer in brand yellow at 100% (Figma: brand/accent/yellow). */
+@utility icon-duotone {
+	& path[opacity] {
+		fill: var(--color-brand-accent-yellow);
+		opacity: 1;
+	}
+}
+
+/* Filled layer hidden: only the line drawing, in the text color. */
+@utility icon-plain {
+	& path[opacity] {
+		display: none;
+	}
+}

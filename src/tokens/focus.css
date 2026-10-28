@@ -1,0 +1,24 @@
+/*
+ * Focus ring — Runhappy (decision 2A, 2026-10-23, see docs/decisions.md)
+ *
+ * Every interactive component uses the `focus-ring` class. When focused with the keyboard it shows:
+ *   1. a 2px dark ring (ui-base-foreground) — this is what meets WCAG 3:1
+ *   2. a yellow halo (ui-base-ring) outside it — brand accent
+ * It only appears with keyboard focus (:focus-visible), not on mouse click.
+ */
+@utility focus-ring {
+	@apply outline-hidden focus-visible:ring-4 focus-visible:ring-ui-base-ring focus-visible:outline-2 focus-visible:outline-offset-0 focus-visible:outline-ui-base-foreground focus-visible:outline-solid;
+}
+
+/* Same ring, for a container whose focusable element is inside it (e.g. the TextField box
+   around its <input>). Text inputs match :focus-visible on click too, so it shows whenever the field is focused. */
+@utility focus-ring-within {
+	@apply has-focus-visible:ring-4 has-focus-visible:ring-ui-base-ring has-focus-visible:outline-2 has-focus-visible:outline-offset-0 has-focus-visible:outline-ui-base-foreground has-focus-visible:outline-solid;
+}
+
+/* Same ring with a 2px gap (page color) between the element and the dark ring, for dark filled elements where the
+   dark ring would touch the fill (the selected tab pill). Decided 2026-10-28.
+   Layers from the element out: 2px gap (ui-base-background), 2px dark ring, 2px yellow halo. */
+@utility focus-ring-offset {
+	@apply outline-hidden focus-visible:ring-2 focus-visible:ring-ui-base-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-ui-base-background focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ui-base-ring focus-visible:outline-solid;
+}

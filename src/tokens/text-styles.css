@@ -1,0 +1,414 @@
+/*
+ * Text styles — Runhappy
+ * One utility class per Figma text style. This is how text is styled in the
+ * project: <p class="type-ui-body-1-regular">. Raw font sizes are not exposed.
+ *
+ * Naming rule: "type-" + Figma style path, lowercased, "/" and spaces become "-".
+ *   e.g. "UI/Body/1 Semibold" -> type-ui-body-1-semibold
+ *
+ * Resolved duplicates (Figma has two styles with the same name — confirmed 2026-10-23):
+ *   - UI/Subtitle/1-3: the SemiBold version is used.
+ *   - Web Text Styles/Title/Regular: the 24px version is used (the 20px one is ignored).
+ */
+
+/* ---------- UI ---------- */
+
+/* Figma: UI/Button */
+@utility type-ui-button {
+	font-family: var(--font-sans);
+	font-size: var(--font-size-14);
+	line-height: var(--line-height-21);
+	font-weight: var(--font-weight-medium);
+	letter-spacing: var(--letter-spacing-normal);
+}
+
+/* Figma: UI/Caption */
+@utility type-ui-caption {
+	font-family: var(--font-sans);
+	font-size: var(--font-size-13);
+	line-height: var(--line-height-20);
+	font-weight: var(--font-weight-normal);
+	letter-spacing: var(--letter-spacing-normal);
+}
+
+/* Figma: UI/Headline/1 */
+@utility type-ui-headline-1 {
+	font-family: var(--font-sans);
+	font-size: var(--font-size-96);
+	line-height: var(--line-height-144);
+	font-weight: var(--font-weight-medium);
+	letter-spacing: var(--letter-spacing-tight);
+}
+
+/* Figma: UI/Headline/2 */
+@utility type-ui-headline-2 {
+	font-family: var(--font-sans);
+	font-size: var(--font-size-72);
+	line-height: var(--line-height-108);
+	font-weight: var(--font-weight-medium);
+	letter-spacing: var(--letter-spacing-tight);
+}
+
+/* Figma: UI/Headline/3 */
+@utility type-ui-headline-3 {
+	font-family: var(--font-sans);
+	font-size: var(--font-size-60);
+	line-height: var(--line-height-90);
+	font-weight: var(--font-weight-medium);
+	letter-spacing: var(--letter-spacing-tight);
+}
+
+/* Figma: UI/Headline/4 */
+@utility type-ui-headline-4 {
+	font-family: var(--font-sans);
+	font-size: var(--font-size-48);
+	line-height: var(--line-height-72);
+	font-weight: var(--font-weight-medium);
+	letter-spacing: var(--letter-spacing-tight);
+}
+
+/* Figma: UI/Headline/5 */
+@utility type-ui-headline-5 {
+	font-family: var(--font-sans);
+	font-size: var(--font-size-36);
+	line-height: var(--line-height-54);
+	font-weight: var(--font-weight-medium);
+	letter-spacing: var(--letter-spacing-tight);
+}
+
+/* Figma: UI/Headline/6 */
+@utility type-ui-headline-6 {
+	font-family: var(--font-sans);
+	font-size: var(--font-size-30);
+	line-height: var(--line-height-45);
+	font-weight: var(--font-weight-medium);
+	letter-spacing: var(--letter-spacing-tight);
+}
+
+/* Figma: UI/Headline Serif/1 */
+@utility type-ui-headline-serif-1 {
+	font-family: var(--font-serif);
+	font-size: var(--font-size-96);
+	line-height: var(--line-height-144);
+	font-weight: var(--font-weight-normal);
+	letter-spacing: var(--letter-spacing-tight);
+}
+
+/* Figma: UI/Headline Serif/2 */
+@utility type-ui-headline-serif-2 {
+	font-family: var(--font-serif);
+	font-size: var(--font-size-72);
+	line-height: var(--line-height-108);
+	font-weight: var(--font-weight-normal);
+	letter-spacing: var(--letter-spacing-tight);
+}
+
+/* Figma: UI/Headline Serif/3 */
+@utility type-ui-headline-serif-3 {
+	font-family: var(--font-serif);
+	font-size: var(--font-size-60);
+	line-height: var(--line-height-90);
+	font-weight: var(--font-weight-normal);
+	letter-spacing: var(--letter-spacing-tight);
+}
+
+/* Figma: UI/Headline Serif/4 */
+@utility type-ui-headline-serif-4 {
+	font-family: var(--font-serif);
+	font-size: var(--font-size-48);
+	line-height: var(--line-height-72);
+	font-weight: var(--font-weight-normal);
+	letter-spacing: var(--letter-spacing-tight);
+}
+
+/* Figma: UI/Headline Serif/5 */
+@utility type-ui-headline-serif-5 {
+	font-family: var(--font-serif);
+	font-size: var(--font-size-36);
+	line-height: var(--line-height-54);
+	font-weight: var(--font-weight-normal);
+	letter-spacing: var(--letter-spacing-tight);
+}
+
+/* Figma: UI/Headline Serif/6 */
+@utility type-ui-headline-serif-6 {
+	font-family: var(--font-serif);
+	font-size: var(--font-size-30);
+	line-height: var(--line-height-45);
+	font-weight: var(--font-weight-normal);
+	letter-spacing: var(--letter-spacing-tight);
+}
+
+/* Figma: UI/Subtitle/1 */
+@utility type-ui-subtitle-1 {
+	font-family: var(--font-sans);
+	font-size: var(--font-size-22);
+	line-height: var(--line-height-33);
+	font-weight: var(--font-weight-semibold);
+	letter-spacing: var(--letter-spacing-tight);
+}
+
+/* Figma: UI/Subtitle/2 */
+@utility type-ui-subtitle-2 {
+	font-family: var(--font-sans);
+	font-size: var(--font-size-18);
+	line-height: var(--line-height-27);
+	font-weight: var(--font-weight-semibold);
+	letter-spacing: var(--letter-spacing-normal);
+}
+
+/* Figma: UI/Subtitle/3 */
+@utility type-ui-subtitle-3 {
+	font-family: var(--font-sans);
+	font-size: var(--font-size-16);
+	line-height: var(--line-height-24);
+	font-weight: var(--font-weight-semibold);
+	letter-spacing: var(--letter-spacing-normal);
+}
+
+/* Figma: UI/Body/1 Regular */
+@utility type-ui-body-1-regular {
+	font-family: var(--font-sans);
+	font-size: var(--font-size-16);
+	line-height: var(--line-height-24);
+	font-weight: var(--font-weight-normal);
+	letter-spacing: var(--letter-spacing-normal);
+}
+
+/* Figma: UI/Body/1 Medium */
+@utility type-ui-body-1-medium {
+	font-family: var(--font-sans);
+	font-size: var(--font-size-16);
+	line-height: var(--line-height-24);
+	font-weight: var(--font-weight-medium);
+	letter-spacing: var(--letter-spacing-normal);
+}
+
+/* Figma: UI/Body/1 Semibold */
+@utility type-ui-body-1-semibold {
+	font-family: var(--font-sans);
+	font-size: var(--font-size-16);
+	line-height: var(--line-height-24);
+	font-weight: var(--font-weight-semibold);
+	letter-spacing: var(--letter-spacing-normal);
+}
+
+/* Figma: UI/Body/2 Regular */
+@utility type-ui-body-2-regular {
+	font-family: var(--font-sans);
+	font-size: var(--font-size-15);
+	line-height: var(--line-height-23);
+	font-weight: var(--font-weight-normal);
+	letter-spacing: var(--letter-spacing-normal);
+}
+
+/* Figma: UI/Body/2 Medium */
+@utility type-ui-body-2-medium {
+	font-family: var(--font-sans);
+	font-size: var(--font-size-15);
+	line-height: var(--line-height-23);
+	font-weight: var(--font-weight-medium);
+	letter-spacing: var(--letter-spacing-normal);
+}
+
+/* Figma: UI/Body/2 Semibold */
+@utility type-ui-body-2-semibold {
+	font-family: var(--font-sans);
+	font-size: var(--font-size-15);
+	line-height: var(--line-height-23);
+	font-weight: var(--font-weight-semibold);
+	letter-spacing: var(--letter-spacing-normal);
+}
+
+/* Figma: UI/Body/3 Regular */
+@utility type-ui-body-3-regular {
+	font-family: var(--font-sans);
+	font-size: var(--font-size-14);
+	line-height: var(--line-height-21);
+	font-weight: var(--font-weight-normal);
+	letter-spacing: var(--letter-spacing-normal);
+}
+
+/* Figma: UI/Body/3 Medium */
+@utility type-ui-body-3-medium {
+	font-family: var(--font-sans);
+	font-size: var(--font-size-14);
+	line-height: var(--line-height-21);
+	font-weight: var(--font-weight-medium);
+	letter-spacing: var(--letter-spacing-normal);
+}
+
+/* Figma: UI/Body/3 Semibold */
+@utility type-ui-body-3-semibold {
+	font-family: var(--font-sans);
+	font-size: var(--font-size-14);
+	line-height: var(--line-height-21);
+	font-weight: var(--font-weight-semibold);
+	letter-spacing: var(--letter-spacing-normal);
+}
+
+/* Figma: UI/Body/4 Regular */
+@utility type-ui-body-4-regular {
+	font-family: var(--font-sans);
+	font-size: var(--font-size-13);
+	line-height: var(--line-height-17);
+	font-weight: var(--font-weight-normal);
+	letter-spacing: var(--letter-spacing-normal);
+}
+
+/* Figma: UI/Body/4 Medium */
+@utility type-ui-body-4-medium {
+	font-family: var(--font-sans);
+	font-size: var(--font-size-13);
+	line-height: var(--line-height-17);
+	font-weight: var(--font-weight-medium);
+	letter-spacing: var(--letter-spacing-normal);
+}
+
+/* Figma: UI/Body/4 Semibold */
+@utility type-ui-body-4-semibold {
+	font-family: var(--font-sans);
+	font-size: var(--font-size-13);
+	line-height: var(--line-height-17);
+	font-weight: var(--font-weight-semibold);
+	letter-spacing: var(--letter-spacing-normal);
+}
+
+/* Figma: UI/Body/5 Regular */
+@utility type-ui-body-5-regular {
+	font-family: var(--font-sans);
+	font-size: var(--font-size-11);
+	line-height: var(--line-height-15);
+	font-weight: var(--font-weight-normal);
+	letter-spacing: var(--letter-spacing-normal);
+}
+
+/* Figma: UI/Body/5 Medium */
+@utility type-ui-body-5-medium {
+	font-family: var(--font-sans);
+	font-size: var(--font-size-11);
+	line-height: var(--line-height-15);
+	font-weight: var(--font-weight-medium);
+	letter-spacing: var(--letter-spacing-normal);
+}
+
+/* Figma: UI/Body/5 Semibold */
+@utility type-ui-body-5-semibold {
+	font-family: var(--font-sans);
+	font-size: var(--font-size-11);
+	line-height: var(--line-height-15);
+	font-weight: var(--font-weight-semibold);
+	letter-spacing: var(--letter-spacing-normal);
+}
+
+/* Figma: UI/Overline/1 */
+@utility type-ui-overline-1 {
+	font-family: var(--font-mono);
+	font-size: var(--font-size-11);
+	line-height: var(--line-height-15);
+	font-weight: var(--font-weight-medium);
+	letter-spacing: var(--letter-spacing-wider);
+	text-transform: uppercase;
+}
+
+/* Figma: UI/Overline/2 */
+@utility type-ui-overline-2 {
+	font-family: var(--font-mono);
+	font-size: var(--font-size-9);
+	line-height: var(--line-height-15);
+	font-weight: var(--font-weight-medium);
+	letter-spacing: var(--letter-spacing-wider);
+	text-transform: uppercase;
+}
+
+/* ---------- Web ---------- */
+/* PENDING: "Haas Grot ... Trial" are trial fonts with no font files in the project.
+   They fall back to Geist until licensed files are added. */
+
+/* Figma: Web Text Styles/Subtitles & Body */
+@utility type-web-subtitles-body {
+	font-family: var(--font-web-text);
+	font-size: var(--font-size-16);
+	line-height: var(--line-height-ratio-140);
+	font-weight: var(--font-weight-normal);
+	letter-spacing: var(--letter-spacing-normal);
+}
+
+/* Figma: Web Text Styles/labels */
+@utility type-web-labels {
+	font-family: var(--font-web-text);
+	font-size: var(--font-size-16);
+	line-height: var(--line-height-ratio-120);
+	font-weight: var(--font-weight-medium);
+	letter-spacing: var(--letter-spacing-plus-6pct);
+	text-transform: uppercase;
+}
+
+/* Figma: Web Text Styles/Display/XL */
+@utility type-web-display-xl {
+	font-family: var(--font-web-display);
+	font-size: var(--font-size-72);
+	line-height: var(--line-height-ratio-100);
+	font-weight: var(--font-weight-normal);
+	letter-spacing: var(--letter-spacing-minus-3pct);
+}
+
+/* Figma: Web Text Styles/Display/LG */
+@utility type-web-display-lg {
+	font-family: var(--font-web-display);
+	font-size: var(--font-size-60);
+	line-height: var(--line-height-ratio-100);
+	font-weight: var(--font-weight-normal);
+	letter-spacing: var(--letter-spacing-minus-2pct);
+}
+
+/* Figma: Web Text Styles/Display/Md */
+@utility type-web-display-md {
+	font-family: var(--font-web-display);
+	font-size: var(--font-size-48);
+	line-height: var(--line-height-ratio-105);
+	font-weight: var(--font-weight-normal);
+	letter-spacing: var(--letter-spacing-minus-2pct);
+}
+
+/* Figma: Web Text Styles/Display/Sm */
+@utility type-web-display-sm {
+	font-family: var(--font-web-display);
+	font-size: var(--font-size-40);
+	line-height: var(--line-height-ratio-110);
+	font-weight: var(--font-weight-normal);
+	letter-spacing: var(--letter-spacing-minus-1pct);
+}
+
+/* Figma: Web Text Styles/Display/XSm */
+@utility type-web-display-xsm {
+	font-family: var(--font-web-display);
+	font-size: var(--font-size-32);
+	line-height: var(--line-height-ratio-118);
+	font-weight: var(--font-weight-normal);
+	letter-spacing: var(--letter-spacing-minus-1pct);
+}
+
+/* Figma: Web Text Styles/Title/Regular */
+@utility type-web-title-regular {
+	font-family: var(--font-web-display);
+	font-size: var(--font-size-24);
+	line-height: var(--line-height-ratio-125);
+	font-weight: var(--font-weight-normal);
+	letter-spacing: var(--letter-spacing-minus-1pct);
+}
+
+/* Figma: Web Text Styles/Title/Medium */
+@utility type-web-title-medium {
+	font-family: var(--font-web-display);
+	font-size: var(--font-size-24);
+	line-height: var(--line-height-ratio-125);
+	font-weight: var(--font-weight-medium);
+	letter-spacing: var(--letter-spacing-minus-1pct);
+}
+
+/* Always generate every text style, even if no file uses it yet
+   (Tailwind otherwise only outputs classes it finds written in the code). */
+@source inline(
+	'type-{ui-button,ui-caption,ui-headline-1,ui-headline-2,ui-headline-3,ui-headline-4,ui-headline-5,ui-headline-6,ui-headline-serif-1,ui-headline-serif-2,ui-headline-serif-3,ui-headline-serif-4,ui-headline-serif-5,ui-headline-serif-6,ui-subtitle-1,ui-subtitle-2,ui-subtitle-3,ui-body-1-regular,ui-body-1-medium,ui-body-1-semibold,ui-body-2-regular,ui-body-2-medium,ui-body-2-semibold,ui-body-3-regular,ui-body-3-medium,ui-body-3-semibold,ui-body-4-regular,ui-body-4-medium,ui-body-4-semibold,ui-body-5-regular,ui-body-5-medium,ui-body-5-semibold,ui-overline-1,ui-overline-2,web-subtitles-body,web-labels,web-display-xl,web-display-lg,web-display-md,web-display-sm,web-display-xsm,web-title-regular,web-title-medium}'
+);
