@@ -18,7 +18,7 @@
 </script>
 
 <script lang="ts">
-	import { ArrowRightIcon, ArrowUpRightIcon } from 'phosphor-svelte';
+	import { ArrowRightIcon, CaretRightIcon } from 'phosphor-svelte';
 	import { buttonClasses } from '#components/Button';
 	import { FindingCard, FindingRow } from '#components/Finding';
 	import { FixList } from '#components/FixList';
@@ -133,7 +133,7 @@
 				class={[buttonClasses('primary'), 'w-full']}
 			>
 				Get help fixing this
-				<Icon icon={ArrowUpRightIcon} class="size-20" />
+				<Icon icon={CaretRightIcon} regular class="size-20" />
 			</a>
 			<div class="flex flex-col gap-4">
 				<div class="flex items-baseline justify-between">
