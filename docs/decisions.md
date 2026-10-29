@@ -474,8 +474,16 @@ approved: sample data first; the map on the checking screen left out; code in th
   about 100 KB. The 1728 × 1117 frame is scaled to cover the screen; the title sits outside it so it wraps on phones.
   Changed from Figma (Adriana): once the labels cover the screen (3 s in) they wait 2 s before falling; labels
   that land with a bounce finish it first. The loop is 14 s.
+- **Report copied to Figma for redesign (2026-10-29, Adriana):** Marketing file, frame "Report Card · Report (from
+  code, 2026-10-29)" (node 33:9733), light mode, 1280 wide. Editable layers in auto layout, bound to the library:
+  text styles, color / spacing / radius variables, button-primary / button-secondary and icon instances.
+  To make that possible, the Colors and Radius collections (and 17 of their variables) were un-hidden from
+  publishing in the library; Adriana published it.
 
 **To confirm:**
+
+- Library gap: no monospaced body text style. The scores ("1/2", "25 of 43") use Geist Mono over UI/Body styles in
+  code; in the Figma copy those texts have no text style. Options: add UI/Body Mono styles, or drop mono there.
 
 - Screensaver hint style: dark pill (`ui/base/foreground` background, `UI/Button` text) so it reads over the
   labels. Title on phones uses `UI/Headline/6` (Display/XL from small tablets up). Background follows the theme
