@@ -133,7 +133,7 @@
 		</Card>
 
 		<section aria-labelledby="steps-title" class="flex flex-col gap-16">
-			<h2 id="steps-title" class="text-center type-ui-subtitle-2 text-ui-base-foreground">
+			<h2 id="steps-title" class="type-ui-headline-serif-6 text-ui-base-foreground">
 				What we check, step by step
 			</h2>
 			<ol class="grid gap-12 sm:grid-cols-3">

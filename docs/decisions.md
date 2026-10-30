@@ -247,6 +247,9 @@ Figma: Components → Tab (`87:1942`), variants `status=idle | hover | selected`
   `src/components/Card` (surface-100, thin `ui/base/border`, radius sm, 20 px padding). FeatureCard is built on it;
   the home form sits inside one. Not in Figma yet.
   Border removed from Card the same day (Adriana): the form and the step cards have no border now.
+- **Home "What we check, step by step" heading (2026-10-30, Adriana):** left-aligned (was centered) and a thinner
+  stroke: UI/Headline Serif/6 (Geist Regular 30) instead of UI/Subtitle/2 (18 semibold). The library has no 18 px
+  style lighter than semibold; Serif/6 matches the home title (Serif/5) and the step numbers (Serif/4).
 
 - **Site footer (2026-10-30, Adriana, from the brand guidelines footer):** new `SiteFooter` on every Report Card
   page (home, checking, report). Brand yellow (`brand/background/yellow-accent`), dark text
