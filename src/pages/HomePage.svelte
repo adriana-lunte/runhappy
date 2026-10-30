@@ -21,12 +21,7 @@
 </script>
 
 <script lang="ts">
-	import {
-		CalendarCheckIcon,
-		CaretRightIcon,
-		CursorClickIcon,
-		MegaphoneIcon
-	} from 'phosphor-svelte';
+	import { CaretRightIcon } from 'phosphor-svelte';
 	import { onMount } from 'svelte';
 	import reportCardImage from '#lib/assets/report-card.webp';
 	import { Button } from '#components/Button';
@@ -53,17 +48,14 @@
 
 	const features = [
 		{
-			icon: CursorClickIcon,
 			title: 'Try to book a party',
 			text: 'We go from your homepage to your birthday and group-event pages, on desktop and on a phone, and see whether a parent can pick a date, see a price and book.'
 		},
 		{
-			icon: CalendarCheckIcon,
 			title: 'Check your tracking',
 			text: 'We check which tracking tags your site loads — Meta, Google Analytics, Google Ads — and whether they reach the booking page.'
 		},
 		{
-			icon: MegaphoneIcon,
 			title: 'Look up your ads',
 			text: 'We look up what you’re running in the Meta Ad Library and Google’s Ads Transparency Center, and where those ads send people.'
 		}

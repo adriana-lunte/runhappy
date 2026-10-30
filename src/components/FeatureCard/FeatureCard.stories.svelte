@@ -21,7 +21,7 @@
 			docs: {
 				description: {
 					component:
-						'White card with an icon, a title and a short text. Static. With `step`, a yellow “Step N” tag sits above the icon (use the cards inside an <ol>). Not in Figma yet.'
+						'Card with an icon or a step number, a title and a short text. Static. With `step`, a big number (“01”, yellow in dark mode only, for contrast; screen readers hear “Step 1”) sits on top: leave the icon out and use the cards inside an <ol>. Not in Figma yet.'
 				}
 			}
 		}
@@ -34,7 +34,7 @@
 	{/snippet}
 </Story>
 
-<Story name="Step" args={{ step: 1, title: 'Try to book a party' }}>
+<Story name="Step" args={{ step: 1, icon: undefined, title: 'Try to book a party' }}>
 	{#snippet template(args)}
 		<ol class="max-w-xs bg-ui-surface-surface-200 p-16"><li><FeatureCard {...args} /></li></ol>
 	{/snippet}

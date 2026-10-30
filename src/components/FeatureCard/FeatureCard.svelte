@@ -2,21 +2,24 @@
 	FeatureCard — Runhappy design system (Report Card)
 	Not in Figma yet: modeled on report-card.runhappyapps.com (home page cards, 2026-10-28).
 
-	A white card that explains one thing: icon, title and a short text. Static, not clickable.
-	Background ui/surface/surface-100, radius sm, title UI/Subtitle/3, text UI/Body/4 in brand/text/secondary (was Body/3, Adriana 2026-10-28).
-	With `step` (decided 2026-10-28): a yellow Tag "Step 1" sits above the icon. Put numbered cards in an <ol>.
+	A card that explains one thing: an icon or a step number, a title and a short text. Static, not clickable.
+	Background ui/surface/surface-100, thin border ui/base/border, radius sm, title UI/Subtitle/3, text UI/Body/4 in
+	brand/text/secondary (was Body/3, Adriana 2026-10-28).
+	With `step` (Adriana, 2026-10-30, replacing the yellow "Step N" tag): a big number ("01") in UI/Headline Serif/4,
+	32 px above the title. Yellow (brand/text/accent) in dark mode only: in light mode yellow on white fails contrast,
+	so it uses ui/base/foreground. Screen readers hear "Step 1", and the cards go in an <ol>.
 -->
 <script lang="ts" module>
 	import type { PhosphorIcon } from '#components/Icon';
 
 	export interface FeatureCardProps {
-		/** Icon on top (any Phosphor icon). Decorative. */
-		icon: PhosphorIcon;
+		/** Icon on top (any Phosphor icon). Decorative. Leave it out on numbered cards. */
+		icon?: PhosphorIcon;
 		/** Card title. */
 		title: string;
 		/** Short explanation. */
 		text: string;
-		/** Step number. Shows a yellow "Step N" tag above the icon. */
+		/** Step number. Shows a big number ("01") on top, yellow in dark mode. */
 		step?: number;
 		/** Heading level of the title, so the page outline stays right. */
 		level?: 2 | 3;
@@ -27,16 +30,26 @@
 
 <script lang="ts">
 	import { Icon } from '#components/Icon';
-	import { Tag } from '#components/Tag';
 
 	let { icon, title, text, step, level = 2, class: className }: FeatureCardProps = $props();
 </script>
 
-<div class={['flex flex-col gap-12 rounded-sm bg-ui-surface-surface-100 p-20', className]}>
+<div
+	class={[
+		'flex flex-col rounded-sm border border-ui-base-border bg-ui-surface-surface-100 p-20',
+		step === undefined ? 'gap-12' : 'gap-32',
+		className
+	]}
+>
 	{#if step !== undefined}
-		<Tag announceType={false} class="self-start">Step {step}</Tag>
+		<p class="type-ui-headline-serif-4 text-ui-base-foreground dark:text-brand-text-accent">
+			<span aria-hidden="true">{String(step).padStart(2, '0')}</span>
+			<span class="sr-only">Step {step}</span>
+		</p>
 	{/if}
-	<Icon {icon} class="size-24 text-ui-base-foreground" />
+	{#if icon}
+		<Icon {icon} class="size-24 text-ui-base-foreground" />
+	{/if}
 	<div class="flex flex-col gap-6">
 		<svelte:element this={`h${level}`} class="type-ui-subtitle-3 text-ui-base-foreground">
 			{title}

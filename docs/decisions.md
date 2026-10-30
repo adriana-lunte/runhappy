@@ -237,6 +237,12 @@ Figma: Components → Tab (`87:1942`), variants `status=idle | hover | selected`
   label, same style and color — approved).
 - Layout from Figma: padding 10/16, gap 8, `type-ui-button`, `rounded-full` (Figma has a raw 30, not bound).
 
+- **Home steps as numbered cards (2026-10-30, Adriana, after a reference):** no icon and no "Step N" tag; a big
+  "01 / 02 / 03" in `UI/Headline Serif/4` (Geist Regular 48/72), 32 px above the title; thin border
+  `ui/base/border`. The number is yellow (`brand/text/accent`) in dark mode only: in light mode yellow on white
+  failed the contrast test (~1.6:1), so it uses `ui/base/foreground` there. Screen readers hear "Step 1".
+  Changed in the FeatureCard component (icon is now optional).
+
 **To confirm:**
 
 - **Decided (Adriana, 2026-10-28):** space between tabs = 8, and between the tab row and its panel = 16.
@@ -518,6 +524,8 @@ approved: sample data first; the map on the checking screen left out; code in th
 
 **To confirm:**
 
+- Library gap: no radius larger than `radius/sm` (12 px) besides `full`. The step cards' reference has rounder
+  corners; they use 12 px for now.
 - Library gap: no monospaced body text style. The scores ("1/2", "25 of 43") use Geist Mono over UI/Body styles in
   code; in the Figma copy those texts have no text style. Options: add UI/Body Mono styles, or drop mono there.
 
