@@ -489,6 +489,9 @@ approved: sample data first; the map on the checking screen left out; code in th
 - **Shake before falling (2026-10-30, Adriana):** each label shakes for 0.3 s right before it lets go (about
   2.5 px and 2° side to side, fading out), floor labels too before their final drop. The covering labels start
   letting go 0.3 s later so the first ones can shake right after the 2 s wait.
+- **Longer wait before the final drop (2026-10-30, Adriana):** once the covering labels are gone, the title and
+  the floor labels wait 6 s more before falling (a second hold at 8.4 s of Figma's loop, in `Screensaver.svelte`).
+  The loop is now 20 s (12 in Figma + 2 + 6).
 - **Report copied to Figma for redesign (2026-10-29, Adriana):** Marketing file, frame "Report Card · Report (from
   code, 2026-10-29)" (node 33:9733), light mode, 1280 wide. Editable layers in auto layout, bound to the library:
   text styles, color / spacing / radius variables, button-primary / button-secondary and icon instances.

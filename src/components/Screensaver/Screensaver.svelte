@@ -9,8 +9,9 @@
 
 	The animation is rebuilt from Figma's motion data (labels.ts) with the Web Animations API. The Figma frame is a
 	fixed 1728 × 1117 stage, scaled to cover the screen. The title sits outside the stage so it can wrap on phones.
-	Changes from Figma (Adriana): when the labels cover the screen (3 s in), they wait 2 s before falling, so the
-	loop lasts 14 s instead of 12 (2026-10-28). The fall itself is reworked in fall.ts (2026-10-30).
+	Changes from Figma (Adriana): when the labels cover the screen (3 s in), they wait 2 s before falling
+	(2026-10-28); once they are gone, the title and the floor labels wait 6 s more before their final drop
+	(2026-10-30). The loop lasts 20 s instead of 12. The fall itself is reworked in fall.ts (2026-10-30).
 -->
 <script lang="ts" module>
 	export interface ScreensaverProps {
@@ -58,10 +59,13 @@
 	// Every animation starts at the same moment, so the labels stay in step with each other and with the title.
 	const startTime = typeof document === 'undefined' ? 0 : Number(document.timeline.currentTime);
 
-	// The 2-second wait once the labels cover the screen (3 s into Figma's 12 s loop).
-	const coverAt = 0.25;
-	const holdMs = 2000;
-	const duration = loopMs + holdMs;
+	// The waits added to Figma's 12 s loop, at moments when every track is still (`at` is a share of the loop):
+	// 2 s once the labels cover the screen (3 s in), 6 s once they are gone, before the title and floor drop (8.4 s in).
+	const holds = [
+		{ at: 0.25, ms: 2000 },
+		{ at: 0.7, ms: 6000 }
+	];
+	const duration = loopMs + holds.reduce((sum, hold) => sum + hold.ms, 0);
 
 	type Kind = 'x' | 'y' | 'rotate' | 'opacity';
 	const frame: Record<Kind, (value: number, scale: number) => Keyframe> = {
@@ -71,8 +75,9 @@
 		opacity: (value) => ({ opacity: value })
 	};
 
-	/** Where a track waits: its last keyframe before the screen is covered (every bounce has ended by then). */
-	const holdIndex = ([, times]: MotionTrack) => times.findLastIndex((time) => time <= coverAt);
+	/** Where a track waits: its last keyframe before the hold's moment (it stays still until its next keyframe). */
+	const holdIndex = ([, times]: MotionTrack, at: number) =>
+		times.findLastIndex((time) => time <= at);
 
 	/** Plays one Figma track on an element, looping forever. `scale` only applies to moves (x, y). */
 	function play(node: HTMLElement, options: { track: MotionTrack; kind: Kind; scale?: number }) {
@@ -80,16 +85,17 @@
 		function start({ track, kind, scale: s = 1 }: typeof options) {
 			animation?.cancel();
 			const [values, times, eases] = track;
-			const hold = holdIndex(track);
+			const points = holds.map((hold) => ({ index: holdIndex(track, hold.at), ms: hold.ms }));
 			const keyframes = values.flatMap((value, i) => {
-				const ms = times[i] * loopMs + (i > hold ? holdMs : 0);
+				const ms = times[i] * loopMs + points.reduce((sum, p) => sum + (i > p.index ? p.ms : 0), 0);
 				const key = { ...frame[kind](value, s), offset: ms / duration };
 				const easing = curves[eases?.[i] ?? 'l'];
-				// At the hold point the value stays still for holdMs, then the track carries on as in Figma.
-				if (i !== hold) return [{ ...key, easing }];
+				// At a hold point the value stays still for that hold, then the track carries on as in Figma.
+				const wait = points.filter((p) => p.index === i).reduce((sum, p) => sum + p.ms, 0);
+				if (!wait) return [{ ...key, easing }];
 				return [
 					{ ...key, easing: 'linear' },
-					{ ...key, offset: (ms + holdMs) / duration, easing }
+					{ ...key, offset: (ms + wait) / duration, easing }
 				];
 			});
 			animation = node.animate(keyframes, { duration, iterations: Infinity });
