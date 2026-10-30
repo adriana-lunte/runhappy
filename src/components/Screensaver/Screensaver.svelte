@@ -128,14 +128,14 @@
 		return { destroy: () => animation.cancel() };
 	}
 
-	// The shine on the title during the long wait: first pass 2 s in, then every 10 s, each lasting 2 s.
-	const shine = { first: 2, every: 10, seconds: 2 };
+	// The shine on the title during the long wait: first pass 2 s in, then every 10 s, each lasting 3 s.
+	const shine = { first: 2, every: 10, seconds: 3 };
 
 	/** Sweeps the text-shine band across the title during the long wait, looping with the rest of the animation. */
 	function shining(node: HTMLElement) {
 		const off = { backgroundPosition: '100% 0' };
 		const keyframes: Keyframe[] = [{ ...off, offset: 0 }];
-		for (let at = shine.first; at + shine.seconds < longWait.ms / 1000; at += shine.every) {
+		for (let at = shine.first; at + shine.seconds <= longWait.ms / 1000; at += shine.every) {
 			const ms = longWaitStart + at * 1000;
 			keyframes.push(
 				{ ...off, offset: ms / duration, easing: 'ease-in-out' },
