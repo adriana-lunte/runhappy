@@ -498,6 +498,10 @@ approved: sample data first; the map on the checking screen left out; code in th
   word starts 0.8 s before the first, and the first keeps Figma's moment. Screen readers get the whole title
   (`sr-only`); the words are hidden from them. On phones the second line goes first, then the first. (Tried letter
   by letter first, the same day.)
+- **Shine on the title during the long wait (2026-10-30, Adriana):** a brand yellow band sweeps across the title,
+  left to right in 1.2 s, 2 s into the wait and then every 10 s (3 passes). New utility `text-shine` in
+  `src/tokens/effects.css`, on a transparent copy of the title laid over it, so the real text stays
+  `ui-base-foreground`. Adriana approved yellow here as a brief, decorative exception to "yellow is never text".
 - **Report copied to Figma for redesign (2026-10-29, Adriana):** Marketing file, frame "Report Card · Report (from
   code, 2026-10-29)" (node 33:9733), light mode, 1280 wide. Editable layers in auto layout, bound to the library:
   text styles, color / spacing / radius variables, button-primary / button-secondary and icon instances.
