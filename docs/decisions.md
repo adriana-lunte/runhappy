@@ -242,6 +242,7 @@ Figma: Components → Tab (`87:1942`), variants `status=idle | hover | selected`
   `ui/base/border`. The number is yellow (`brand/text/accent`) in dark mode only: in light mode yellow on white
   failed the contrast test (~1.6:1), so it uses `ui/base/foreground` there. Screen readers hear "Step 1".
   Changed in the FeatureCard component (icon is now optional).
+  The home form container got the same thin border (it already had the same 12 px radius), 2026-10-30.
 
 **To confirm:**
 

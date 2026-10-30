@@ -86,7 +86,7 @@
 		<form
 			method="post"
 			novalidate
-			class="flex flex-col gap-12 rounded-sm bg-ui-surface-surface-100 p-20"
+			class="flex flex-col gap-12 rounded-sm border border-ui-base-border bg-ui-surface-surface-100 p-20"
 		>
 			<div class="grid gap-12 sm:grid-cols-2">
 				<TextField
