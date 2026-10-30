@@ -505,10 +505,11 @@ approved: sample data first; the map on the checking screen left out; code in th
   to "yellow is never text".
   Removed the same day (Adriana): no shine, and the `text-shine` utility (`src/tokens/effects.css`) is gone too.
 - **Cursor trail on the intro (2026-10-30, Adriana):** only while the intro shows, the mouse leaves a brand yellow
-  line (`brand/accent/yellow`) that thins out to nothing in 0.3 s (`src/components/Screensaver/trail.ts`, canvas).
+  line (`brand/accent/yellow`) that thins out and fades to nothing in 0.3 s (`src/components/Screensaver/trail.ts`, canvas).
   New token `--size-cursor-trail` (4 px, the width at the tip). Mouse only; touch screens have no cursor.
-  Adjusted the same day: first 8 px and fading, which showed dots where the see-through pieces overlapped; now one
-  solid ribbon, 4 px.
+  Adjusted the same day: first 8 px and fading, which showed dots where the see-through pieces overlapped; then one
+  solid ribbon, 4 px; now smooth curves between mouse positions (Catmull-Rom) and a fade again, drawn in pieces
+  that meet edge to edge so it shows no dots.
 - **Report copied to Figma for redesign (2026-10-29, Adriana):** Marketing file, frame "Report Card · Report (from
   code, 2026-10-29)" (node 33:9733), light mode, 1280 wide. Editable layers in auto layout, bound to the library:
   text styles, color / spacing / radius variables, button-primary / button-secondary and icon instances.
