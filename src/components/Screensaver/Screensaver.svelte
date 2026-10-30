@@ -11,7 +11,8 @@
 	fixed 1728 × 1117 stage, scaled to cover the screen. The title sits outside the stage so it can wrap on phones.
 	Changes from Figma (Adriana): when the labels cover the screen (3 s in), they wait 2 s before falling
 	(2026-10-28); once they are gone, the title and the floor labels wait 25 s more before their final drop
-	(2026-10-30). The loop lasts 39 s instead of 12. The fall itself is reworked in fall.ts (2026-10-30).
+	(2026-10-30), and during that wait a floor label hops now and then (2026-10-30). The loop lasts 39 s instead
+	of 12. The fall itself is reworked in fall.ts (2026-10-30).
 -->
 <script lang="ts" module>
 	export interface ScreensaverProps {
@@ -29,7 +30,7 @@
 	import green from './label-green.svg';
 	import pink from './label-pink.svg';
 	import yellow from './label-yellow.svg';
-	import { fallEasings, labels, type MotionTrack } from './fall.ts';
+	import { fallEasings, hop, hops, labels, type MotionTrack } from './fall.ts';
 	import {
 		easings,
 		labelSize,
@@ -74,6 +75,39 @@
 		rotate: (value) => ({ rotate: `${value}deg` }),
 		opacity: (value) => ({ opacity: value })
 	};
+
+	// The hops happen in the long wait (the second hold), in real time, on their own layer under each label.
+	const longWait = holds[1];
+	const longWaitStart = longWait.at * loopMs + holds[0].ms;
+	const hopTimes = hops(longWait.ms / 1000);
+
+	/** Plays a label's hops (seconds from the start of the long wait), looping with the rest of the animation. */
+	function hopping(node: HTMLElement, times: number[] | undefined) {
+		if (!times) return;
+		const still = { translate: '0 0', rotate: '0deg' };
+		const side = (k: number) => (k % 2 ? -1 : 1) * hop.tilt;
+		const keyframes: Keyframe[] = [{ ...still, offset: 0 }];
+		times.forEach((at, k) => {
+			const ms = longWaitStart + at * 1000;
+			const points: [Keyframe, number, string][] = [
+				[still, 0, curves.rise],
+				[{ translate: `0 ${-hop.height}px`, rotate: `${side(k)}deg` }, hop.rise, curves.gravity],
+				[still, 2 * hop.rise, curves.rise],
+				[
+					{ translate: `0 ${-hop.bounce}px`, rotate: '0deg' },
+					2 * hop.rise + hop.bounceRise,
+					curves.gravity
+				],
+				[still, 2 * (hop.rise + hop.bounceRise), 'linear']
+			];
+			for (const [key, seconds, easing] of points)
+				keyframes.push({ ...key, offset: (ms + seconds * 1000) / duration, easing });
+		});
+		keyframes.push({ ...still, offset: 1 });
+		const animation = node.animate(keyframes, { duration, iterations: Infinity });
+		animation.startTime = startTime;
+		return { destroy: () => animation.cancel() };
+	}
 
 	/** Where a track waits: its last keyframe before the hold's moment (it stays still until its next keyframe). */
 	const holdIndex = ([, times]: MotionTrack, at: number) =>
@@ -154,12 +188,14 @@
 			>
 				<div class="size-full" use:play={{ track: label.x, kind: 'x' }}>
 					<div class="size-full" use:play={{ track: label.y, kind: 'y' }}>
-						<img
-							src={images[label.color]}
-							alt=""
-							class="block size-full"
-							use:play={{ track: label.rotate, kind: 'rotate' }}
-						/>
+						<div class="size-full" use:hopping={hopTimes.get(i)}>
+							<img
+								src={images[label.color]}
+								alt=""
+								class="block size-full"
+								use:play={{ track: label.rotate, kind: 'rotate' }}
+							/>
+						</div>
 					</div>
 				</div>
 			</div>

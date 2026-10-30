@@ -6,7 +6,8 @@
 // - spin: labels turn while they fall, tip past their angle when they land and settle back;
 // - floor: more labels stay on the floor when the rest drop away (about 45 instead of Figma's 30);
 // - leaving: the labels over the screen let go one by one over a second (lower ones first) and fall turning;
-// - shake: every label shakes briefly just before it lets go, floor labels included.
+// - shake: every label shakes briefly just before it lets go, floor labels included;
+// - hops: during the long wait before the final drop, a label on top of the floor pile hops now and then.
 // The labels still cover the screen at 3 s (coverAt in Screensaver.svelte), so the 2-second wait is unchanged.
 
 import { labels as figmaLabels, loopMs, type Ease, type Label, type Track } from './labels.ts';
@@ -54,6 +55,14 @@ const shake = { seconds: 0.3, move: 2.5, turn: 2, steps: 6 };
 const floorTop = 870;
 /** Labels added to the floor drop with Figma's bottom row: they let go between these shares of the loop. */
 const floorRelease = [0.835, 0.85];
+/** A hop on the floor pile: height (stage pixels), seconds up, a small bounce, and a tilt (degrees) in the air. */
+export const hop = { height: 30, rise: 0.18, bounce: 6, bounceRise: 0.07, tilt: 3 };
+/** About every this many seconds (give or take `hopJitter`), and never in the first or last second of the wait. */
+const hopEvery = 3.5;
+const hopJitter = 0.5;
+/** The labels that hop: the top of the floor pile, near the middle so they show on narrow screens too. */
+const hopRows = [floorTop, 1000];
+const hopWidth = 600;
 /** The moment the labels cover the screen, as a share of the loop (3 s of 12). */
 const coverAt = 0.25;
 
@@ -228,3 +237,23 @@ function rework(label: Label, i: number): MotionLabel {
 
 /** Every label with its reworked fall, in Figma's layer order. */
 export const labels: MotionLabel[] = figmaLabels.map(rework);
+
+/**
+ * The hops during a wait of `seconds`: for each label (by index), the moments it hops, in seconds from the start
+ * of the wait. One label at a time, never the same one twice in a row.
+ */
+export function hops(seconds: number) {
+	const hoppers = figmaLabels.flatMap((label, i) =>
+		label.cy >= hopRows[0] && label.cy < hopRows[1] && Math.abs(label.cx) < hopWidth ? [i] : []
+	);
+	const times = new Map<number, number[]>();
+	let last = -1;
+	for (let k = 0, at = 1 + noise(0, 10) * hopJitter; at < seconds - 1; k++) {
+		let pick = hoppers[Math.floor(noise(k, 9) * hoppers.length)];
+		if (pick === last) pick = hoppers[(hoppers.indexOf(pick) + 1) % hoppers.length];
+		times.set(pick, [...(times.get(pick) ?? []), at]);
+		last = pick;
+		at += hopEvery + (noise(k, 11) * 2 - 1) * hopJitter;
+	}
+	return times;
+}

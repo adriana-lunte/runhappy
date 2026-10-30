@@ -492,6 +492,8 @@ approved: sample data first; the map on the checking screen left out; code in th
 - **Longer wait before the final drop (2026-10-30, Adriana):** once the covering labels are gone, the title and
   the floor labels wait 6 s more before falling (a second hold at 8.4 s of Figma's loop, in `Screensaver.svelte`).
   The loop is now 20 s (12 in Figma + 2 + 6). Made longer the same day: 25 s more (about 30 s still), loop 39 s.
+- **Hops during the long wait (2026-10-30, Adriana):** about every 3.5 s (±0.5 s) one label on top of the floor
+  pile, near the middle, hops 30 px (tilting 3°) and lands with a small 6 px bounce: 7 hops per wait, one at a time.
 - **Report copied to Figma for redesign (2026-10-29, Adriana):** Marketing file, frame "Report Card · Report (from
   code, 2026-10-29)" (node 33:9733), light mode, 1280 wide. Editable layers in auto layout, bound to the library:
   text styles, color / spacing / radius variables, button-primary / button-secondary and icon instances.
