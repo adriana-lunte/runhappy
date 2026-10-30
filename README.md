@@ -136,6 +136,8 @@ The app uses `@sveltejs/adapter-vercel`. Code lives on GitHub: `adriana-lunte/ru
 3. Deploy. From then on every push to `main` publishes a new version; other branches get preview links.
 
 Run `npm run lint`, `npm run check` and `npm run test` before pushing.
+`npm run test` also saves the full results of its last run, with each failure's error, in
+`test-results/results.json` (not committed): read it when a test fails once and then passes.
 
 ## Documentation
 

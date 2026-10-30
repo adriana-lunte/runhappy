@@ -24,6 +24,10 @@ export default defineConfig({
 		})
 	],
 	test: {
+		// Every run also writes its full results (with each failure's error) to test-results/results.json, so a
+		// failure that does not happen again can still be read afterwards (decided 2026-10-30).
+		reporters: ['default', 'json'],
+		outputFile: { json: 'test-results/results.json' },
 		projects: [
 			{
 				extends: true,
