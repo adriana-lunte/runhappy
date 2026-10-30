@@ -5,8 +5,7 @@
 // - bounce: each label bounces twice when it lands;
 // - spin: labels turn while they fall, tip past their angle when they land and settle back;
 // - floor: more labels stay on the floor when the rest drop away (about 45 instead of Figma's 30);
-// - leaving: the labels over the screen let go one by one over a second (lower ones first), lift a little as
-//   they come loose, then fall spinning.
+// - leaving: the labels over the screen let go one by one over a second (lower ones first) and fall turning.
 // The labels still cover the screen at 3 s (coverAt in Screensaver.svelte), so the 2-second wait is unchanged.
 
 import { labels as figmaLabels, loopMs, type Ease, type Label, type Track } from './labels.ts';
@@ -46,8 +45,6 @@ const tip = 3;
 const releaseSpread = 1;
 /** Up to this many seconds earlier or later, so a row does not let go as one block. */
 const releaseJitter = 0.1;
-/** As a label comes loose it lifts this many stage pixels, in this many seconds, before it falls. */
-const lift = { height: 10, rise: 0.12 };
 /** How far a label turns while it falls away, in degrees (between the two values, either way). */
 const fallSpin = [30, 90];
 /** Labels resting this low on the stage (center, in stage pixels from the top) stay on the floor too. */
@@ -164,22 +161,15 @@ function rework(label: Label, i: number): MotionLabel {
 		} else {
 			const delay = height(label.cy) * releaseSpread + (noise(i, 5) * 2 - 1) * releaseJitter;
 			const release = coverAt + share(Math.max(0, delay));
-			const loose = release + share(lift.rise);
-			const gone = loose + share(fallTime(endY + lift.height));
+			const gone = release + share(fallTime(endY));
 			const fallTurn = noise(i, 6) < 0.5 ? -1 : 1;
 			const endAngle = rest + fallTurn * (fallSpin[0] + noise(i, 7) * (fallSpin[1] - fallSpin[0]));
-			y.push(
-				[0, coverAt, 'l'],
-				[0, release, 'rise'],
-				[-lift.height, loose, 'gravity'],
-				[endY, gone, 'l'],
-				[endY, goneAt, 'l']
-			);
-			x.push([0, coverAt, 'l'], [0, loose, 'l'], [endX, gone, 'l'], [endX, goneAt, 'l']);
-			// The turn starts slowly as the label comes loose and speeds up as it falls.
+			y.push([0, coverAt, 'l'], [0, release, 'gravity'], [endY, gone, 'l'], [endY, goneAt, 'l']);
+			x.push([0, coverAt, 'l'], [0, release, 'l'], [endX, gone, 'l'], [endX, goneAt, 'l']);
+			// The turn starts slowly as the label lets go and speeds up as it falls.
 			rotate.push(
 				[rest, coverAt, 'l'],
-				[rest, loose, 'in'],
+				[rest, release, 'in'],
 				[endAngle, gone, 'l'],
 				[endAngle, goneAt, 'l']
 			);
