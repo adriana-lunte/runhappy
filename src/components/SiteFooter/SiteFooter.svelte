@@ -4,7 +4,7 @@
 
 	Bottom of a standalone Runhappy page, on brand yellow (brand/background/yellow-accent): the logo, a dotted line,
 	then small texts. Text is ui/base/primary-foreground (dark on yellow in both themes). The page above ends in
-	rounded corners (radius sm) that sit on the yellow: the footer draws them itself, in the page's background color.
+	rounded corners (radius xl, 40 px) that sit on the yellow: the footer draws them itself, in the page's background color.
 -->
 <script lang="ts" module>
 	export interface SiteFooterProps {
@@ -25,7 +25,7 @@
 
 <footer class={['bg-brand-background-yellow-accent text-ui-base-primary-foreground', className]}>
 	<!-- The page's rounded bottom corners, over the yellow. -->
-	<div class="h-12 rounded-b-sm bg-ui-surface-surface-200" aria-hidden="true"></div>
+	<div class="h-40 rounded-b-xl bg-ui-surface-surface-200" aria-hidden="true"></div>
 	<div class="mx-auto max-w-(--size-page) px-16 py-48">
 		<Logo class="h-32" />
 	</div>

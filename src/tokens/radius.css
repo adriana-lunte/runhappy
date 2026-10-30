@@ -1,12 +1,13 @@
 /*
  * Radius tokens — Runhappy
  * Source of truth: Figma "UI Library | Runhappy", collection "Radius".
- * Utilities: rounded-2xs, rounded-xs, rounded-sm, rounded-full. Tailwind's default radii are removed.
+ * Utilities: rounded-2xs, rounded-xs, rounded-sm, rounded-xl, rounded-full. Tailwind's default radii are removed.
  */
 @theme static {
 	--radius-*: initial;
 	--radius-2xs: 0.125rem; /* 2px — checkbox box (added 2026-10-27) */
 	--radius-xs: 0.5rem; /* 8px */
 	--radius-sm: 0.75rem; /* 12px */
+	--radius-xl: 2.5rem; /* 40px — page bottom corners over the site footer (added 2026-10-30) */
 	--radius-full: calc(infinity * 1px); /* Figma: 9999 */
 }

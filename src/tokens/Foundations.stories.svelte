@@ -26,6 +26,7 @@
 	const radii = [
 		{ name: 'xs', className: 'rounded-xs' },
 		{ name: 'sm', className: 'rounded-sm' },
+		{ name: 'xl', className: 'rounded-xl' },
 		{ name: 'full', className: 'rounded-full' }
 	];
 	// Every spacing token, written in full so Tailwind can find the classes. Name = value in px.

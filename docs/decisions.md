@@ -253,7 +253,8 @@ Figma: Components → Tab (`87:1942`), variants `status=idle | hover | selected`
   (`ui/base/primary-foreground`): the logo, a dotted line, then "2026, Runhappy.ai" and "New York City, New York"
   (`UI/Body/2`) on the left and "Report Card" (`UI/Body/2 Medium`) on the right. The year is the current one and
   changes on its own (Adriana). The page above ends in rounded corners over the yellow, drawn by the footer with
-  radius sm (12 px; the reference is rounder, see the radius gap below). Texts live in `src/lib/report/config.ts`.
+  radius xl (40 px, Adriana): new variable `radius/xl` in the library's Radius collection, `--radius-xl` in code.
+  Texts live in `src/lib/report/config.ts`.
 
 **To confirm:**
 
@@ -536,8 +537,8 @@ approved: sample data first; the map on the checking screen left out; code in th
 
 **To confirm:**
 
-- Library gap: no radius larger than `radius/sm` (12 px) besides `full`. The step cards' reference has rounder
-  corners; they use 12 px for now.
+- Step cards: their reference has rounder corners; they use `radius/sm` (12 px) for now. Since 2026-10-30 the
+  library also has `radius/xl` (40 px, made for the footer), if the cards should use it.
 - Library gap: no monospaced body text style. The scores ("1/2", "25 of 43") use Geist Mono over UI/Body styles in
   code; in the Figma copy those texts have no text style. Options: add UI/Body Mono styles, or drop mono there.
 
