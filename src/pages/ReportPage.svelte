@@ -25,9 +25,10 @@
 	import { Icon } from '#components/Icon';
 	import { ScoreRing } from '#components/ScoreRing';
 	import { ScoreRow } from '#components/ScoreRow';
+	import { SiteFooter } from '#components/SiteFooter';
 	import { SiteHeader } from '#components/SiteHeader';
 	import { categories, webCategories } from '#lib/report/categories.ts';
-	import { bookCallUrl } from '#lib/report/config.ts';
+	import { bookCallUrl, footerDetails } from '#lib/report/config.ts';
 	import { categoryScore, outcomeCounts, pointsToGain, thingsToFix } from '#lib/report/score.ts';
 	import type { Category } from '#lib/schemas/report.ts';
 
@@ -258,5 +259,6 @@
 			</a>
 		</footer>
 	</main>
+	<SiteFooter details={footerDetails} product="Report Card" />
 </div>
 <!-- eslint-enable svelte/no-navigation-without-resolve -->

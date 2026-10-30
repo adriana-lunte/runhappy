@@ -28,7 +28,9 @@
 	import { Card } from '#components/Card';
 	import { FeatureCard } from '#components/FeatureCard';
 	import { Screensaver } from '#components/Screensaver';
+	import { SiteFooter } from '#components/SiteFooter';
 	import { SiteHeader } from '#components/SiteHeader';
+	import { footerDetails } from '#lib/report/config.ts';
 	import { TextField } from '#components/TextField';
 	import { markIntroSeen, shouldSkipIntro } from '#lib/intro.ts';
 
@@ -146,4 +148,5 @@
 			checks, and anything we can’t check is marked as such — it never counts against you.
 		</p>
 	</main>
+	<SiteFooter details={footerDetails} product="Report Card" />
 </div>

@@ -20,8 +20,9 @@
 <script lang="ts">
 	import { BrowserFrame } from '#components/BrowserFrame';
 	import { ProgressSteps } from '#components/ProgressSteps';
+	import { SiteFooter } from '#components/SiteFooter';
 	import { SiteHeader } from '#components/SiteHeader';
-	import { checkSteps } from '#lib/report/config.ts';
+	import { checkSteps, footerDetails } from '#lib/report/config.ts';
 
 	let { homeHref, site, stepMs = 1500, ondone }: CheckingPageProps = $props();
 
@@ -68,4 +69,5 @@
 			hint="Usually 1–2 minutes"
 		/>
 	</main>
+	<SiteFooter details={footerDetails} product="Report Card" />
 </div>

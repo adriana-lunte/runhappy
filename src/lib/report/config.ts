@@ -4,6 +4,9 @@
 export const bookCallUrl =
 	'https://www.runhappy.ai/contact?utm_source=report-card&utm_medium=referral&utm_campaign=report-card';
 
+/** Texts on the bottom left of the footer (Adriana, 2026-10-30, from the brand guidelines footer). */
+export const footerDetails = ['2026, Runhappy.ai', 'New York City, New York'];
+
 /**
  * Steps of the checking screen. Only step 2 was seen on the original (2026-10-28); the others are written to
  * match what the tool checks. Copy to confirm.
