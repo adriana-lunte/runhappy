@@ -243,6 +243,9 @@ Figma: Components → Tab (`87:1942`), variants `status=idle | hover | selected`
   failed the contrast test (~1.6:1), so it uses `ui/base/foreground` there. Screen readers hear "Step 1".
   Changed in the FeatureCard component (icon is now optional).
   The home form container got the same thin border (it already had the same 12 px radius), 2026-10-30.
+- **Card component (2026-10-30, Adriana):** the box shared by the home form and the step cards is now
+  `src/components/Card` (surface-100, thin `ui/base/border`, radius sm, 20 px padding). FeatureCard is built on it;
+  the home form sits inside one. Not in Figma yet.
 
 **To confirm:**
 
@@ -542,7 +545,7 @@ approved: sample data first; the map on the checking screen left out; code in th
 - Score ring thresholds: half or less = red, under 80% = yellow, otherwise green (guessed from the original).
 - Copy of the checking steps other than step 2 (only step 2 was seen on the original).
 - "Book a call" uses the tertiary button look (the original is white with a gray border).
-- Figma: none of these screens or components exist in the library yet.
+- Figma: none of these screens or components exist in the library yet (Card included).
 
 ### Tooltip (2026-10-23)
 

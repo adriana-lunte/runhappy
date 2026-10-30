@@ -25,6 +25,7 @@
 	import { onMount } from 'svelte';
 	import reportCardImage from '#lib/assets/report-card.webp';
 	import { Button } from '#components/Button';
+	import { Card } from '#components/Card';
 	import { FeatureCard } from '#components/FeatureCard';
 	import { Screensaver } from '#components/Screensaver';
 	import { SiteHeader } from '#components/SiteHeader';
@@ -83,53 +84,51 @@
 			</p>
 		</section>
 
-		<form
-			method="post"
-			novalidate
-			class="flex flex-col gap-12 rounded-sm border border-ui-base-border bg-ui-surface-surface-100 p-20"
-		>
-			<div class="grid gap-12 sm:grid-cols-2">
+		<Card>
+			<form method="post" novalidate class="flex flex-col gap-12">
+				<div class="grid gap-12 sm:grid-cols-2">
+					<TextField
+						label="First name"
+						name="firstName"
+						autocomplete="given-name"
+						value={values.firstName}
+						error={errors.firstName}
+						required
+					/>
+					<TextField
+						label="Last name"
+						name="lastName"
+						autocomplete="family-name"
+						value={values.lastName}
+						error={errors.lastName}
+						required
+					/>
+				</div>
 				<TextField
-					label="First name"
-					name="firstName"
-					autocomplete="given-name"
-					value={values.firstName}
-					error={errors.firstName}
+					label="Email"
+					name="email"
+					type="email"
+					autocomplete="email"
+					value={values.email}
+					error={errors.email}
 					required
 				/>
 				<TextField
-					label="Last name"
-					name="lastName"
-					autocomplete="family-name"
-					value={values.lastName}
-					error={errors.lastName}
+					label="Your venue’s website"
+					name="url"
+					type="url"
+					inputmode="url"
+					autocomplete="url"
+					placeholder="yourvenue.com"
+					value={values.url}
+					error={errors.url}
 					required
 				/>
-			</div>
-			<TextField
-				label="Email"
-				name="email"
-				type="email"
-				autocomplete="email"
-				value={values.email}
-				error={errors.email}
-				required
-			/>
-			<TextField
-				label="Your venue’s website"
-				name="url"
-				type="url"
-				inputmode="url"
-				autocomplete="url"
-				placeholder="yourvenue.com"
-				value={values.url}
-				error={errors.url}
-				required
-			/>
-			<Button type="submit" iconRight={CaretRightIcon} iconRegular class="w-full"
-				>Grade my site</Button
-			>
-		</form>
+				<Button type="submit" iconRight={CaretRightIcon} iconRegular class="w-full"
+					>Grade my site</Button
+				>
+			</form>
+		</Card>
 
 		<section aria-labelledby="steps-title" class="flex flex-col gap-16">
 			<h2 id="steps-title" class="text-center type-ui-subtitle-2 text-ui-base-foreground">
