@@ -474,6 +474,12 @@ approved: sample data first; the map on the checking screen left out; code in th
   about 100 KB. The 1728 × 1117 frame is scaled to cover the screen; the title sits outside it so it wraps on phones.
   Changed from Figma (Adriana): once the labels cover the screen (3 s in) they wait 2 s before falling; labels
   that land with a bounce finish it first. The loop is 14 s.
+- **Screensaver fall reworked in code (2026-10-30, Adriana):** in Figma every label lands at the same moment (3 s)
+  and drops away at an even speed. Now (`src/components/Screensaver/fall.ts`, Figma data untouched): labels speed
+  up as they fall (gravity); the pile builds from the bottom row (1.4 s) to the top row (2.5 s); each label bounces
+  twice on landing (18 px, then 5 px); labels turn 6–14° while falling, tip 3° past their angle and settle. When
+  they drop away the lower ones let go first (spread 0.3 s). Screen still covered at 3 s, 2 s wait unchanged.
+  The Figma loop (node 26:2) still has the previous motion.
 - **Report copied to Figma for redesign (2026-10-29, Adriana):** Marketing file, frame "Report Card · Report (from
   code, 2026-10-29)" (node 33:9733), light mode, 1280 wide. Editable layers in auto layout, bound to the library:
   text styles, color / spacing / radius variables, button-primary / button-secondary and icon instances.
