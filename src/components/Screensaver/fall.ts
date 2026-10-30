@@ -3,7 +3,8 @@
 // - weight: labels speed up as they fall (gravity), instead of moving at an even speed;
 // - stagger: the pile builds from the bottom row up, instead of every label landing at the same moment;
 // - bounce: each label bounces twice when it lands;
-// - spin: labels turn while they fall, tip past their angle when they land and settle back.
+// - spin: labels turn while they fall, tip past their angle when they land and settle back;
+// - floor: more labels stay on the floor when the rest drop away (about 45 instead of Figma's 30).
 // The labels still cover the screen at 3 s (coverAt in Screensaver.svelte), so the 2-second wait is unchanged.
 
 import { labels as figmaLabels, loopMs, type Ease, type Label, type Track } from './labels.ts';
@@ -41,6 +42,10 @@ const spin = [6, 14];
 const tip = 3;
 /** When labels drop away, the lower ones let go first, the top ones up to this many seconds later. */
 const releaseSpread = 0.3;
+/** Labels resting this low on the stage (center, in stage pixels from the top) stay on the floor too. */
+const floorTop = 870;
+/** Labels added to the floor drop with Figma's bottom row: they let go between these shares of the loop. */
+const floorRelease = [0.835, 0.85];
 /** The moment the labels cover the screen, as a share of the loop (3 s of 12). */
 const coverAt = 0.25;
 
@@ -133,7 +138,10 @@ function rework(label: Label, i: number): MotionLabel {
 		rotate.push(...framesBetween(label.rotate, leaveAt, resetAt));
 	} else {
 		const endY = valueAt(label.y, goneAt);
-		const release = coverAt + share(height(label.cy) * releaseSpread);
+		const onFloor = label.cy >= floorTop;
+		const release = onFloor
+			? floorRelease[0] + noise(i, 4) * (floorRelease[1] - floorRelease[0])
+			: coverAt + share(height(label.cy) * releaseSpread);
 		const gone = release + share(fallTime(endY));
 		y.push([0, coverAt, 'l'], [0, release, 'gravity'], [endY, gone, 'l'], [endY, goneAt, 'l']);
 		const endX = valueAt(label.x, goneAt);

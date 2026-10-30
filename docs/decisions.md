@@ -480,6 +480,9 @@ approved: sample data first; the map on the checking screen left out; code in th
   twice on landing (18 px, then 5 px); labels turn 6–14° while falling, tip 3° past their angle and settle. When
   they drop away the lower ones let go first (spread 0.3 s). Screen still covered at 3 s, 2 s wait unchanged.
   The Figma loop (node 26:2) still has the previous motion.
+- **More labels on the floor (2026-10-30, Adriana: "one more row"):** about 45 labels stay when the rest drop away
+  (Figma: 30). Labels resting with their center at 870 or lower on the stage stay, and drop at the end with
+  Figma's bottom row (`floorTop` in `fall.ts`).
 - **Report copied to Figma for redesign (2026-10-29, Adriana):** Marketing file, frame "Report Card · Report (from
   code, 2026-10-29)" (node 33:9733), light mode, 1280 wide. Editable layers in auto layout, bound to the library:
   text styles, color / spacing / radius variables, button-primary / button-secondary and icon instances.
