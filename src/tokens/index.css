@@ -15,7 +15,6 @@
 @import './theme.css';
 @import './text-styles.css';
 @import './focus.css';
-@import './effects.css';
 @import './icons.css';
 
 /* Dark mode utilities: dark:bg-… applies inside any [data-theme='dark'] container. */

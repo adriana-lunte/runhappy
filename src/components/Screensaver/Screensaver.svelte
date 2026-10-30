@@ -12,8 +12,8 @@
 	Changes from Figma (Adriana): when the labels cover the screen (3 s in), they wait 2 s before falling
 	(2026-10-28); once they are gone, the title and the floor labels wait 25 s more before their final drop
 	(2026-10-30), and during that wait a floor label hops now and then (2026-10-30). The loop lasts 39 s instead
-	of 12. The fall itself is reworked in fall.ts (2026-10-30). The title falls word by word, right to left,
-	and a yellow shine sweeps across it every 10 s of the long wait (2026-10-30).
+	of 12. The fall itself is reworked in fall.ts (2026-10-30). The title falls word by word, right to left
+	(2026-10-30).
 -->
 <script lang="ts" module>
 	export interface ScreensaverProps {
@@ -128,27 +128,6 @@
 		return { destroy: () => animation.cancel() };
 	}
 
-	// The shine on the title during the long wait: first pass 2 s in, then every 10 s, each lasting 3 s.
-	const shine = { first: 2, every: 10, seconds: 3 };
-
-	/** Sweeps the text-shine band across the title during the long wait, looping with the rest of the animation. */
-	function shining(node: HTMLElement) {
-		const off = { backgroundPosition: '100% 0' };
-		const keyframes: Keyframe[] = [{ ...off, offset: 0 }];
-		for (let at = shine.first; at + shine.seconds <= longWait.ms / 1000; at += shine.every) {
-			const ms = longWaitStart + at * 1000;
-			keyframes.push(
-				{ ...off, offset: ms / duration, easing: 'ease-in-out' },
-				{ backgroundPosition: '0% 0', offset: (ms + shine.seconds * 1000) / duration },
-				{ ...off, offset: (ms + shine.seconds * 1000) / duration }
-			);
-		}
-		keyframes.push({ ...off, offset: 1 });
-		const animation = node.animate(keyframes, { duration, iterations: Infinity });
-		animation.startTime = startTime;
-		return { destroy: () => animation.cancel() };
-	}
-
 	/** Where a track waits: its last keyframe before the hold's moment (it stays still until its next keyframe). */
 	const holdIndex = ([, times]: MotionTrack, at: number) =>
 		times.findLastIndex((time) => time <= at);
@@ -201,7 +180,7 @@
 	<div class="absolute inset-x-0 -translate-y-1/2 px-16" style:top="{titleTop}px">
 		<p
 			id={titleId}
-			class="relative text-center type-ui-headline-6 text-balance text-ui-base-foreground sm:type-web-display-xl"
+			class="text-center type-ui-headline-6 text-balance text-ui-base-foreground sm:type-web-display-xl"
 			use:play={{ track: titleMotion.opacity, kind: 'opacity' }}
 		>
 			<span class="sr-only">{title}</span>
@@ -213,8 +192,6 @@
 					>{w < words.length - 1 ? ' ' : ''}
 				{/each}
 			</span>
-			<!-- The shine: a copy of the title over it, transparent except for the moving yellow band. -->
-			<span aria-hidden="true" class="absolute inset-0 text-shine" use:shining>{title}</span>
 		</p>
 	</div>
 

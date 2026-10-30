@@ -503,6 +503,7 @@ approved: sample data first; the map on the checking screen left out; code in th
   (3 passes). New utility `text-shine` in `src/tokens/effects.css`, on a transparent copy of the title laid over
   it, so the real text stays `ui-base-foreground`. Adriana approved yellow here as a brief, decorative exception
   to "yellow is never text".
+  Removed the same day (Adriana): no shine, and the `text-shine` utility (`src/tokens/effects.css`) is gone too.
 - **Report copied to Figma for redesign (2026-10-29, Adriana):** Marketing file, frame "Report Card · Report (from
   code, 2026-10-29)" (node 33:9733), light mode, 1280 wide. Editable layers in auto layout, bound to the library:
   text styles, color / spacing / radius variables, button-primary / button-secondary and icon instances.
