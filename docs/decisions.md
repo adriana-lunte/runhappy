@@ -504,6 +504,9 @@ approved: sample data first; the map on the checking screen left out; code in th
   it, so the real text stays `ui-base-foreground`. Adriana approved yellow here as a brief, decorative exception
   to "yellow is never text".
   Removed the same day (Adriana): no shine, and the `text-shine` utility (`src/tokens/effects.css`) is gone too.
+- **Cursor trail on the intro (2026-10-30, Adriana):** only while the intro shows, the mouse leaves a brand yellow
+  line (`brand/accent/yellow`) that thins out and fades in 0.3 s (`src/components/Screensaver/trail.ts`, canvas).
+  New token `--size-cursor-trail` (8 px, the width at the tip). Mouse only; touch screens have no cursor.
 - **Report copied to Figma for redesign (2026-10-29, Adriana):** Marketing file, frame "Report Card · Report (from
   code, 2026-10-29)" (node 33:9733), light mode, 1280 wide. Editable layers in auto layout, bound to the library:
   text styles, color / spacing / radius variables, button-primary / button-secondary and icon instances.

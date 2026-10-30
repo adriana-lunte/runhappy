@@ -43,4 +43,6 @@
 	--size-page: 72rem;
 	/* Report Card home: hero illustration (approved by Adriana 2026-10-28: 192). */
 	--size-hero-image: 12rem;
+	/* Report Card intro: cursor trail width at its tip (approved by Adriana 2026-10-30: 8). */
+	--size-cursor-trail: 0.5rem;
 }

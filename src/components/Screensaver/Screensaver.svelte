@@ -13,7 +13,7 @@
 	(2026-10-28); once they are gone, the title and the floor labels wait 25 s more before their final drop
 	(2026-10-30), and during that wait a floor label hops now and then (2026-10-30). The loop lasts 39 s instead
 	of 12. The fall itself is reworked in fall.ts (2026-10-30). The title falls word by word, right to left
-	(2026-10-30).
+	(2026-10-30). The mouse leaves a yellow trail (trail.ts, 2026-10-30).
 -->
 <script lang="ts" module>
 	export interface ScreensaverProps {
@@ -32,6 +32,7 @@
 	import pink from './label-pink.svg';
 	import yellow from './label-yellow.svg';
 	import { fallEasings, hop, hops, labels, type MotionTrack } from './fall.ts';
+	import { cursorTrail } from './trail.ts';
 	import {
 		easings,
 		labelSize,
@@ -226,6 +227,10 @@
 			</div>
 		{/each}
 	</div>
+
+	<!-- The cursor trail, over the labels and the title, under the hint. -->
+	<canvas class="pointer-events-none absolute inset-0 size-full" aria-hidden="true" use:cursorTrail
+	></canvas>
 
 	<button
 		bind:this={button}
