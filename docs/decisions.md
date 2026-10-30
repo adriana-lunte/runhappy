@@ -251,9 +251,9 @@ Figma: Components → Tab (`87:1942`), variants `status=idle | hover | selected`
 - **Site footer (2026-10-30, Adriana, from the brand guidelines footer):** new `SiteFooter` on every Report Card
   page (home, checking, report). Brand yellow (`brand/background/yellow-accent`), dark text
   (`ui/base/primary-foreground`): the logo, a dotted line, then "2026, Runhappy.ai" and "New York City, New York"
-  (`UI/Body/2`) on the left and "Report Card" (`UI/Body/2 Medium`) on the right. The page above ends in rounded
-  corners over the yellow, drawn by the footer with radius sm (12 px; the reference is rounder, see the radius
-  gap below). Texts live in `src/lib/report/config.ts`.
+  (`UI/Body/2`) on the left and "Report Card" (`UI/Body/2 Medium`) on the right. The year is the current one and
+  changes on its own (Adriana). The page above ends in rounded corners over the yellow, drawn by the footer with
+  radius sm (12 px; the reference is rounder, see the radius gap below). Texts live in `src/lib/report/config.ts`.
 
 **To confirm:**
 

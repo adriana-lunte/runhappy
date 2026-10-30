@@ -148,5 +148,5 @@
 			checks, and anything we can’t check is marked as such — it never counts against you.
 		</p>
 	</main>
-	<SiteFooter details={footerDetails} product="Report Card" />
+	<SiteFooter details={footerDetails()} product="Report Card" />
 </div>

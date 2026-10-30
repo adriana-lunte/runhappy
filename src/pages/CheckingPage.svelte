@@ -69,5 +69,5 @@
 			hint="Usually 1–2 minutes"
 		/>
 	</main>
-	<SiteFooter details={footerDetails} product="Report Card" />
+	<SiteFooter details={footerDetails()} product="Report Card" />
 </div>

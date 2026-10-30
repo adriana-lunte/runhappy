@@ -259,6 +259,6 @@
 			</a>
 		</footer>
 	</main>
-	<SiteFooter details={footerDetails} product="Report Card" />
+	<SiteFooter details={footerDetails()} product="Report Card" />
 </div>
 <!-- eslint-enable svelte/no-navigation-without-resolve -->
