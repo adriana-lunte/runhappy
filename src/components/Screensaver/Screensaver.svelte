@@ -12,7 +12,8 @@
 	Changes from Figma (Adriana): when the labels cover the screen (3 s in), they wait 2 s before falling
 	(2026-10-28); once they are gone, the title and the floor labels wait 25 s more before their final drop
 	(2026-10-30), and during that wait a floor label hops now and then (2026-10-30). The loop lasts 39 s instead
-	of 12. The fall itself is reworked in fall.ts (2026-10-30).
+	of 12. The fall itself is reworked in fall.ts (2026-10-30). The title falls letter by letter, right to left
+	(2026-10-30).
 -->
 <script lang="ts" module>
 	export interface ScreensaverProps {
@@ -56,6 +57,27 @@
 		width && height ? Math.max(width / stage.width, height / stage.height) : 1
 	);
 	const titleTop = $derived(height / 2 + (titleMotion.cy - stage.height / 2) * scale);
+
+	// The title falls letter by letter, right to left: the last letter starts this many seconds before the first,
+	// and the first keeps Figma's moment.
+	const letterStagger = 0.8;
+	const words = $derived(title.split(' ').map((word) => Array.from(word)));
+	/** Where each word's letters start in the count of all letters. */
+	const wordStarts = $derived(words.map((_, w) => words.slice(0, w).flat().length));
+	const letterCount = $derived(words.flat().length);
+
+	/** Figma's title fall for one letter, started earlier the further right the letter is. */
+	function letterFall(index: number): MotionTrack {
+		const [values, times, eases] = titleMotion.y;
+		const drop = values.findIndex((value, i) => i > 0 && value !== values[i - 1]);
+		const early =
+			letterCount > 1 ? ((index / (letterCount - 1)) * letterStagger * 1000) / loopMs : 0;
+		return [
+			values,
+			times.map((time, i) => (i === drop - 1 || i === drop ? time - early : time)),
+			eases
+		];
+	}
 
 	// Every animation starts at the same moment, so the labels stay in step with each other and with the title.
 	const startTime = typeof document === 'undefined' ? 0 : Number(document.timeline.currentTime);
@@ -159,15 +181,24 @@
 >
 	<!-- Title: under the labels, as in Figma (they fall over it and away). Outside the stage so it can wrap on phones. -->
 	<div class="absolute inset-x-0 -translate-y-1/2 px-16" style:top="{titleTop}px">
-		<div use:play={{ track: titleMotion.y, kind: 'y', scale }}>
-			<p
-				id={titleId}
-				class="text-center type-ui-headline-6 text-balance text-ui-base-foreground sm:type-web-display-xl"
-				use:play={{ track: titleMotion.opacity, kind: 'opacity' }}
-			>
-				{title}
-			</p>
-		</div>
+		<p
+			id={titleId}
+			class="text-center type-ui-headline-6 text-balance text-ui-base-foreground sm:type-web-display-xl"
+			use:play={{ track: titleMotion.opacity, kind: 'opacity' }}
+		>
+			<span class="sr-only">{title}</span>
+			<!-- One box per letter so each can fall on its own; words stay whole when the title wraps. -->
+			<span aria-hidden="true">
+				{#each words as word, w (w)}
+					<span class="inline-block whitespace-nowrap"
+						>{#each word as letter, l (l)}<span
+								class="inline-block"
+								use:play={{ track: letterFall(wordStarts[w] + l), kind: 'y', scale }}>{letter}</span
+							>{/each}</span
+					>{w < words.length - 1 ? ' ' : ''}
+				{/each}
+			</span>
+		</p>
 	</div>
 
 	<!-- The stage: Figma's frame, scaled to cover the screen. -->
