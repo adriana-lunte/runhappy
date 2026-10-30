@@ -4,7 +4,9 @@
 // - stagger: the pile builds from the bottom row up, instead of every label landing at the same moment;
 // - bounce: each label bounces twice when it lands;
 // - spin: labels turn while they fall, tip past their angle when they land and settle back;
-// - floor: more labels stay on the floor when the rest drop away (about 45 instead of Figma's 30).
+// - floor: more labels stay on the floor when the rest drop away (about 45 instead of Figma's 30);
+// - leaving: the labels over the screen let go one by one over a second (lower ones first), lift a little as
+//   they come loose, then fall spinning.
 // The labels still cover the screen at 3 s (coverAt in Screensaver.svelte), so the 2-second wait is unchanged.
 
 import { labels as figmaLabels, loopMs, type Ease, type Label, type Track } from './labels.ts';
@@ -41,7 +43,13 @@ const bounces = [
 const spin = [6, 14];
 const tip = 3;
 /** When labels drop away, the lower ones let go first, the top ones up to this many seconds later. */
-const releaseSpread = 0.3;
+const releaseSpread = 1;
+/** Up to this many seconds earlier or later, so a row does not let go as one block. */
+const releaseJitter = 0.1;
+/** As a label comes loose it lifts this many stage pixels, in this many seconds, before it falls. */
+const lift = { height: 10, rise: 0.12 };
+/** How far a label turns while it falls away, in degrees (between the two values, either way). */
+const fallSpin = [120, 240];
 /** Labels resting this low on the stage (center, in stage pixels from the top) stay on the floor too. */
 const floorTop = 870;
 /** Labels added to the floor drop with Figma's bottom row: they let go between these shares of the loop. */
@@ -138,21 +146,44 @@ function rework(label: Label, i: number): MotionLabel {
 		rotate.push(...framesBetween(label.rotate, leaveAt, resetAt));
 	} else {
 		const endY = valueAt(label.y, goneAt);
-		const onFloor = label.cy >= floorTop;
-		const release = onFloor
-			? floorRelease[0] + noise(i, 4) * (floorRelease[1] - floorRelease[0])
-			: coverAt + share(height(label.cy) * releaseSpread);
-		const gone = release + share(fallTime(endY));
-		y.push([0, coverAt, 'l'], [0, release, 'gravity'], [endY, gone, 'l'], [endY, goneAt, 'l']);
 		const endX = valueAt(label.x, goneAt);
-		x.push([0, coverAt, 'l'], [0, release, 'l'], [endX, gone, 'l'], [endX, goneAt, 'l']);
-		const endAngle = valueAt(label.rotate, goneAt);
-		rotate.push(
-			[rest, coverAt, 'l'],
-			[rest, release, 'l'],
-			[endAngle, gone, 'l'],
-			[endAngle, goneAt, 'l']
-		);
+		const onFloor = label.cy >= floorTop;
+		if (onFloor) {
+			// Floor labels drop at the end with Figma's bottom row, as before.
+			const release = floorRelease[0] + noise(i, 4) * (floorRelease[1] - floorRelease[0]);
+			const gone = release + share(fallTime(endY));
+			const endAngle = valueAt(label.rotate, goneAt);
+			y.push([0, coverAt, 'l'], [0, release, 'gravity'], [endY, gone, 'l'], [endY, goneAt, 'l']);
+			x.push([0, coverAt, 'l'], [0, release, 'l'], [endX, gone, 'l'], [endX, goneAt, 'l']);
+			rotate.push(
+				[rest, coverAt, 'l'],
+				[rest, release, 'l'],
+				[endAngle, gone, 'l'],
+				[endAngle, goneAt, 'l']
+			);
+		} else {
+			const delay = height(label.cy) * releaseSpread + (noise(i, 5) * 2 - 1) * releaseJitter;
+			const release = coverAt + share(Math.max(0, delay));
+			const loose = release + share(lift.rise);
+			const gone = loose + share(fallTime(endY + lift.height));
+			const fallTurn = noise(i, 6) < 0.5 ? -1 : 1;
+			const endAngle = rest + fallTurn * (fallSpin[0] + noise(i, 7) * (fallSpin[1] - fallSpin[0]));
+			y.push(
+				[0, coverAt, 'l'],
+				[0, release, 'rise'],
+				[-lift.height, loose, 'gravity'],
+				[endY, gone, 'l'],
+				[endY, goneAt, 'l']
+			);
+			x.push([0, coverAt, 'l'], [0, loose, 'l'], [endX, gone, 'l'], [endX, goneAt, 'l']);
+			// The turn starts slowly as the label comes loose and speeds up as it falls.
+			rotate.push(
+				[rest, coverAt, 'l'],
+				[rest, loose, 'in'],
+				[endAngle, gone, 'l'],
+				[endAngle, goneAt, 'l']
+			);
+		}
 	}
 
 	// Back to the start for the next loop.
