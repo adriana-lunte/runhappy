@@ -12,7 +12,7 @@
 	Changes from Figma (Adriana): when the labels cover the screen (3 s in), they wait 2 s before falling
 	(2026-10-28); once they are gone, the title and the floor labels wait 25 s more before their final drop
 	(2026-10-30), and during that wait a floor label hops now and then (2026-10-30). The loop lasts 39 s instead
-	of 12. The fall itself is reworked in fall.ts (2026-10-30). The title falls letter by letter, right to left
+	of 12. The fall itself is reworked in fall.ts (2026-10-30). The title falls word by word, right to left
 	(2026-10-30).
 -->
 <script lang="ts" module>
@@ -58,20 +58,17 @@
 	);
 	const titleTop = $derived(height / 2 + (titleMotion.cy - stage.height / 2) * scale);
 
-	// The title falls letter by letter, right to left: the last letter starts this many seconds before the first,
+	// The title falls word by word, right to left: the last word starts this many seconds before the first,
 	// and the first keeps Figma's moment.
-	const letterStagger = 0.8;
-	const words = $derived(title.split(' ').map((word) => Array.from(word)));
-	/** Where each word's letters start in the count of all letters. */
-	const wordStarts = $derived(words.map((_, w) => words.slice(0, w).flat().length));
-	const letterCount = $derived(words.flat().length);
+	const wordStagger = 0.8;
+	const words = $derived(title.split(' '));
 
-	/** Figma's title fall for one letter, started earlier the further right the letter is. */
-	function letterFall(index: number): MotionTrack {
+	/** Figma's title fall for one word, started earlier the further right the word is. */
+	function wordFall(index: number): MotionTrack {
 		const [values, times, eases] = titleMotion.y;
 		const drop = values.findIndex((value, i) => i > 0 && value !== values[i - 1]);
 		const early =
-			letterCount > 1 ? ((index / (letterCount - 1)) * letterStagger * 1000) / loopMs : 0;
+			words.length > 1 ? ((index / (words.length - 1)) * wordStagger * 1000) / loopMs : 0;
 		return [
 			values,
 			times.map((time, i) => (i === drop - 1 || i === drop ? time - early : time)),
@@ -187,14 +184,11 @@
 			use:play={{ track: titleMotion.opacity, kind: 'opacity' }}
 		>
 			<span class="sr-only">{title}</span>
-			<!-- One box per letter so each can fall on its own; words stay whole when the title wraps. -->
+			<!-- One box per word so each can fall on its own. -->
 			<span aria-hidden="true">
 				{#each words as word, w (w)}
-					<span class="inline-block whitespace-nowrap"
-						>{#each word as letter, l (l)}<span
-								class="inline-block"
-								use:play={{ track: letterFall(wordStarts[w] + l), kind: 'y', scale }}>{letter}</span
-							>{/each}</span
+					<span class="inline-block" use:play={{ track: wordFall(w), kind: 'y', scale }}
+						>{word}</span
 					>{w < words.length - 1 ? ' ' : ''}
 				{/each}
 			</span>

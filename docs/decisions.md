@@ -494,9 +494,10 @@ approved: sample data first; the map on the checking screen left out; code in th
   The loop is now 20 s (12 in Figma + 2 + 6). Made longer the same day: 25 s more (about 30 s still), loop 39 s.
 - **Hops during the long wait (2026-10-30, Adriana):** about every 3.5 s (±0.5 s) one label on top of the floor
   pile, near the middle, hops 30 px (tilting 3°) and lands with a small 6 px bounce: 7 hops per wait, one at a time.
-- **Title falls letter by letter (2026-10-30, Adriana):** right to left, each letter with Figma's title fall; the
-  last letter starts 0.8 s before the first, and the first keeps Figma's moment. Screen readers get the whole
-  title (`sr-only`); the letters are hidden from them. On phones the second line goes first, then the first.
+- **Title falls word by word (2026-10-30, Adriana):** right to left, each word with Figma's title fall; the last
+  word starts 0.8 s before the first, and the first keeps Figma's moment. Screen readers get the whole title
+  (`sr-only`); the words are hidden from them. On phones the second line goes first, then the first. (Tried letter
+  by letter first, the same day.)
 - **Report copied to Figma for redesign (2026-10-29, Adriana):** Marketing file, frame "Report Card · Report (from
   code, 2026-10-29)" (node 33:9733), light mode, 1280 wide. Editable layers in auto layout, bound to the library:
   text styles, color / spacing / radius variables, button-primary / button-secondary and icon instances.
