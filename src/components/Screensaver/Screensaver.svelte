@@ -128,8 +128,8 @@
 		return { destroy: () => animation.cancel() };
 	}
 
-	// The shine on the title during the long wait: first pass 2 s in, then every 10 s, each lasting 1.2 s.
-	const shine = { first: 2, every: 10, seconds: 1.2 };
+	// The shine on the title during the long wait: first pass 2 s in, then every 10 s, each lasting 2 s.
+	const shine = { first: 2, every: 10, seconds: 2 };
 
 	/** Sweeps the text-shine band across the title during the long wait, looping with the rest of the animation. */
 	function shining(node: HTMLElement) {
