@@ -49,7 +49,7 @@ const releaseJitter = 0.1;
 /** As a label comes loose it lifts this many stage pixels, in this many seconds, before it falls. */
 const lift = { height: 10, rise: 0.12 };
 /** How far a label turns while it falls away, in degrees (between the two values, either way). */
-const fallSpin = [120, 240];
+const fallSpin = [30, 90];
 /** Labels resting this low on the stage (center, in stage pixels from the top) stay on the floor too. */
 const floorTop = 870;
 /** Labels added to the floor drop with Figma's bottom row: they let go between these shares of the loop. */

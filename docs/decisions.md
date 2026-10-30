@@ -485,7 +485,7 @@ approved: sample data first; the map on the checking screen left out; code in th
   Figma's bottom row (`floorTop` in `fall.ts`).
 - **How the covering labels leave (2026-10-30, Adriana):** after the 2 s wait they let go one by one over about
   1 s, lower ones first (±0.1 s so rows don't go as a block); each lifts 10 px as it comes loose, then falls with
-  gravity turning 120–240°. Floor labels leave as before.
+  gravity turning 30–90° (first 120–240°, toned down the same day). Floor labels leave as before.
 - **Report copied to Figma for redesign (2026-10-29, Adriana):** Marketing file, frame "Report Card · Report (from
   code, 2026-10-29)" (node 33:9733), light mode, 1280 wide. Editable layers in auto layout, bound to the library:
   text styles, color / spacing / radius variables, button-primary / button-secondary and icon instances.
