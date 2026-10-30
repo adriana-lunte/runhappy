@@ -10,8 +10,8 @@
 	The animation is rebuilt from Figma's motion data (labels.ts) with the Web Animations API. The Figma frame is a
 	fixed 1728 × 1117 stage, scaled to cover the screen. The title sits outside the stage so it can wrap on phones.
 	Changes from Figma (Adriana): when the labels cover the screen (3 s in), they wait 2 s before falling
-	(2026-10-28); once they are gone, the title and the floor labels wait 6 s more before their final drop
-	(2026-10-30). The loop lasts 20 s instead of 12. The fall itself is reworked in fall.ts (2026-10-30).
+	(2026-10-28); once they are gone, the title and the floor labels wait 25 s more before their final drop
+	(2026-10-30). The loop lasts 39 s instead of 12. The fall itself is reworked in fall.ts (2026-10-30).
 -->
 <script lang="ts" module>
 	export interface ScreensaverProps {
@@ -60,10 +60,10 @@
 	const startTime = typeof document === 'undefined' ? 0 : Number(document.timeline.currentTime);
 
 	// The waits added to Figma's 12 s loop, at moments when every track is still (`at` is a share of the loop):
-	// 2 s once the labels cover the screen (3 s in), 6 s once they are gone, before the title and floor drop (8.4 s in).
+	// 2 s once the labels cover the screen (3 s in), 25 s once they are gone, before the title and floor drop (8.4 s in).
 	const holds = [
 		{ at: 0.25, ms: 2000 },
-		{ at: 0.7, ms: 6000 }
+		{ at: 0.7, ms: 25000 }
 	];
 	const duration = loopMs + holds.reduce((sum, hold) => sum + hold.ms, 0);
 
