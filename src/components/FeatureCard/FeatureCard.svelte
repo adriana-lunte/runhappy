@@ -3,7 +3,7 @@
 	Not in Figma yet: modeled on report-card.runhappyapps.com (home page cards, 2026-10-28).
 
 	A card that explains one thing: an icon or a step number, a title and a short text. Static, not clickable.
-	Built on Card (background, border, radius, padding), title UI/Subtitle/3, text UI/Body/4 in
+	Built on Card (background, radius, padding), title UI/Subtitle/3, text UI/Body/4 in
 	brand/text/secondary (was Body/3, Adriana 2026-10-28).
 	With `step` (Adriana, 2026-10-30, replacing the yellow "Step N" tag): a big number ("01") in UI/Headline Serif/4,
 	32 px above the title. Yellow (brand/text/accent) in dark mode only: in light mode yellow on white fails contrast,

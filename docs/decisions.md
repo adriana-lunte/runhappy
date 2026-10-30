@@ -246,6 +246,7 @@ Figma: Components → Tab (`87:1942`), variants `status=idle | hover | selected`
 - **Card component (2026-10-30, Adriana):** the box shared by the home form and the step cards is now
   `src/components/Card` (surface-100, thin `ui/base/border`, radius sm, 20 px padding). FeatureCard is built on it;
   the home form sits inside one. Not in Figma yet.
+  Border removed from Card the same day (Adriana): the form and the step cards have no border now.
 
 **To confirm:**
 

@@ -2,8 +2,9 @@
 	Card — Runhappy design system (Report Card)
 	Not in Figma yet: the box shared by the home form and the step cards (Adriana, 2026-10-30).
 
-	A static box that groups content: background ui/surface/surface-100, thin border ui/base/border, radius sm,
-	20 px padding. Not clickable. Layout inside (direction, gaps) comes from the `class` prop.
+	A static box that groups content: background ui/surface/surface-100, radius sm, 20 px padding. No border
+	(Adriana removed the thin ui/base/border one on 2026-10-30). Not clickable. Layout inside (direction, gaps)
+	comes from the `class` prop.
 -->
 <script lang="ts" module>
 	import type { Snippet } from 'svelte';
@@ -21,6 +22,6 @@
 	let { children, class: className }: CardProps = $props();
 </script>
 
-<div class={['rounded-sm border border-ui-base-border bg-ui-surface-surface-100 p-20', className]}>
+<div class={['rounded-sm bg-ui-surface-surface-100 p-20', className]}>
 	{@render children()}
 </div>

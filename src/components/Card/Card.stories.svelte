@@ -13,7 +13,7 @@
 			docs: {
 				description: {
 					component:
-						'Static box that groups content: surface-100 background, thin ui/base/border border, radius sm, 20 px padding. Used by the home form and by FeatureCard. Not clickable, so it has no hover or focus states. Not in Figma yet.'
+						'Static box that groups content: surface-100 background, no border, radius sm, 20 px padding. Used by the home form and by FeatureCard. Not clickable, so it has no hover or focus states. Not in Figma yet.'
 				}
 			}
 		}
