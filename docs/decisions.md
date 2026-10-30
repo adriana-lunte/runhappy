@@ -486,6 +486,9 @@ approved: sample data first; the map on the checking screen left out; code in th
 - **How the covering labels leave (2026-10-30, Adriana):** after the 2 s wait they let go one by one over about
   1 s, lower ones first (±0.1 s so rows don't go as a block); each falls with gravity turning 30–90°. Tried the
   same day and dropped: 120–240° of spin, and a 10 px lift before falling. Floor labels leave as before.
+- **Shake before falling (2026-10-30, Adriana):** each label shakes for 0.3 s right before it lets go (about
+  2.5 px and 2° side to side, fading out), floor labels too before their final drop. The covering labels start
+  letting go 0.3 s later so the first ones can shake right after the 2 s wait.
 - **Report copied to Figma for redesign (2026-10-29, Adriana):** Marketing file, frame "Report Card · Report (from
   code, 2026-10-29)" (node 33:9733), light mode, 1280 wide. Editable layers in auto layout, bound to the library:
   text styles, color / spacing / radius variables, button-primary / button-secondary and icon instances.

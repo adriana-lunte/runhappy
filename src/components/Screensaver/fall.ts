@@ -5,7 +5,8 @@
 // - bounce: each label bounces twice when it lands;
 // - spin: labels turn while they fall, tip past their angle when they land and settle back;
 // - floor: more labels stay on the floor when the rest drop away (about 45 instead of Figma's 30);
-// - leaving: the labels over the screen let go one by one over a second (lower ones first) and fall turning.
+// - leaving: the labels over the screen let go one by one over a second (lower ones first) and fall turning;
+// - shake: every label shakes briefly just before it lets go, floor labels included.
 // The labels still cover the screen at 3 s (coverAt in Screensaver.svelte), so the 2-second wait is unchanged.
 
 import { labels as figmaLabels, loopMs, type Ease, type Label, type Track } from './labels.ts';
@@ -47,6 +48,8 @@ const releaseSpread = 1;
 const releaseJitter = 0.1;
 /** How far a label turns while it falls away, in degrees (between the two values, either way). */
 const fallSpin = [30, 90];
+/** The shake before a label lets go: seconds, side-to-side move (stage pixels), turn (degrees), back-and-forths. */
+const shake = { seconds: 0.3, move: 2.5, turn: 2, steps: 6 };
 /** Labels resting this low on the stage (center, in stage pixels from the top) stay on the floor too. */
 const floorTop = 870;
 /** Labels added to the floor drop with Figma's bottom row: they let go between these shares of the loop. */
@@ -67,6 +70,27 @@ const highest = Math.min(...tops);
 const lowest = Math.max(...tops);
 /** 0 for the bottom row, 1 for the top row. */
 const height = (cy: number) => (lowest - cy) / (lowest - highest);
+
+/**
+ * The shake frames of a track that rests at `base` until `release`: side to side, fading out. The track's own
+ * frame at `release` brings it back to `base`.
+ */
+function shaking(
+	base: number,
+	amount: number,
+	release: number,
+	i: number
+): [number, number, MotionEase][] {
+	const start = release - share(shake.seconds);
+	const side = noise(i, 8) < 0.5 ? -1 : 1;
+	const frames: [number, number, MotionEase][] = [[base, start, 'l']];
+	for (let k = 1; k < shake.steps; k++) {
+		const fade = 1 - (k - 1) / shake.steps;
+		const value = base + side * (k % 2 ? 1 : -1) * amount * fade;
+		frames.push([value, start + (k * share(shake.seconds)) / shake.steps, 'l']);
+	}
+	return frames;
+}
 
 /** The value a track has at a given time (its keyframe at that time). */
 const valueAt = ([values, times]: Track, time: number) => values[times.indexOf(time)];
@@ -139,8 +163,11 @@ function rework(label: Label, i: number): MotionLabel {
 				ease === 'in' ? 'gravity' : ease
 			]);
 		y.push(...heavier(framesBetween(label.y, leaveAt, resetAt)));
-		x.push(...framesBetween(label.x, leaveAt, resetAt));
-		rotate.push(...framesBetween(label.rotate, leaveAt, resetAt));
+		x.push(...shaking(0, shake.move, leaveAt, i), ...framesBetween(label.x, leaveAt, resetAt));
+		rotate.push(
+			...shaking(rest, shake.turn, leaveAt, i),
+			...framesBetween(label.rotate, leaveAt, resetAt)
+		);
 	} else {
 		const endY = valueAt(label.y, goneAt);
 		const endX = valueAt(label.x, goneAt);
@@ -151,24 +178,39 @@ function rework(label: Label, i: number): MotionLabel {
 			const gone = release + share(fallTime(endY));
 			const endAngle = valueAt(label.rotate, goneAt);
 			y.push([0, coverAt, 'l'], [0, release, 'gravity'], [endY, gone, 'l'], [endY, goneAt, 'l']);
-			x.push([0, coverAt, 'l'], [0, release, 'l'], [endX, gone, 'l'], [endX, goneAt, 'l']);
+			x.push(
+				[0, coverAt, 'l'],
+				...shaking(0, shake.move, release, i),
+				[0, release, 'l'],
+				[endX, gone, 'l'],
+				[endX, goneAt, 'l']
+			);
 			rotate.push(
 				[rest, coverAt, 'l'],
+				...shaking(rest, shake.turn, release, i),
 				[rest, release, 'l'],
 				[endAngle, gone, 'l'],
 				[endAngle, goneAt, 'l']
 			);
 		} else {
 			const delay = height(label.cy) * releaseSpread + (noise(i, 5) * 2 - 1) * releaseJitter;
-			const release = coverAt + share(Math.max(0, delay));
+			// The first labels shake right after the wait, then let go.
+			const release = coverAt + share(shake.seconds + Math.max(0, delay));
 			const gone = release + share(fallTime(endY));
 			const fallTurn = noise(i, 6) < 0.5 ? -1 : 1;
 			const endAngle = rest + fallTurn * (fallSpin[0] + noise(i, 7) * (fallSpin[1] - fallSpin[0]));
 			y.push([0, coverAt, 'l'], [0, release, 'gravity'], [endY, gone, 'l'], [endY, goneAt, 'l']);
-			x.push([0, coverAt, 'l'], [0, release, 'l'], [endX, gone, 'l'], [endX, goneAt, 'l']);
+			x.push(
+				[0, coverAt, 'l'],
+				...shaking(0, shake.move, release, i),
+				[0, release, 'l'],
+				[endX, gone, 'l'],
+				[endX, goneAt, 'l']
+			);
 			// The turn starts slowly as the label lets go and speeds up as it falls.
 			rotate.push(
 				[rest, coverAt, 'l'],
+				...shaking(rest, shake.turn, release, i),
 				[rest, release, 'in'],
 				[endAngle, gone, 'l'],
 				[endAngle, goneAt, 'l']
