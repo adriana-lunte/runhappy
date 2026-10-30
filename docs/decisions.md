@@ -462,7 +462,7 @@ approved: sample data first; the map on the checking screen left out; code in th
   got `announceType` to skip its hidden type word), title back to `UI/Subtitle/3`. Titles rewritten as steps: "Try to book a party", "Check your tracking", "Look up your ads". Card texts unchanged; later set one size smaller (`UI/Body/4`, 13/17) by Adriana. Hero text rewritten so it does not repeat the steps: "Enter your website and get a graded report card in about two minutes, with a clear fix for every problem we find."
 
 - Hero illustration (provided by Adriana, `src/lib/assets/report-card.webp`): centered, decorative (empty alt).
-  First above the overline at 128; then (Adriana) under the overline at 192, new token `--size-hero-image`; 240 since 2026-10-30 (Adriana). Then the "Runhappy report card" overline and the header's "Book a call" button were removed from the home page (Adriana).
+  First above the overline at 128; then (Adriana) under the overline at 192, new token `--size-hero-image`; 240 since 2026-10-30 (Adriana). Home title uses `UI/Headline Serif/6` (Geist Regular 30/45, a lighter stroke) instead of `UI/Headline/6` since 2026-10-30 (Adriana). Then the "Runhappy report card" overline and the header's "Book a call" button were removed from the home page (Adriana).
 
 - Home form (Adriana): First name and Last name (one row on desktop), Email, then the website, all required,
   labels visible. Name and email are only validated for now, not stored (`gradeFormSchema`).

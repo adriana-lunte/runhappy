@@ -82,7 +82,7 @@
 		<section class="flex flex-col items-center gap-16 text-center">
 			<!-- Decorative: the title already says what the page is. -->
 			<img src={reportCardImage} alt="" class="size-(--size-hero-image)" />
-			<h1 class="type-ui-headline-6 text-balance text-ui-base-foreground">
+			<h1 class="type-ui-headline-serif-6 text-balance text-ui-base-foreground">
 				{heading}
 			</h1>
 			<p class="type-ui-body-1-regular text-brand-text-secondary">
