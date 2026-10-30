@@ -41,8 +41,8 @@
 	--size-score-ring-small: 2.25rem;
 	/* Report Card page width (original: 1152 max) and its readable text column. Added 2026-10-28, to confirm. */
 	--size-page: 72rem;
-	/* Report Card home: hero illustration (approved by Adriana 2026-10-28: 192). */
-	--size-hero-image: 12rem;
+	/* Report Card home: hero illustration (approved by Adriana 2026-10-28: 192; 240 since 2026-10-30). */
+	--size-hero-image: 15rem;
 	/* Report Card intro: cursor trail width at its tip (approved by Adriana 2026-10-30: 4, first 8). */
 	--size-cursor-trail: 0.25rem;
 }
