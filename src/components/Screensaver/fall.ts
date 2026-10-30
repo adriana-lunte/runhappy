@@ -58,7 +58,7 @@ const floorRelease = [0.835, 0.85];
 /** A hop on the floor pile: height (stage pixels), seconds up, a small bounce, and a tilt (degrees) in the air. */
 export const hop = { height: 30, rise: 0.18, bounce: 6, bounceRise: 0.07, tilt: 3 };
 /** About every this many seconds (give or take `hopJitter`), and never in the first or last second of the wait. */
-const hopEvery = 3.5;
+const hopEvery = 2.5;
 const hopJitter = 0.5;
 /** The labels that hop: the top of the floor pile, near the middle so they show on narrow screens too. */
 const hopRows = [floorTop, 1000];
