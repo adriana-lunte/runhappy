@@ -115,10 +115,9 @@
 					error={errors.email}
 					required
 				/>
-				<!-- From sm up: the field's label, box and message are grid rows, and the button sits next to the box at its height. -->
-				<div
-					class="flex flex-col gap-16 sm:grid sm:grid-flow-col sm:grid-cols-1 sm:grid-rows-3 sm:gap-x-16 sm:gap-y-10"
-				>
+				<!-- From sm up: the field's label, box and message stack in column 1 (rows as tall as their content),
+					and the button sits in column 2 next to the box, at its height. -->
+				<div class="flex flex-col gap-16 sm:grid sm:grid-cols-1 sm:gap-x-16 sm:gap-y-10">
 					<TextField
 						label="Your venue’s website"
 						name="url"
@@ -126,7 +125,7 @@
 						inputmode="url"
 						autocomplete="url"
 						placeholder="yourvenue.com"
-						class="sm:contents"
+						class="sm:contents sm:*:col-start-1"
 						value={values.url}
 						error={errors.url}
 						required
