@@ -78,7 +78,6 @@
 					{#if reason}
 						<p class="type-ui-body-4-regular text-brand-text-secondary">{reason}</p>
 					{/if}
-					<p class="type-ui-body-4-regular text-brand-text-secondary">{overall.note}</p>
 				</div>
 			</div>
 			<a
@@ -115,6 +114,8 @@
 					/>
 				</div>
 			</div>
+			<!-- How the points are counted, as a footnote at the end of the card (Adriana, 2026-11-02). -->
+			<p class="type-ui-body-4-regular text-brand-text-secondary">* {overall.note}</p>
 		</section>
 
 		<!-- 2. Call to action -->
