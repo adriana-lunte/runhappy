@@ -3,8 +3,9 @@
 	Not in Figma yet: modeled on report-card.runhappyapps.com (2026-10-28).
 
 	Top bar of a standalone Runhappy page: logo, a divider and the product name on the left; one action on the
-	right: a link that looks like a tertiary button, with an optional icon (e.g. "Start over", 2026-11-02). Divider
-	under it: ui/base/border.
+	right: a link that looks like a tertiary button, with an optional icon. `quiet` makes it plain gray text
+	(UI/Body/3, ui/ui elements/muted-foreground, 16 px icon, foreground on hover), for a secondary action like
+	"Start over" (Adriana, 2026-11-02). Divider under it: ui/base/border.
 -->
 <script lang="ts" module>
 	import type { PhosphorIcon } from '#components/Icon';
@@ -23,6 +24,8 @@
 			href: string;
 			external?: boolean;
 			icon?: PhosphorIcon;
+			/** Plain gray text instead of a button, for a less important action. */
+			quiet?: boolean;
 			onclick?: () => void;
 		};
 		/** Layout classes. */
@@ -50,12 +53,17 @@
 		{#if action}
 			<a
 				href={action.href}
-				class={buttonClasses('tertiary')}
+				class={action.quiet
+					? 'inline-flex items-center gap-4 rounded-xs py-4 type-ui-body-3-regular text-ui-ui-elements-muted-foreground focus-ring transition-colors duration-150 hover:text-ui-base-foreground motion-reduce:transition-none'
+					: buttonClasses('tertiary')}
 				target={action.external ? '_blank' : undefined}
 				rel={action.external ? 'noopener' : undefined}
 				onclick={action.onclick}
 			>
-				{#if action.icon}<Icon icon={action.icon} class="size-20" />{/if}
+				{#if action.icon}<Icon
+						icon={action.icon}
+						class={action.quiet ? 'size-16' : 'size-20'}
+					/>{/if}
 				{action.label}
 			</a>
 		{/if}

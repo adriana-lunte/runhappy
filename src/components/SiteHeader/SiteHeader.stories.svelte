@@ -28,7 +28,9 @@
 
 <Story
 	name="Start over"
-	args={{ action: { label: 'Start over', href: '#home', icon: ArrowCounterClockwiseIcon } }}
+	args={{
+		action: { label: 'Start over', href: '#home', icon: ArrowCounterClockwiseIcon, quiet: true }
+	}}
 />
 
 <Story name="Without action" args={{ action: undefined, product: 'Report card · yourvenue.com' }} />

@@ -43,5 +43,6 @@ export const startOver = (homeHref: string) => ({
 	label: 'Start over',
 	href: homeHref,
 	icon: ArrowCounterClockwiseIcon,
+	quiet: true,
 	onclick: resetIntro
 });

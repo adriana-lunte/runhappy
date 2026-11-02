@@ -302,6 +302,8 @@ Figma: Components → Tab (`87:1942`), variants `status=idle | hover | selected`
   (not on the home). A tertiary button with the ArrowCounterClockwise icon; it goes back to the home page as a new
   visit: the intro plays again and the form is empty (`startOver` and `resetIntro` in `src/lib/intro.ts`). SiteHeader's
   action now takes an optional icon and click handler.
+  Made less prominent the same day (Adriana): plain gray text instead of a tertiary button (UI/Body/3,
+  ui/ui elements/muted-foreground, 16 px icon, foreground on hover), with the header action's new `quiet` option.
 - **"Book a demo" card (2026-11-02, Adriana):** the yellow card at the end of the report and of each section page now
   says "Want to fix what we found?" (UI/Subtitle/2) and "Book a demo from the email we sent to <email>" (UI/Body/2,
   the address in semibold). It replaces "Want help fixing what we found?", its paragraph and the "Book a call"
