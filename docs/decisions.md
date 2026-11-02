@@ -247,6 +247,10 @@ Figma: Components → Tab (`87:1942`), variants `status=idle | hover | selected`
   `src/components/Card` (surface-100, thin `ui/base/border`, radius sm, 20 px padding). FeatureCard is built on it;
   the home form sits inside one. Not in Figma yet.
   Border removed from Card the same day (Adriana): the form and the step cards have no border now.
+- **Home form: website field and button in one row (2026-11-02, Adriana):** from tablet up (`sm`) the "Grade my
+  site" button sits to the right of the website field, stretched to the height of the field's box (52 px instead
+  of 41) and aligned with it; the error message stays under the field. On phones the button stays below, full
+  width, as before.
 - **Home "What we check, step by step" heading (2026-10-30, Adriana):** left-aligned (was centered) and a thinner
   stroke: UI/Headline Serif/6 (Geist Regular 30) instead of UI/Subtitle/2 (18 semibold). The library has no 18 px
   style lighter than semibold; Serif/6 matches the home title (Serif/5) and the step numbers (Serif/4).

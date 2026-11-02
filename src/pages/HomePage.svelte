@@ -115,20 +115,29 @@
 					error={errors.email}
 					required
 				/>
-				<TextField
-					label="Your venue’s website"
-					name="url"
-					type="url"
-					inputmode="url"
-					autocomplete="url"
-					placeholder="yourvenue.com"
-					value={values.url}
-					error={errors.url}
-					required
-				/>
-				<Button type="submit" iconRight={CaretRightIcon} iconRegular class="w-full"
-					>Grade my site</Button
+				<!-- From sm up: the field's label, box and message are grid rows, and the button sits next to the box at its height. -->
+				<div
+					class="flex flex-col gap-12 sm:grid sm:grid-flow-col sm:grid-cols-1 sm:grid-rows-3 sm:gap-x-12 sm:gap-y-8"
 				>
+					<TextField
+						label="Your venue’s website"
+						name="url"
+						type="url"
+						inputmode="url"
+						autocomplete="url"
+						placeholder="yourvenue.com"
+						class="sm:contents"
+						value={values.url}
+						error={errors.url}
+						required
+					/>
+					<Button
+						type="submit"
+						iconRight={CaretRightIcon}
+						iconRegular
+						class="w-full sm:col-start-2 sm:row-start-2 sm:w-auto">Grade my site</Button
+					>
+				</div>
 			</form>
 		</Card>
 
