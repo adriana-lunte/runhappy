@@ -298,6 +298,13 @@ Figma: Components → Tab (`87:1942`), variants `status=idle | hover | selected`
 
 - **"Get help fixing this" hidden (2026-11-02, Adriana):** the yellow button of the grade card is hidden for now; the
   "Book a call" card below the summary stays.
+- **Open Graph image (2026-11-02, Adriana):** the link preview when the site is shared, the same on every page. Image
+  1200×630: the Runhappy wordmark and "How easy is it to book a party with you?" (UI/Headline Serif/3, brand/neutral/off
+  black) on brand/background/yellow accent, with the report card illustration on the right. Built in the Figma
+  Marketing file, page "Score Card", frame "Report Card · Open Graph image (1200×630)" (57:91), and exported to
+  `static/og-image.png`. Title "How easy is it to book a party with you? · Runhappy Report Card" and the home text as
+  description (`share` in `src/lib/report/config.ts`; tags in `src/routes/+layout.svelte`).
+  To confirm: the image's alt text "Runhappy Report Card: How easy is it to book a party with you?".
 - **Favicon (2026-11-02, Adriana):** the Runhappy logo symbol (Figma Logo page, 60:5210) in brand/neutral/off-black
   on a rounded brand/accent/yellow square, replacing the default Svelte icon. `src/lib/assets/favicon.svg` (used by
   browsers) and `static/favicon.ico` (16, 32 and 48 px, for older browsers), drawn from the same SVG. Favicons cannot

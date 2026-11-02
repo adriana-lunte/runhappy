@@ -5,6 +5,18 @@ export const bookCallUrl =
 	'https://www.runhappy.ai/contact?utm_source=report-card&utm_medium=referral&utm_campaign=report-card';
 
 /**
+ * Link preview when the site is shared (Open Graph), the same on every page (Adriana, 2026-11-02): the home title and
+ * text. The image is static/og-image.png, exported from the Figma Marketing file, page "Score Card", frame
+ * "Report Card · Open Graph image (1200×630)" (57:91).
+ */
+export const share = {
+	title: 'How easy is it to book a party with you? · Runhappy Report Card',
+	description:
+		'Enter your website and get a graded report card in about two minutes, with a clear fix for every problem we find.',
+	imageAlt: 'Runhappy Report Card: How easy is it to book a party with you?'
+};
+
+/**
  * Texts on the bottom left of the footer (Adriana, 2026-10-30, from the brand guidelines footer). The year is the
  * current one, read each time a page is shown, so it changes on its own on January 1.
  */
