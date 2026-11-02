@@ -41,6 +41,17 @@ export function thingsToFix(findings: Finding[]): Finding[] {
 		.sort((a, b) => pointsToGain(b) - pointsToGain(a));
 }
 
+/**
+ * Short summary of what to fix in one category, for its summary row (Adriana, 2026-11-02): the issue that loses
+ * the most points, then how many more, e.g. "Parties are booked on another company’s site · +1 more".
+ * Empty when there is nothing to fix.
+ */
+export function fixSummary(findings: Finding[]): string | undefined {
+	const [first, ...rest] = thingsToFix(findings);
+	if (!first) return undefined;
+	return rest.length ? `${first.headline} · +${rest.length} more` : first.headline;
+}
+
 /** "11 to fix · 5 working · 4 couldn't check" for a set of findings. */
 export function outcomeCounts(findings: Finding[]) {
 	return {

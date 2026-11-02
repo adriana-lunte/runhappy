@@ -284,6 +284,10 @@ Figma: Components → Tab (`87:1942`), variants `status=idle | hover | selected`
   a call" card and the footer. The FixList component stays in the design system, unused for now.
   The site footer now always sits at the bottom of the screen on short pages (2026-11-02, Adriana): the page content
   stretches to fill the space above it, as on the checking page. Home, report and section pages.
+  Each website row of the report summary shows a short summary of what to fix under its name (2026-11-02, Adriana):
+  the issue that loses the most points, then how many more, e.g. "Parties are booked on another company’s site ·
+  +1 more" (`fixSummary` in `score.ts`, UI/Body/4 in brand/text/secondary). Nothing when there is nothing to fix.
+  The "Ads and tracking" row keeps its note "Not running yet, so not graded".
 
 - **Site footer (2026-10-30, Adriana, from the brand guidelines footer):** new `SiteFooter` on every Report Card
   page (home, checking, report). Brand yellow (`brand/background/yellow-accent`), dark text

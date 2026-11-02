@@ -5,7 +5,8 @@
 	One category in the report summary: name, "15/23", a small ScoreRing and a caret (20 px, muted-foreground,
 	Adriana 2026-11-02). A link to the category (its own page since 2026-11-02).
 	Hover: ui/surface/surface-150. Poor scores are written in ui/status/destructive-foreground.
-	Without a score (not graded), it shows a note instead, e.g. "Not running yet, so not graded".
+	An optional note under the name: a short summary of what to fix (2026-11-02), or, without a score (not graded),
+	why, e.g. "Not running yet, so not graded".
 -->
 <script lang="ts" module>
 	export interface ScoreRowProps {
@@ -15,7 +16,7 @@
 		href: string;
 		/** Points. Leave empty for a category that is not graded. */
 		score?: { earned: number; possible: number };
-		/** Shown under the name when there is no score. */
+		/** Shown under the name: what to fix, or why there is no score. */
 		note?: string;
 		/** Layout classes. */
 		class?: string;
@@ -45,7 +46,7 @@
 >
 	<span class="flex min-w-0 flex-col">
 		<span class="type-ui-body-2-regular text-ui-base-foreground">{name}</span>
-		{#if !score && note}
+		{#if note}
 			<span class="type-ui-body-4-regular text-brand-text-secondary">{note}</span>
 		{/if}
 	</span>

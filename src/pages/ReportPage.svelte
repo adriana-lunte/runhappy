@@ -31,7 +31,7 @@
 	import { TextLink } from '#components/TextLink';
 	import { categories, webCategories } from '#lib/report/categories.ts';
 	import { bookCallUrl, footerDetails } from '#lib/report/config.ts';
-	import { categoryScore } from '#lib/report/score.ts';
+	import { categoryScore, fixSummary } from '#lib/report/score.ts';
 
 	let { report, homeHref, sectionHref }: ReportPageProps = $props();
 
@@ -99,6 +99,7 @@
 						name={categories[category].name}
 						href={sectionHref(category)}
 						score={categoryScore(report.findings, category)}
+						note={fixSummary(report.findings.filter((f) => f.category === category))}
 					/>
 				{/each}
 				<div class="mt-8 border-t border-ui-base-border pt-8">

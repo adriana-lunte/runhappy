@@ -11,7 +11,7 @@
 			docs: {
 				description: {
 					component:
-						'A category in the report summary: name, points and a small ring; jumps to the category. Poor scores in red. Without a score it shows a note. Not in Figma yet.'
+						'A category in the report summary: name, points and a small ring; opens the category page. Poor scores in red. An optional note under the name: a short summary of what to fix, or why there is no score. Not in Figma yet.'
 				}
 			}
 		}
@@ -24,6 +24,12 @@
 		<div class="flex max-w-sm flex-col gap-4 bg-ui-surface-surface-100 p-16">
 			<ScoreRow name="Party booking" href="#booking" score={{ earned: 15, possible: 23 }} />
 			<ScoreRow name="Search results" href="#search" score={{ earned: 3, possible: 7 }} />
+			<ScoreRow
+				name="Party booking"
+				href="#booking"
+				score={{ earned: 15, possible: 23 }}
+				note="Parties are booked on another company’s site · +1 more"
+			/>
 			<ScoreRow name="Ads and tracking" href="#ads" note="Not running yet, so not graded" />
 		</div>
 	{/snippet}
