@@ -251,6 +251,11 @@ Figma: Components → Tab (`87:1942`), variants `status=idle | hover | selected`
   site" button sits to the right of the website field, stretched to the height of the field's box (52 px instead
   of 41) and aligned with it; the error message stays under the field. On phones the button stays below, full
   width, as before.
+- **Home form spacing, roomier (2026-11-02, Adriana):** each space one step up the scale: 16 px between rows and
+  columns (was 12, also between the website field and the button), 24 px card padding (was 20; new Card option
+  `padding="lg"`, the step cards keep 20) and 10 px between a field's label and its box (was 8, in TextField and
+  SearchField, so every field in the app; it is also the gap above the help/error message).
+  To confirm: the TextField and SearchField components in Figma still have 8 px between label and box.
 - **Home "What we check, step by step" heading (2026-10-30, Adriana):** left-aligned (was centered) and a thinner
   stroke: UI/Headline Serif/6 (Geist Regular 30) instead of UI/Subtitle/2 (18 semibold). The library has no 18 px
   style lighter than semibold; Serif/6 matches the home title (Serif/5) and the step numbers (Serif/4).

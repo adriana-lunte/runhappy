@@ -13,7 +13,7 @@
 			docs: {
 				description: {
 					component:
-						'Static box that groups content: surface-100 background, no border, radius sm, 20 px padding. Used by the home form and by FeatureCard. Not clickable, so it has no hover or focus states. Not in Figma yet.'
+						'Static box that groups content: surface-100 background, no border, radius sm, 20 px padding (24 px with padding "lg"). Used by the home form and by FeatureCard. Not clickable, so it has no hover or focus states. Not in Figma yet.'
 				}
 			}
 		}
@@ -27,6 +27,19 @@
 				<p class="type-ui-subtitle-3 text-ui-base-foreground">Card title</p>
 				<p class="type-ui-body-4-regular text-brand-text-secondary">
 					Any content goes inside; the layout comes from the class.
+				</p>
+			</Card>
+		</div>
+	{/snippet}
+</Story>
+
+<Story name="Large padding">
+	{#snippet template()}
+		<div class="max-w-xs bg-ui-surface-surface-200 p-16">
+			<Card padding="lg" class="flex flex-col gap-6">
+				<p class="type-ui-subtitle-3 text-ui-base-foreground">Card title</p>
+				<p class="type-ui-body-4-regular text-brand-text-secondary">
+					24 px padding, as in the home form.
 				</p>
 			</Card>
 		</div>
