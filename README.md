@@ -110,11 +110,14 @@ WCAG AA accessibility and a story. Full checklist in [CLAUDE.md](CLAUDE.md).
 Screens live in `src/pages` (e.g. `HomePage.svelte`) and only use components.
 The files in `src/routes` stay thin: they load data and render the page.
 
-| Route             | Page           | What it does                                                         |
-| ----------------- | -------------- | -------------------------------------------------------------------- |
-| `/`               | `HomePage`     | Website form. The server action validates it with Zod and redirects. |
-| `/r/sample/check` | `CheckingPage` | The 7 checking steps (simulated), then opens the report.             |
-| `/r/sample`       | `ReportPage`   | The graded report (sample data).                                     |
+| Route                                                         | Page                | What it does                                                         |
+| ------------------------------------------------------------- | ------------------- | -------------------------------------------------------------------- |
+| `/`                                                           | `HomePage`          | Website form. The server action validates it with Zod and redirects. |
+| `/r/sample/check`                                             | `CheckingPage`      | The 7 checking steps (simulated), then opens the report.             |
+| `/r/sample`                                                   | `ReportPage`        | The graded report (sample data).                                     |
+| `/r/sample/booking` (and `/search`, `/ai`, `/basics`, `/ads`) | `ReportSectionPage` | One section of the report, opened from its summary row.              |
+
+The section names in the URL are checked by `src/params.ts` (anything else is a 404).
 
 Report data: `src/lib/schemas/report.ts` (Zod schema, same structure as the original tool),
 `src/lib/report/` (sample report, category copy, score helpers, links).

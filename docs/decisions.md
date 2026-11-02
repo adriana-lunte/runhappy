@@ -261,6 +261,17 @@ Figma: Components → Tab (`87:1942`), variants `status=idle | hover | selected`
   stroke: UI/Headline Serif/6 (Geist Regular 30) instead of UI/Subtitle/2 (18 semibold). The library has no 18 px
   style lighter than semibold; Serif/6 matches the home title (Serif/5) and the step numbers (Serif/4).
 
+- **Report sections as their own pages (2026-11-02, Adriana):** each row of the report summary (Party booking,
+  Search results, AI assistants, Website basics, Ads and tracking) opens its own page: `/r/sample/booking`,
+  `/search`, `/ai`, `/basics`, `/ads` (`ReportSectionPage`). The report page keeps the summary card, "Things to
+  fix", the "Book a call" card and the footer; the Website and Ads areas left it. Each section page has "Back to
+  report" on top, the area name and its summary ("25 of 43 · … to fix" or "Not graded · …"), the section as it
+  was, the "couldn’t check" note (website sections), previous / next section and the "Book a call" card.
+  New components, as Adriana approved: `BookCallCard` (the yellow card, now on 6 pages) and `TextLink` (the
+  underlined link, also used for the two existing links of the report). Not in Figma yet.
+  To confirm: the copy "Previous: …" / "Next: …"; the section pages' "Book a call" link is tagged
+  `utm_content=section-<name>`.
+
 - **Site footer (2026-10-30, Adriana, from the brand guidelines footer):** new `SiteFooter` on every Report Card
   page (home, checking, report). Brand yellow (`brand/background/yellow-accent`), dark text
   (`ui/base/primary-foreground`): the logo, a dotted line, then "2026, Runhappy.ai" and "New York City, New York"

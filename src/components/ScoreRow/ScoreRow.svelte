@@ -2,7 +2,7 @@
 	ScoreRow — Runhappy design system (Report Card)
 	Not in Figma yet: modeled on report-card.runhappyapps.com (report summary, 2026-10-28).
 
-	One category in the report summary: name, "15/23" and a small ScoreRing. A link that jumps to the category.
+	One category in the report summary: name, "15/23" and a small ScoreRing. A link to the category (its own page since 2026-11-02).
 	Hover: ui/surface/surface-150. Poor scores are written in ui/status/destructive-foreground.
 	Without a score (not graded), it shows a note instead, e.g. "Not running yet, so not graded".
 -->
@@ -10,7 +10,7 @@
 	export interface ScoreRowProps {
 		/** Category name, e.g. "Party booking". */
 		name: string;
-		/** Where the row jumps to, e.g. "#booking". */
+		/** Where the row goes, e.g. the category page "/r/sample/booking". */
 		href: string;
 		/** Points. Leave empty for a category that is not graded. */
 		score?: { earned: number; possible: number };
@@ -32,7 +32,7 @@
 	const poor = $derived(score ? scoreTone(score) === 'poor' : false);
 </script>
 
-<!-- In-page anchor: no navigation to resolve. -->
+<!-- The href comes resolved from the page. -->
 <!-- eslint-disable svelte/no-navigation-without-resolve -->
 <a
 	{href}

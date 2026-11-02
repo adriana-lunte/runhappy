@@ -11,6 +11,8 @@
 	export interface FindingCardProps {
 		/** The finding to show. */
 		finding: Finding;
+		/** Heading level of the headline, so the page outline stays right (2 under a page's h1). */
+		level?: 2 | 3;
 		/** Layout classes. */
 		class?: string;
 	}
@@ -23,7 +25,7 @@
 	import { StatusIcon, outcomeLabels } from '#components/StatusIcon';
 	import EvidenceList from './EvidenceList.svelte';
 
-	let { finding, class: className }: FindingCardProps = $props();
+	let { finding, level = 3, class: className }: FindingCardProps = $props();
 
 	const badge = $derived(
 		finding.outcome === 'fail'
@@ -50,7 +52,9 @@
 			</span>
 		{/if}
 	</div>
-	<h3 class="type-ui-subtitle-2 text-ui-base-foreground">{finding.headline}</h3>
+	<svelte:element this={`h${level}`} class="type-ui-subtitle-2 text-ui-base-foreground">
+		{finding.headline}
+	</svelte:element>
 	{#if finding.happening}
 		<p class="type-ui-body-2-regular text-ui-base-foreground">{finding.happening}</p>
 	{/if}

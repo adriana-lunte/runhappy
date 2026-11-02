@@ -51,3 +51,6 @@ export const categories: Record<Category, CategoryInfo> = {
 
 /** Website categories, in report order. Ads and tracking are a separate area. */
 export const webCategories: Category[] = ['booking', 'search', 'ai', 'basics'];
+
+/** Every category, in summary order: each one has its own section page (/r/sample/booking…), since 2026-11-02. */
+export const reportSections: Category[] = [...webCategories, 'ads'];

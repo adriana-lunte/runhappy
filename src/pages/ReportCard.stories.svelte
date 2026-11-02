@@ -4,6 +4,7 @@
 	import CheckingPage from './CheckingPage.svelte';
 	import HomePage from './HomePage.svelte';
 	import ReportPage from './ReportPage.svelte';
+	import ReportSectionPage from './ReportSectionPage.svelte';
 
 	const { Story } = defineMeta({
 		title: 'Pages/Report Card',
@@ -13,7 +14,7 @@
 			docs: {
 				description: {
 					component:
-						'The three Report Card screens with sample data: home, checking (paused on step 1 here) and the report. Modeled on report-card.runhappyapps.com (2026-10-28).'
+						'The Report Card screens with sample data: home, checking (paused on step 1 here), the report and one of its section pages (2026-11-02). Modeled on report-card.runhappyapps.com (2026-10-28).'
 				}
 			}
 		}
@@ -46,5 +47,29 @@
 </Story>
 
 <Story name="Report">
-	{#snippet template()}<ReportPage homeHref="#" report={sampleReport} />{/snippet}
+	{#snippet template()}<ReportPage
+			homeHref="#"
+			report={sampleReport}
+			sectionHref={(section) => `#${section}`}
+		/>{/snippet}
+</Story>
+
+<Story name="Report section">
+	{#snippet template()}<ReportSectionPage
+			homeHref="#"
+			reportHref="#"
+			report={sampleReport}
+			category="search"
+			sectionHref={(section) => `#${section}`}
+		/>{/snippet}
+</Story>
+
+<Story name="Report section (ads)">
+	{#snippet template()}<ReportSectionPage
+			homeHref="#"
+			reportHref="#"
+			report={sampleReport}
+			category="ads"
+			sectionHref={(section) => `#${section}`}
+		/>{/snippet}
 </Story>
