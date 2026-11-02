@@ -543,6 +543,7 @@ approved: sample data first; the map on the checking screen left out; code in th
   Adjusted the same day: first 8 px and fading, which showed dots where the see-through pieces overlapped; then one
   solid ribbon, 4 px; now smooth curves between mouse positions (Catmull-Rom) and a fade again, drawn in pieces
   that meet edge to edge so it shows no dots.
+  Removed on 2026-11-02 (Adriana), with its token `--size-cursor-trail` and `trail.ts`.
 - **Report copied to Figma for redesign (2026-10-29, Adriana):** Marketing file, frame "Report Card · Report (from
   code, 2026-10-29)" (node 33:9733), light mode, 1280 wide. Editable layers in auto layout, bound to the library:
   text styles, color / spacing / radius variables, button-primary / button-secondary and icon instances.
