@@ -288,6 +288,11 @@ Figma: Components → Tab (`87:1942`), variants `status=idle | hover | selected`
   the issue that loses the most points, then how many more, e.g. "Parties are booked on another company’s site ·
   +1 more" (`fixSummary` in `score.ts`, UI/Body/4 in brand/text/secondary). Nothing when there is nothing to fix.
   The "Ads and tracking" row keeps its note "Not running yet, so not graded".
+  Under the verdict of the grade card, a short "why" (2026-11-02, Adriana), before the note about the points: the two
+  website issues that lose the most points, e.g. "Why: Parties are booked on another company’s site. Your phone or
+  address is missing from your homepage." (`verdictReason` in `score.ts`, UI/Body/4 in brand/text/secondary). As
+  two sentences instead of "…site, and your phone…" so headlines that start with a name ("Google…") keep their
+  capital letter. Nothing when there is nothing to fix.
 
 - **Site footer (2026-10-30, Adriana, from the brand guidelines footer):** new `SiteFooter` on every Report Card
   page (home, checking, report). Brand yellow (`brand/background/yellow-accent`), dark text

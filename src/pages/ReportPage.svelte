@@ -31,11 +31,12 @@
 	import { TextLink } from '#components/TextLink';
 	import { categories, webCategories } from '#lib/report/categories.ts';
 	import { bookCallUrl, footerDetails } from '#lib/report/config.ts';
-	import { categoryScore, fixSummary } from '#lib/report/score.ts';
+	import { categoryScore, fixSummary, verdictReason } from '#lib/report/score.ts';
 
 	let { report, homeHref, sectionHref }: ReportPageProps = $props();
 
 	const { overall } = $derived(report);
+	const reason = $derived(verdictReason(report.findings));
 	const checked = $derived(
 		new Date(report.scannedAt).toLocaleDateString('en-US', { dateStyle: 'long', timeZone: 'UTC' })
 	);
@@ -74,6 +75,9 @@
 				</ScoreRing>
 				<div class="flex flex-col gap-8">
 					<p class="type-ui-subtitle-2 text-ui-base-foreground">{overall.verdict}</p>
+					{#if reason}
+						<p class="type-ui-body-4-regular text-brand-text-secondary">{reason}</p>
+					{/if}
 					<p class="type-ui-body-4-regular text-brand-text-secondary">{overall.note}</p>
 				</div>
 			</div>

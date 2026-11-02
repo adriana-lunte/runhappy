@@ -52,6 +52,18 @@ export function fixSummary(findings: Finding[]): string | undefined {
 	return rest.length ? `${first.headline} · +${rest.length} more` : first.headline;
 }
 
+/**
+ * Why the verdict, for the grade card (Adriana, 2026-11-02): the two website issues that lose the most points, as
+ * sentences, e.g. "Why: Parties are booked on another company’s site. Your phone or address is missing from your
+ * homepage." Each headline keeps its own capital letter (some start with a name, like "Google").
+ * Empty when there is nothing to fix.
+ */
+export function verdictReason(findings: Finding[]): string | undefined {
+	const top = thingsToFix(findings.filter((f) => f.category !== 'ads')).slice(0, 2);
+	if (!top.length) return undefined;
+	return `Why: ${top.map((f) => `${f.headline}.`).join(' ')}`;
+}
+
 /** "11 to fix · 5 working · 4 couldn't check" for a set of findings. */
 export function outcomeCounts(findings: Finding[]) {
 	return {
