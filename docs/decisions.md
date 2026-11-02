@@ -294,7 +294,7 @@ Figma: Components → Tab (`87:1942`), variants `status=idle | hover | selected`
   two sentences instead of "…site, and your phone…" so headlines that start with a name ("Google…") keep their
   capital letter. Nothing when there is nothing to fix.
   The note on how the points are counted ("Out of 43, not 100: …") moved to the bottom of the grade card, as a
-  footnote starting with "_" (2026-11-02, Adriana). To confirm: nothing else in the card has a matching "_".
+  footnote starting with `*` (2026-11-02, Adriana), referenced by a `*` after the Website total (`25 of 43*`).
 
 - **Site footer (2026-10-30, Adriana, from the brand guidelines footer):** new `SiteFooter` on every Report Card
   page (home, checking, report). Brand yellow (`brand/background/yellow-accent`), dark text

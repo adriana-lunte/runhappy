@@ -94,7 +94,7 @@
 					<h2 class="type-ui-body-2-semibold text-ui-base-foreground">Website</h2>
 					<span class="type-ui-body-2-semibold">
 						{overall.earned}
-						<span class="font-mono text-brand-text-secondary">of {overall.possible}</span>
+						<span class="font-mono text-brand-text-secondary">of {overall.possible}*</span>
 					</span>
 				</div>
 				{#each webCategories as category (category)}
@@ -114,7 +114,7 @@
 					/>
 				</div>
 			</div>
-			<!-- How the points are counted, as a footnote at the end of the card (Adriana, 2026-11-02). -->
+			<!-- How the points are counted, as a footnote at the end of the card for the "*" on the Website total (Adriana, 2026-11-02). -->
 			<p class="type-ui-body-4-regular text-brand-text-secondary">* {overall.note}</p>
 		</section>
 
