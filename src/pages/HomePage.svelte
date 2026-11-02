@@ -86,9 +86,9 @@
 			</p>
 		</section>
 
-		<Card padding="lg">
-			<form method="post" novalidate class="flex flex-col gap-16">
-				<div class="grid gap-16 sm:grid-cols-2">
+		<Card>
+			<form method="post" novalidate class="flex flex-col gap-12">
+				<div class="grid gap-12 sm:grid-cols-2">
 					<TextField
 						label="First name"
 						name="firstName"
@@ -117,7 +117,7 @@
 				/>
 				<!-- From sm up: the field's label, box and message stack in column 1 (rows as tall as their content),
 					and the button sits in column 2 next to the box, at its height. -->
-				<div class="flex flex-col gap-16 sm:grid sm:grid-cols-1 sm:gap-x-16 sm:gap-y-10">
+				<div class="flex flex-col gap-12 sm:grid sm:grid-cols-1 sm:gap-x-12 sm:gap-y-8">
 					<TextField
 						label="Your venue’s website"
 						name="url"

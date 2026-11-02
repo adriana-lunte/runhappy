@@ -84,7 +84,7 @@
 	}
 </script>
 
-<div class={['flex flex-col gap-10', className]}>
+<div class={['flex flex-col gap-8', className]}>
 	<FieldLabel for={inputId} {label} {hideLabel} {info} />
 
 	<FieldBox invalid={hasError} {disabled} highlightOnHover={hasValue}>

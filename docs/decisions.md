@@ -255,7 +255,8 @@ Figma: Components → Tab (`87:1942`), variants `status=idle | hover | selected`
   columns (was 12, also between the website field and the button), 24 px card padding (was 20; new Card option
   `padding="lg"`, the step cards keep 20) and 10 px between a field's label and its box (was 8, in TextField and
   SearchField, so every field in the app; it is also the gap above the help/error message).
-  To confirm: the TextField and SearchField components in Figma still have 8 px between label and box.
+  Undone the same day (Adriana): back to 12 px rows and columns, 20 px card padding and 8 px label gap; the Card
+  `padding` option was removed too.
 - **Home "What we check, step by step" heading (2026-10-30, Adriana):** left-aligned (was centered) and a thinner
   stroke: UI/Headline Serif/6 (Geist Regular 30) instead of UI/Subtitle/2 (18 semibold). The library has no 18 px
   style lighter than semibold; Serif/6 matches the home title (Serif/5) and the step numbers (Serif/4).
