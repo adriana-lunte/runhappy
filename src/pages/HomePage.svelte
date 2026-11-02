@@ -70,10 +70,10 @@
 {/if}
 
 <!-- The page stays out of reach (inert) while the intro covers it. -->
-<div class="min-h-dvh bg-ui-surface-surface-200" inert={showIntro}>
+<div class="flex min-h-dvh flex-col bg-ui-surface-surface-200" inert={showIntro}>
 	<SiteHeader product="Report Card" {homeHref} />
 
-	<main class="mx-auto flex max-w-2xl flex-col gap-48 px-16 py-48">
+	<main class="mx-auto flex w-full max-w-2xl flex-1 flex-col gap-48 px-16 py-48">
 		<section class="flex flex-col items-center gap-16 text-center">
 			<!-- Decorative: the title already says what the page is. -->
 			<img src={reportCardImage} alt="" class="size-(--size-hero-image)" />

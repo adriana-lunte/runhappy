@@ -53,10 +53,10 @@
 
 <svelte:head><title>{info.name} · {report.venue.name} · Report Card</title></svelte:head>
 
-<div class="min-h-dvh bg-ui-surface-surface-200">
+<div class="flex min-h-dvh flex-col bg-ui-surface-surface-200">
 	<SiteHeader product="Report Card" {homeHref} />
 
-	<main class="mx-auto flex max-w-2xl flex-col gap-16 px-16 py-32">
+	<main class="mx-auto flex w-full max-w-2xl flex-1 flex-col gap-16 px-16 py-32">
 		<TextLink
 			href={reportHref}
 			caret="left"

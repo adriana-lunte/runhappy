@@ -282,6 +282,8 @@ Figma: Components → Tab (`87:1942`), variants `status=idle | hover | selected`
   from screen readers). First placed inside the finding card, but only booking and ads have one. Not in Figma yet.
   "Things to fix" hidden from the report page (2026-11-02, Adriana): the page now has the summary card, the "Book
   a call" card and the footer. The FixList component stays in the design system, unused for now.
+  The site footer now always sits at the bottom of the screen on short pages (2026-11-02, Adriana): the page content
+  stretches to fill the space above it, as on the checking page. Home, report and section pages.
 
 - **Site footer (2026-10-30, Adriana, from the brand guidelines footer):** new `SiteFooter` on every Report Card
   page (home, checking, report). Brand yellow (`brand/background/yellow-accent`), dark text
