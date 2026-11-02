@@ -271,6 +271,8 @@ Figma: Components → Tab (`87:1942`), variants `status=idle | hover | selected`
   underlined link, also used for the two existing links of the report). Not in Figma yet.
   To confirm: the copy "Previous: …" / "Next: …"; the section pages' "Book a call" link is tagged
   `utm_content=section-<name>`.
+  The summary rows got a caret on the right (Phosphor CaretRight, regular, 20 px, `ui/ui-elements/muted-foreground`),
+  in ScoreRow, also on the "Ads and tracking" row (2026-11-02, Adriana).
 
 - **Site footer (2026-10-30, Adriana, from the brand guidelines footer):** new `SiteFooter` on every Report Card
   page (home, checking, report). Brand yellow (`brand/background/yellow-accent`), dark text

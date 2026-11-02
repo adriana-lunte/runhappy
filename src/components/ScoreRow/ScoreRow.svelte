@@ -2,7 +2,8 @@
 	ScoreRow — Runhappy design system (Report Card)
 	Not in Figma yet: modeled on report-card.runhappyapps.com (report summary, 2026-10-28).
 
-	One category in the report summary: name, "15/23" and a small ScoreRing. A link to the category (its own page since 2026-11-02).
+	One category in the report summary: name, "15/23", a small ScoreRing and a caret (20 px, muted-foreground,
+	Adriana 2026-11-02). A link to the category (its own page since 2026-11-02).
 	Hover: ui/surface/surface-150. Poor scores are written in ui/status/destructive-foreground.
 	Without a score (not graded), it shows a note instead, e.g. "Not running yet, so not graded".
 -->
@@ -22,7 +23,7 @@
 </script>
 
 <script lang="ts">
-	import { TrendUpIcon } from 'phosphor-svelte';
+	import { CaretRightIcon, TrendUpIcon } from 'phosphor-svelte';
 	import { Icon } from '#components/Icon';
 	import { ScoreRing } from '#components/ScoreRing';
 	import { scoreTone } from '#lib/report/score.ts';
@@ -48,8 +49,8 @@
 			<span class="type-ui-body-4-regular text-brand-text-secondary">{note}</span>
 		{/if}
 	</span>
-	{#if score}
-		<span class="flex items-center gap-12">
+	<span class="flex items-center gap-12">
+		{#if score}
 			<span
 				class={[
 					'type-ui-body-2-semibold tabular-nums',
@@ -59,9 +60,10 @@
 				{score.earned}/{score.possible}
 			</span>
 			<ScoreRing earned={score.earned} possible={score.possible} />
-		</span>
-	{:else}
-		<Icon icon={TrendUpIcon} class="size-20 text-ui-base-foreground" />
-	{/if}
+		{:else}
+			<Icon icon={TrendUpIcon} class="size-20 text-ui-base-foreground" />
+		{/if}
+		<Icon icon={CaretRightIcon} regular class="size-20 text-ui-ui-elements-muted-foreground" />
+	</span>
 </a>
 <!-- eslint-enable svelte/no-navigation-without-resolve -->
