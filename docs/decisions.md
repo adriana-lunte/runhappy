@@ -296,6 +296,12 @@ Figma: Components → Tab (`87:1942`), variants `status=idle | hover | selected`
   The note on how the points are counted ("Out of 43, not 100: …") moved to the bottom of the grade card, as a
   footnote starting with `*` (2026-11-02, Adriana), referenced by a `*` after the Website total (`25 of 43*`).
 
+- **Favicon (2026-11-02, Adriana):** the Runhappy logo symbol (Figma Logo page, 60:5210) in brand/neutral/off-black
+  on a rounded brand/accent/yellow square, replacing the default Svelte icon. `src/lib/assets/favicon.svg` (used by
+  browsers) and `static/favicon.ico` (16, 32 and 48 px, for older browsers), drawn from the same SVG. Favicons cannot
+  read CSS variables, so the two light-mode token values are written in the SVG: change them there too if the
+  tokens change. Not in Figma as a favicon.
+
 - **Site footer (2026-10-30, Adriana, from the brand guidelines footer):** new `SiteFooter` on every Report Card
   page (home, checking, report). Brand yellow (`brand/background/yellow-accent`), dark text
   (`ui/base/primary-foreground`): the logo, a dotted line, then "2026, Runhappy.ai" and "New York City, New York"
