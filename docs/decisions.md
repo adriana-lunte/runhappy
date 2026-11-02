@@ -296,6 +296,8 @@ Figma: Components → Tab (`87:1942`), variants `status=idle | hover | selected`
   The note on how the points are counted ("Out of 43, not 100: …") moved to the bottom of the grade card, as a
   footnote starting with `*` (2026-11-02, Adriana), referenced by a `*` after the Website total (`25 of 43*`).
 
+- **"Get help fixing this" hidden (2026-11-02, Adriana):** the yellow button of the grade card is hidden for now; the
+  "Book a call" card below the summary stays.
 - **Favicon (2026-11-02, Adriana):** the Runhappy logo symbol (Figma Logo page, 60:5210) in brand/neutral/off-black
   on a rounded brand/accent/yellow square, replacing the default Svelte icon. `src/lib/assets/favicon.svg` (used by
   browsers) and `static/favicon.ico` (16, 32 and 48 px, for older browsers), drawn from the same SVG. Favicons cannot

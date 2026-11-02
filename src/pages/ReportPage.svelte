@@ -1,6 +1,6 @@
 <!--
 	ReportPage — the graded report (modeled on report-card.runhappyapps.com, 2026-10-28).
-	1. Summary: grade ring, verdict, "Get help fixing this", one ScoreRow per category.
+	1. Summary: grade ring, verdict, one ScoreRow per category. ("Get help fixing this" hidden on 2026-11-02, Adriana.)
 	2. "Book a call" card and footer.
 	"Things to fix" (FixList) was hidden on 2026-11-02 (Adriana); the component stays in the design system.
 	Each summary row opens that category's own page (ReportSectionPage, since 2026-11-02), which holds what used
@@ -20,10 +20,7 @@
 </script>
 
 <script lang="ts">
-	import { CaretRightIcon } from 'phosphor-svelte';
 	import { BookCallCard } from '#components/BookCallCard';
-	import { buttonClasses } from '#components/Button';
-	import { Icon } from '#components/Icon';
 	import { ScoreRing } from '#components/ScoreRing';
 	import { ScoreRow } from '#components/ScoreRow';
 	import { SiteFooter } from '#components/SiteFooter';
@@ -80,15 +77,6 @@
 					{/if}
 				</div>
 			</div>
-			<a
-				href={helpUrl('summary')}
-				target="_blank"
-				rel="noopener"
-				class={[buttonClasses('primary'), 'w-full']}
-			>
-				Get help fixing this
-				<Icon icon={CaretRightIcon} regular class="size-20" />
-			</a>
 			<div class="flex flex-col gap-4">
 				<div class="flex items-baseline justify-between">
 					<h2 class="type-ui-body-2-semibold text-ui-base-foreground">Website</h2>
