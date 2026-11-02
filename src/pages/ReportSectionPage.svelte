@@ -31,6 +31,7 @@
 	import { SectionIllustration } from '#components/SectionIllustration';
 	import { SiteFooter } from '#components/SiteFooter';
 	import { SiteHeader } from '#components/SiteHeader';
+	import { startOver } from '#lib/intro.ts';
 	import { TextLink } from '#components/TextLink';
 	import { categories, reportSections } from '#lib/report/categories.ts';
 	import { footerDetails } from '#lib/report/config.ts';
@@ -54,7 +55,7 @@
 <svelte:head><title>{info.name} · {report.venue.name} · Report Card</title></svelte:head>
 
 <div class="flex min-h-dvh flex-col bg-ui-surface-surface-200">
-	<SiteHeader product="Report Card" {homeHref} />
+	<SiteHeader product="Report Card" {homeHref} action={startOver(homeHref)} />
 
 	<main class="mx-auto flex w-full max-w-2xl flex-1 flex-col gap-16 px-16 py-32">
 		<TextLink

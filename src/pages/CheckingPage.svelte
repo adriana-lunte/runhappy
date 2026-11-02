@@ -22,6 +22,7 @@
 	import { ProgressSteps } from '#components/ProgressSteps';
 	import { SiteFooter } from '#components/SiteFooter';
 	import { SiteHeader } from '#components/SiteHeader';
+	import { startOver } from '#lib/intro.ts';
 	import { checkSteps, footerDetails } from '#lib/report/config.ts';
 
 	let { homeHref, site, stepMs = 1500, ondone }: CheckingPageProps = $props();
@@ -46,7 +47,7 @@
 <svelte:head><title>Checking your site… · Report Card</title></svelte:head>
 
 <div class="flex min-h-dvh flex-col bg-ui-surface-surface-200">
-	<SiteHeader product={`Report card · ${host}`} {homeHref} />
+	<SiteHeader product={`Report card · ${host}`} {homeHref} action={startOver(homeHref)} />
 
 	<main class="mx-auto flex w-full max-w-2xl flex-1 flex-col justify-center gap-24 px-16 py-32">
 		<!-- Announced to screen readers each time the step changes. -->

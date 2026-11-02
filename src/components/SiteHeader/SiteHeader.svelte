@@ -3,16 +3,28 @@
 	Not in Figma yet: modeled on report-card.runhappyapps.com (2026-10-28).
 
 	Top bar of a standalone Runhappy page: logo, a divider and the product name on the left; one action on the
-	right (e.g. "Book a call", a link that looks like a tertiary button). Divider under it: ui/base/border.
+	right: a link that looks like a tertiary button, with an optional icon (e.g. "Start over", 2026-11-02). Divider
+	under it: ui/base/border.
 -->
 <script lang="ts" module>
+	import type { PhosphorIcon } from '#components/Icon';
+
 	export interface SiteHeaderProps {
 		/** Product name next to the logo, e.g. "Report Card". */
 		product: string;
 		/** Where the logo and product name go (usually the home page). */
 		homeHref: string;
-		/** The action on the right. Opens in a new tab when it leaves the site. */
-		action?: { label: string; href: string; external?: boolean };
+		/**
+		 * The action on the right: a link styled as a tertiary button. Opens in a new tab when `external`; `onclick`
+		 * runs before it navigates (e.g. to reset the intro).
+		 */
+		action?: {
+			label: string;
+			href: string;
+			external?: boolean;
+			icon?: PhosphorIcon;
+			onclick?: () => void;
+		};
 		/** Layout classes. */
 		class?: string;
 	}
@@ -20,12 +32,13 @@
 
 <script lang="ts">
 	import { buttonClasses } from '#components/Button';
+	import { Icon } from '#components/Icon';
 	import { Logo } from '#components/Logo';
 
 	let { product, homeHref, action, class: className }: SiteHeaderProps = $props();
 </script>
 
-<!-- The page passes `homeHref` already resolved (SvelteKit `resolve()`); `action` is an external link. -->
+<!-- The page passes `homeHref` and internal `action` links already resolved (SvelteKit `resolve()`). -->
 <!-- eslint-disable svelte/no-navigation-without-resolve -->
 <header class={['border-b border-ui-base-border', className]}>
 	<div class="mx-auto flex max-w-(--size-page) items-center justify-between gap-16 px-16 py-8">
@@ -40,7 +53,9 @@
 				class={buttonClasses('tertiary')}
 				target={action.external ? '_blank' : undefined}
 				rel={action.external ? 'noopener' : undefined}
+				onclick={action.onclick}
 			>
+				{#if action.icon}<Icon icon={action.icon} class="size-20" />{/if}
 				{action.label}
 			</a>
 		{/if}

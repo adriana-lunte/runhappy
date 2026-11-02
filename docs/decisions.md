@@ -298,6 +298,10 @@ Figma: Components → Tab (`87:1942`), variants `status=idle | hover | selected`
 
 - **"Get help fixing this" hidden (2026-11-02, Adriana):** the yellow button of the grade card is hidden for now; the
   "Book a call" card below the summary stays.
+- **"Start over" button (2026-11-02, Adriana):** top right of the header on the checking, report and section pages
+  (not on the home). A tertiary button with the ArrowCounterClockwise icon; it goes back to the home page as a new
+  visit: the intro plays again and the form is empty (`startOver` and `resetIntro` in `src/lib/intro.ts`). SiteHeader's
+  action now takes an optional icon and click handler.
 - **"Book a demo" card (2026-11-02, Adriana):** the yellow card at the end of the report and of each section page now
   says "Want to fix what we found?" (UI/Subtitle/2) and "Book a demo from the email we sent to <email>" (UI/Body/2,
   the address in semibold). It replaces "Want help fixing what we found?", its paragraph and the "Book a call"

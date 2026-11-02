@@ -1,5 +1,6 @@
 <script module lang="ts">
 	import { defineMeta } from '@storybook/addon-svelte-csf';
+	import { ArrowCounterClockwiseIcon } from 'phosphor-svelte';
 	import SiteHeader from './SiteHeader.svelte';
 
 	const { Story } = defineMeta({
@@ -24,5 +25,10 @@
 </script>
 
 <Story name="With action" />
+
+<Story
+	name="Start over"
+	args={{ action: { label: 'Start over', href: '#home', icon: ArrowCounterClockwiseIcon } }}
+/>
 
 <Story name="Without action" args={{ action: undefined, product: 'Report card · yourvenue.com' }} />

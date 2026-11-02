@@ -25,6 +25,7 @@
 	import { ScoreRow } from '#components/ScoreRow';
 	import { SiteFooter } from '#components/SiteFooter';
 	import { SiteHeader } from '#components/SiteHeader';
+	import { startOver } from '#lib/intro.ts';
 	import { TextLink } from '#components/TextLink';
 	import { categories, webCategories } from '#lib/report/categories.ts';
 	import { footerDetails } from '#lib/report/config.ts';
@@ -46,7 +47,7 @@
 <!-- eslint-disable svelte/no-navigation-without-resolve -->
 
 <div class="flex min-h-dvh flex-col bg-ui-surface-surface-200">
-	<SiteHeader product="Report Card" {homeHref} />
+	<SiteHeader product="Report Card" {homeHref} action={startOver(homeHref)} />
 
 	<main class="mx-auto flex w-full max-w-2xl flex-1 flex-col gap-16 px-16 py-32">
 		<h1 class="sr-only">Report card for {report.venue.name}</h1>
