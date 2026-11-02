@@ -1,6 +1,7 @@
 // Links and copy shared by the Report Card pages.
 
-/** "Book a call" destination (same as report-card.runhappyapps.com, with its tracking parameters). */
+/** "Book a call" destination (same as report-card.runhappyapps.com, with its tracking parameters). Not linked from the
+ * pages since 2026-11-02 (Adriana: the demo is booked from the email); kept for when a link comes back. */
 export const bookCallUrl =
 	'https://www.runhappy.ai/contact?utm_source=report-card&utm_medium=referral&utm_campaign=report-card';
 

@@ -55,6 +55,8 @@ export type Finding = z.infer<typeof findingSchema>;
 
 export const reportSchema = z.object({
 	venue: z.object({ name: z.string(), url: z.url() }),
+	/** Where the report was sent (the email typed on the home form). Shown in the "Book a demo" card. */
+	email: z.email(),
 	scannedAt: z.iso.datetime(),
 	overall: z.object({
 		grade: z.string(),

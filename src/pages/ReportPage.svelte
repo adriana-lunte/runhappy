@@ -27,7 +27,7 @@
 	import { SiteHeader } from '#components/SiteHeader';
 	import { TextLink } from '#components/TextLink';
 	import { categories, webCategories } from '#lib/report/categories.ts';
-	import { bookCallUrl, footerDetails } from '#lib/report/config.ts';
+	import { footerDetails } from '#lib/report/config.ts';
 	import { categoryScore, fixSummary, verdictReason } from '#lib/report/score.ts';
 
 	let { report, homeHref, sectionHref }: ReportPageProps = $props();
@@ -38,13 +38,11 @@
 		new Date(report.scannedAt).toLocaleDateString('en-US', { dateStyle: 'long', timeZone: 'UTC' })
 	);
 	const host = $derived(new URL(report.venue.url).hostname.replace(/^www\./, ''));
-
-	const helpUrl = (content: string) => `${bookCallUrl}&utm_content=${content}`;
 </script>
 
 <svelte:head><title>{report.venue.name} · Report Card</title></svelte:head>
 
-<!-- Links here are external (Book a call) or already resolved by the route (homeHref). -->
+<!-- Links here are already resolved by the route (homeHref, sectionHref). -->
 <!-- eslint-disable svelte/no-navigation-without-resolve -->
 
 <div class="flex min-h-dvh flex-col bg-ui-surface-surface-200">
@@ -107,7 +105,7 @@
 		</section>
 
 		<!-- 2. Call to action -->
-		<BookCallCard href={helpUrl('footer')} />
+		<BookCallCard email={report.email} />
 
 		<footer
 			class="flex flex-col items-center gap-4 py-16 text-center type-ui-body-4-regular text-brand-text-secondary"

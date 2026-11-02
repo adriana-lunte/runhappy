@@ -6,12 +6,12 @@
 		title: 'Report Card/BookCallCard',
 		component: BookCallCard,
 		tags: ['autodocs'],
-		args: { href: 'https://www.runhappy.ai/contact' },
+		args: { email: 'sam@example.com' },
 		parameters: {
 			docs: {
 				description: {
 					component:
-						'The "Book a call" card at the end of the report and of each section page: brand yellow box, title, text and a secondary button that opens the contact page in a new tab. Not in Figma yet.'
+						'The yellow card at the end of the report and of each section page: "Want to fix what we found?" and where to book a demo (the email the report was sent to). Static, no button. Not in Figma yet.'
 				}
 			}
 		}

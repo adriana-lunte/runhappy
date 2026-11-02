@@ -298,6 +298,13 @@ Figma: Components → Tab (`87:1942`), variants `status=idle | hover | selected`
 
 - **"Get help fixing this" hidden (2026-11-02, Adriana):** the yellow button of the grade card is hidden for now; the
   "Book a call" card below the summary stays.
+- **"Book a demo" card (2026-11-02, Adriana):** the yellow card at the end of the report and of each section page now
+  says "Want to fix what we found?" (UI/Subtitle/2) and "Book a demo from the email we sent to <email>" (UI/Body/2,
+  the address in semibold). It replaces "Want help fixing what we found?", its paragraph and the "Book a call"
+  button: the demo is booked from the email. The report data has a new `email` field (where the report was sent; the
+  sample uses sam@example.com). `bookCallUrl` is no longer linked from any page.
+  To confirm: the sentence has no period at the end, as written; the real email will come from the home form once
+  reports are stored.
 - **Open Graph image (2026-11-02, Adriana):** the link preview when the site is shared, the same on every page. Image
   1200×630: the Runhappy wordmark and "How easy is it to book a party with you?" (UI/Headline Serif/3, brand/neutral/off
   black) on brand/background/yellow accent, with the report card illustration on the right. Built in the Figma

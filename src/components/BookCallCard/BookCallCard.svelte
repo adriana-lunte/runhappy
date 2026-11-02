@@ -1,24 +1,24 @@
 <!--
 	BookCallCard — Runhappy design system (Report Card)
-	Not in Figma yet: the "Book a call" card at the end of the report (modeled on report-card.runhappyapps.com,
+	Not in Figma yet: the yellow card at the end of the report (modeled on report-card.runhappyapps.com,
 	2026-10-28). A component since 2026-11-02 (Adriana), when it appeared on the report and on each section page.
 
-	Brand yellow (ui/base/primary) box, title UI/Subtitle/2, text UI/Body/2, and a secondary button that opens the
-	"Book a call" page in a new tab. Text in ui/base/primary-foreground.
+	Brand yellow (ui/base/primary) box: "Want to fix what we found?" in UI/Subtitle/2, then "Book a demo from the
+	email we sent to <email>" in UI/Body/2, text in ui/base/primary-foreground. No button since 2026-11-02 (Adriana):
+	the demo is booked from the email, so the card only says where to look. (Before: "Want help fixing what we
+	found?", a paragraph and a "Book a call" button.)
 -->
 <script lang="ts" module>
 	export interface BookCallCardProps {
-		/** The "Book a call" link, with its tracking parameters. */
-		href: string;
+		/** The address the report was sent to, shown at the end of the text. */
+		email: string;
 		/** Layout classes. */
 		class?: string;
 	}
 </script>
 
 <script lang="ts">
-	import { buttonClasses } from '#components/Button';
-
-	let { href, class: className }: BookCallCardProps = $props();
+	let { email, class: className }: BookCallCardProps = $props();
 </script>
 
 <section
@@ -27,14 +27,10 @@
 		className
 	]}
 >
-	<h2 class="type-ui-subtitle-2">Want help fixing what we found?</h2>
+	<h2 class="type-ui-subtitle-2">Want to fix what we found?</h2>
 	<p class="type-ui-body-2-regular">
-		Book a call. We’ll walk through this report with you and show how Runhappy answers every inquiry
-		and gets it booked.
+		Book a demo from the email we sent to <span class="type-ui-body-2-semibold break-all"
+			>{email}</span
+		>
 	</p>
-	<!-- External link: nothing to resolve. -->
-	<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
-	<a {href} target="_blank" rel="noopener" class={[buttonClasses('secondary'), 'self-start']}>
-		Book a call
-	</a>
 </section>

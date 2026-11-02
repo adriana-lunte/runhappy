@@ -33,7 +33,7 @@
 	import { SiteHeader } from '#components/SiteHeader';
 	import { TextLink } from '#components/TextLink';
 	import { categories, reportSections } from '#lib/report/categories.ts';
-	import { bookCallUrl, footerDetails } from '#lib/report/config.ts';
+	import { footerDetails } from '#lib/report/config.ts';
 	import { categoryScore, outcomeCounts } from '#lib/report/score.ts';
 
 	let { report, category, homeHref, reportHref, sectionHref }: ReportSectionPageProps = $props();
@@ -154,7 +154,7 @@
 			{/if}
 		</nav>
 
-		<BookCallCard href={`${bookCallUrl}&utm_content=section-${category}`} />
+		<BookCallCard email={report.email} />
 	</main>
 	<SiteFooter details={footerDetails()} product="Report Card" />
 </div>

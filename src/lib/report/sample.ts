@@ -6,6 +6,7 @@ const site = 'https://www.example.com';
 
 export const sampleReport: Report = reportSchema.parse({
 	venue: { name: 'Sample Fun Center', url: site },
+	email: 'sam@example.com',
 	scannedAt: '2026-10-28T15:00:00.000Z',
 	overall: {
 		grade: 'C−',
