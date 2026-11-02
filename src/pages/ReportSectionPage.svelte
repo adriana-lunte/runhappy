@@ -3,7 +3,7 @@
 	Opened from a row of the report summary (/r/sample/booking, /search, /ai, /basics, /ads).
 	1. "Back to report".
 	2. The area it belongs to ("Website, search & booking" or "Ads & tracking") with the area summary, then the
-	   section: name, title, explainer, main FindingCard and FindingRow list (as it was on the report page).
+	   section: name, title, explainer with its SectionIllustration (2026-11-02), main FindingCard and FindingRow list (as it was on the report page).
 	3. Previous / next section.
 	4. "Book a call" card and footer.
 -->
@@ -28,6 +28,7 @@
 	import { BookCallCard } from '#components/BookCallCard';
 	import { FindingCard, FindingRow } from '#components/Finding';
 	import { ScoreRing } from '#components/ScoreRing';
+	import { SectionIllustration } from '#components/SectionIllustration';
 	import { SiteFooter } from '#components/SiteFooter';
 	import { SiteHeader } from '#components/SiteHeader';
 	import { TextLink } from '#components/TextLink';
@@ -110,9 +111,12 @@
 						</span>
 					{/if}
 				</div>
-				<div class="flex flex-col gap-4">
-					<p class="type-ui-body-3-medium text-ui-base-foreground">{info.question}</p>
-					<p class="type-ui-body-3-regular text-ui-ui-elements-muted-foreground">{info.answer}</p>
+				<div class="flex flex-col gap-16 sm:flex-row sm:items-center">
+					<div class="flex flex-1 flex-col gap-4">
+						<p class="type-ui-body-3-medium text-ui-base-foreground">{info.question}</p>
+						<p class="type-ui-body-3-regular text-ui-ui-elements-muted-foreground">{info.answer}</p>
+					</div>
+					<SectionIllustration {category} class="sm:w-1/3" />
 				</div>
 				{#each main as finding (finding.ruleId)}
 					<FindingCard {finding} level={2} />

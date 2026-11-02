@@ -273,6 +273,13 @@ Figma: Components → Tab (`87:1942`), variants `status=idle | hover | selected`
   To confirm: the section pages' "Book a call" link is tagged `utm_content=section-<name>`.
   The summary rows got a caret on the right (Phosphor CaretRight, regular, 20 px, `ui/ui-elements/muted-foreground`),
   in ScoreRow, also on the "Ads and tracking" row (2026-11-02, Adriana).
+  Each section page has an illustration next to "What do we check?" (2026-11-02, Adriana): new `SectionIllustration`,
+  drawn in code with library colors and Phosphor icons (follows light and dark), one per section. It shows what
+  the section checks, not the result, so it stays true whatever the grade. Booking: your site → another company's
+  site with a calendar. Search: a search with results, your venue lower down. AI: a parent's question and the
+  assistant's answer. Basics: your page with dashed gaps for phone, address and price. Ads: an ad on a phone → a
+  booking page. Beside the text from tablet up (a third of the width), below it on phones. Decorative (hidden
+  from screen readers). First placed inside the finding card, but only booking and ads have one. Not in Figma yet.
 
 - **Site footer (2026-10-30, Adriana, from the brand guidelines footer):** new `SiteFooter` on every Report Card
   page (home, checking, report). Brand yellow (`brand/background/yellow-accent`), dark text
