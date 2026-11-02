@@ -269,8 +269,8 @@ Figma: Components → Tab (`87:1942`), variants `status=idle | hover | selected`
   was, the "couldn’t check" note (website sections), previous / next section and the "Book a call" card.
   New components, as Adriana approved: `BookCallCard` (the yellow card, now on 6 pages) and `TextLink` (the
   underlined link, also used for the two existing links of the report). Not in Figma yet.
-  To confirm: the copy "Previous: …" / "Next: …"; the section pages' "Book a call" link is tagged
-  `utm_content=section-<name>`.
+  The copy "Previous: …" / "Next: …" was confirmed by Adriana on 2026-11-02.
+  To confirm: the section pages' "Book a call" link is tagged `utm_content=section-<name>`.
   The summary rows got a caret on the right (Phosphor CaretRight, regular, 20 px, `ui/ui-elements/muted-foreground`),
   in ScoreRow, also on the "Ads and tracking" row (2026-11-02, Adriana).
 
@@ -280,6 +280,7 @@ Figma: Components → Tab (`87:1942`), variants `status=idle | hover | selected`
   (`UI/Body/2`) on the left and "Report Card" (`UI/Body/2 Medium`) on the right. The year is the current one and
   changes on its own (Adriana). The page above ends in rounded corners over the yellow, drawn by the footer with
   radius xl (40 px, Adriana): new variable `radius/xl` in the library's Radius collection, `--radius-xl` in code.
+  Library published by Adriana on 2026-11-02 (with `radius/xl`).
   Texts live in `src/lib/report/config.ts`.
 
 **To confirm:**
