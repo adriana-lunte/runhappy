@@ -280,6 +280,8 @@ Figma: Components → Tab (`87:1942`), variants `status=idle | hover | selected`
   assistant's answer. Basics: your page with dashed gaps for phone, address and price. Ads: an ad on a phone → a
   booking page. Beside the text from tablet up (a third of the width), below it on phones. Decorative (hidden
   from screen readers). First placed inside the finding card, but only booking and ads have one. Not in Figma yet.
+  "Things to fix" hidden from the report page (2026-11-02, Adriana): the page now has the summary card, the "Book
+  a call" card and the footer. The FixList component stays in the design system, unused for now.
 
 - **Site footer (2026-10-30, Adriana, from the brand guidelines footer):** new `SiteFooter` on every Report Card
   page (home, checking, report). Brand yellow (`brand/background/yellow-accent`), dark text

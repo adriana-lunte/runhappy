@@ -1,8 +1,8 @@
 <!--
 	ReportPage — the graded report (modeled on report-card.runhappyapps.com, 2026-10-28).
 	1. Summary: grade ring, verdict, "Get help fixing this", one ScoreRow per category.
-	2. Things to fix (FixList).
-	3. "Book a call" card and footer.
+	2. "Book a call" card and footer.
+	"Things to fix" (FixList) was hidden on 2026-11-02 (Adriana); the component stays in the design system.
 	Each summary row opens that category's own page (ReportSectionPage, since 2026-11-02), which holds what used
 	to be the Website and Ads areas here.
 -->
@@ -23,7 +23,6 @@
 	import { CaretRightIcon } from 'phosphor-svelte';
 	import { BookCallCard } from '#components/BookCallCard';
 	import { buttonClasses } from '#components/Button';
-	import { FixList } from '#components/FixList';
 	import { Icon } from '#components/Icon';
 	import { ScoreRing } from '#components/ScoreRing';
 	import { ScoreRow } from '#components/ScoreRow';
@@ -32,13 +31,11 @@
 	import { TextLink } from '#components/TextLink';
 	import { categories, webCategories } from '#lib/report/categories.ts';
 	import { bookCallUrl, footerDetails } from '#lib/report/config.ts';
-	import { categoryScore, pointsToGain, thingsToFix } from '#lib/report/score.ts';
+	import { categoryScore } from '#lib/report/score.ts';
 
 	let { report, homeHref, sectionHref }: ReportPageProps = $props();
 
 	const { overall } = $derived(report);
-	const webFindings = $derived(report.findings.filter((f) => f.category !== 'ads'));
-	const fixes = $derived(thingsToFix(webFindings));
 	const checked = $derived(
 		new Date(report.scannedAt).toLocaleDateString('en-US', { dateStyle: 'long', timeZone: 'UTC' })
 	);
@@ -115,23 +112,7 @@
 			</div>
 		</section>
 
-		<!-- 2. Things to fix -->
-		<div class="rounded-sm bg-ui-surface-surface-100 px-20 py-20">
-			<FixList items={fixes.map((f) => ({ headline: f.headline, gain: pointsToGain(f) }))}>
-				{#snippet footer()}
-					<TextLink
-						href={helpUrl('fix-list')}
-						external
-						caret="right"
-						class="type-ui-body-3-medium text-ui-base-foreground"
-					>
-						Want these fixed? Book a call
-					</TextLink>
-				{/snippet}
-			</FixList>
-		</div>
-
-		<!-- 3. Call to action -->
+		<!-- 2. Call to action -->
 		<BookCallCard href={helpUrl('footer')} />
 
 		<footer
