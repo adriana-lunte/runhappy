@@ -715,6 +715,56 @@ Thumbnail uses the studio's "Figma project thumbnail" library (expected).
   shape (1–3px blur) and now use `shadow/overlay-color` (12% instead of 10%). 0 left.
 - Library published by Adriana (spacing + shadow), confirmed 2026-10-27.
 
+### Library fixes found while copying the setup flow (2026-11-04, Adriana approved)
+
+- **Logo** `wordmark` (60:5209) and `symbol` (60:5210): the fill was a raw hex (#202020), so the logo vanished in
+  dark mode. Now bound to `brand/neutral/off black` (same light value, flips in dark), matching code (`currentColor`).
+  Note: on a yellow background in dark mode the mark would turn light; there use `ui/base/primary-foreground`.
+- **text_field** and **search_field**: the "Supporting text" frame was absolutely positioned, so variants with
+  Support Text=Yes measured 78 and the help text hung outside. It is now in auto layout (60 variants; e.g. Default +
+  Label + Support Text = 101 tall). This reverses the "not changed in text_field" note from 2026-10-27.
+- **Regular caret icons** (CaretDown/Up/Left/Right, CaretDouble*): already have a fill bound to
+  `brand/neutral/off black` in the library file, but instances in other files came in without it, so the published
+  version is likely older. Fixed by publishing.
+- Published by Adriana on 2026-11-04. In the setup-flow file (jxizwQMDvY8jc0sD9UpG21, page V1) every library instance
+  was pointed to the new version and the logo and field-height workarounds were removed.
+- **Carets inside buttons (fixed 2026-11-04, Adriana approved):** the button icon slots empty the first "Vector" layer
+  (the duotone layer) and color the second with the label color. One-layer Regular carets took the first override and
+  lost their fill. Fix: the 6 Regular caret icons now have an empty first "Vector" layer, the same shape as duotone
+  icons, so a swapped caret takes the label color. Tested in all 15 button variants; dropdown and sidebar carets unchanged.
+- **button-secondary icons** used `brand/neutral/off black` in every state (also disabled) instead of the label color.
+  Now they follow the label (`brand/text/primary`, `brand/neutral/warm gray` when disabled), like primary and tertiary.
+- Published by Adriana on 2026-11-04; setup-flow buttons rebuilt as clean instances (no caret fill overrides).
+- **button-primary label and icons (fixed 2026-11-04, Adriana approved):** were `brand/neutral/off black`, which turns
+  light in dark mode (light text on yellow). Now `ui/base/primary-foreground` (#202020 in both modes) in idle, hover,
+  focus and pressed, matching code (`text-ui-base-primary-foreground`). Disabled unchanged (warm gray). Checked in both modes.
+- **button-secondary hover and pressed (fixed 2026-11-04, Adriana approved):** strong yellow background with
+  `brand/text/primary` text, which turned light in dark mode. Label and icons now `ui/base/primary-foreground`, matching
+  code (hover → `text-ui-base-primary-foreground`). Idle, focus and disabled unchanged. Checked in both modes.
+- Published by Adriana on 2026-11-04; setup-flow file instances updated (primary labels now ui/base/primary-foreground).
+
+### Setup-flow pieces added to the library (2026-11-04, Adriana approved)
+
+Created on the Components page (below the sidebar, y ≈ 4300), bound to library variables, text styles and icons.
+Each description says what is still to confirm. None of them exists in code yet.
+
+| Component         | Properties                                                         | Still to confirm                                   |
+| ----------------- | ------------------------------------------------------------------ | -------------------------------------------------- |
+| `readiness-badge` | Label                                                              | mono font (no mono text style; uses UI/Overline/2) |
+| `found-banner`    | Text                                                               | relation with Callout (code)                       |
+| `chip`            | tone = neutral / accent, Label, Show check                         | —                                                  |
+| `switch`          | on = yes / no                                                      | hover, focus, disabled                             |
+| `source-row`      | Title, Detail, Show icon                                           | hover, focus                                       |
+| `day-row`         | open = yes / no, Day                                               | real time input (uses text_field + Clock)          |
+| `tone-card`       | selected = yes / no, Description (option name on the nested Radio) | hover, focus                                       |
+| `voice-card`      | selected = yes / no, Name, Meta, Recommended                       | hover, focus, playing                              |
+| `progress-bar`    | — (resize "Fill")                                                  | continuous bar vs. segmented ProgressSteps in code |
+| `setup-header`    | Step, Show step                                                    | vs. SiteHeader in code (Start over)                |
+
+Published by Adriana on 2026-11-04. The setup-flow screens (file jxizwQMDvY8jc0sD9UpG21, page V1) now use these
+library components (53 instances swapped, none left on the local drafts). The local drafts section was archived there
+as "_Archive 2026-11-04 · borradores de las piezas nuevas", not deleted.
+
 ## Corrections to the CSS export (Figma wins)
 
 - The export referenced typography variables that do not exist (`--fonts-size-*`, `--font-family-*`…).
