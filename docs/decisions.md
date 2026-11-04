@@ -298,6 +298,11 @@ Figma: Components → Tab (`87:1942`), variants `status=idle | hover | selected`
 
 - **"Get help fixing this" hidden (2026-11-02, Adriana):** the yellow button of the grade card is hidden for now; the
   "Book a call" card below the summary stays.
+- **Field focus border yellow in dark mode (2026-11-04, Adriana):** when a text field, search field or dropdown has
+  focus, dark mode shows a 2px yellow border (`ui/base/ring`) instead of the light ring and yellow halo. Light mode
+  keeps the shared ring (2A): a yellow border there is 1.7:1 against the field, under WCAG's 3:1 (dark mode: about
+  7:1). Changed once in `focus-ring-within` (`src/tokens/focus.css`), used by FieldBox. Checkbox, radio, switch
+  and buttons keep the shared ring. To confirm: the Figma Input components still show the shared ring in dark mode.
 - **"Start over" button (2026-11-02, Adriana):** top right of the header on the checking, report and section pages
   (not on the home). A tertiary button with the ArrowCounterClockwise icon; it goes back to the home page as a new
   visit: the intro plays again and the form is empty (`startOver` and `resetIntro` in `src/lib/intro.ts`). SiteHeader's
