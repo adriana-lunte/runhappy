@@ -756,7 +756,7 @@ Each description says what is still to confirm. None of them exists in code yet.
 | Component         | Properties                                                         | Still to confirm                                   |
 | ----------------- | ------------------------------------------------------------------ | -------------------------------------------------- |
 | `readiness-badge` | Label                                                              | mono font (no mono text style; uses UI/Overline/2) |
-| `found-banner`    | Text                                                               | relation with Callout (code)                       |
+| `found-banner`    | Text                                                               | replaced by `banners` (2026-11-06, see Banner)     |
 | `chip`            | tone = neutral / accent, Label, Show check                         | —                                                  |
 | `switch`          | on = yes / no                                                      | hover, focus, disabled                             |
 | `source-row`      | Title, Detail, Show icon                                           | hover, focus                                       |
@@ -769,6 +769,42 @@ Each description says what is still to confirm. None of them exists in code yet.
 Published by Adriana on 2026-11-04. The setup-flow screens (file jxizwQMDvY8jc0sD9UpG21, page V1) now use these
 library components (53 instances swapped, none left on the local drafts). The local drafts section was archived there
 as "_Archive 2026-11-04 · borradores de las piezas nuevas", not deleted.
+
+### Banner (2026-11-06, Adriana decided)
+
+New `banners` component set in Figma (Components page, node 241:771, right of `found-banner`) and `Banner` in code
+(`src/components/Banner`). A short message inside a page: icon + text.
+
+- **Replaces `found-banner`** (it becomes `banners` type=warning). Callout (code) stays separate.
+- **Types** (no blue or orange in the library, so no new tokens):
+  | type                                                                                                            | background                         | icon    | screen readers hear |
+  | --------------------------------------------------------------------------------------------------------------- | ---------------------------------- | ------- | ------------------- |
+  | info                                                                                                            | `brand/secondary/green background` | Info    | "Info: …"           |
+  | warning                                                                                                         | `brand/accent/yellow background`   | Warning | "Warning: …"        |
+  | neutral                                                                                                         | `brand/background/muted`           | Smiley  | — (nothing)         |
+  | Text and icons `brand/text/primary` on every type (light tints → primary text). Icons without the yellow layer. |
+- **Layout** (from `found-banner`): padding 8/12, gap 8, radius xs, hugs its content, icon 16 aligned to the top.
+  Text UI/Body/4 Regular.
+- **Optional parts:** title (UI/Body/4 Semibold, above the text, gap 2); action = underlined link (TextLink) right
+  after the text; close = X 16 inside a 24×24 target, top right, which hides the banner.
+- Figma properties: `type`, `Text`, `Show title` + `Title`, `Show action` + `Action`, `Show close`.
+- Published by Adriana on 2026-11-06 ("Ya publiqué la librería").
+- **V1 swap (2026-11-06, Adriana asked):** the 8 `found-banner` instances in the setup-flow file (page V1) are now
+  `banners` type=warning, same text, full width. `found-banner` archived in the library `_Archive` section as
+  "Archived 2026-11-06 · found-banner (replaced by banners type=warning)".
+- **Fix on the master (2026-11-06):** the text did not wrap, so the 3 long V1 banners went 9px into the right padding.
+  Now the text fills the banner and wraps when the banner is narrower; the action link sits to the right of the text
+  block, top-aligned. Published by Adriana on 2026-11-06 and pulled into V1 the same day: all 8 fit; the 3 long ones
+  ("We'll add these when you continue…") now take two lines ("offer." wraps).
+
+To confirm:
+
+- Close hover/focus look. Code borrows IconButton's hover (`brand/neutral/warm gray mid`), which is the same color as
+  the neutral background, so hover is invisible on neutral. Figma has no hover/focus variant for the X.
+- Close button name for screen readers: "Close".
+- After closing, keyboard focus goes back to the page start (the banner is gone).
+- In Figma the action link sits to the right of the text block (Figma cannot flow a link inline); in code it
+  follows the last word of the text.
 
 ## Corrections to the CSS export (Figma wins)
 
