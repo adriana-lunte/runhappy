@@ -796,11 +796,13 @@ New `banners` component set in Figma (Components page, node 241:771, right of `f
   Now the text fills the banner and wraps when the banner is narrower; the action link sits to the right of the text
   block, top-aligned. Published by Adriana on 2026-11-06 and pulled into V1 the same day: all 8 fit; the 3 long ones
   ("We'll add these when you continue…") now take two lines ("offer." wraps).
+- **Close hover (2026-11-06, Adriana decided):** round `brand/neutral/warm gray mid` like IconButton, except on
+  neutral, where that gray equals the background: there it uses the new token `ui/base/hover strong`
+  (light #d4d4c8, dark #3a3a32; Figma Colors collection, scopes frame/shape fill, code `bg-ui-base-hover-strong`).
+  Figma still has no hover/focus variant for the X (written in the set description).
 
 To confirm:
 
-- Close hover/focus look. Code borrows IconButton's hover (`brand/neutral/warm gray mid`), which is the same color as
-  the neutral background, so hover is invisible on neutral. Figma has no hover/focus variant for the X.
 - Close button name for screen readers: "Close".
 - After closing, keyboard focus goes back to the page start (the banner is gone).
 - In Figma the action link sits to the right of the text block (Figma cannot flow a link inline); in code it

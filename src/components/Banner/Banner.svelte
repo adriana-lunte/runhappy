@@ -97,14 +97,17 @@
 			</p>
 		</div>
 		{#if dismissible}
-			<!-- 24×24 target (WCAG 2.2 minimum); hover look borrowed from IconButton (to confirm). -->
+			<!-- 24×24 target (WCAG 2.2 minimum); hover: IconButton's gray, darker on neutral. -->
 			<button
 				type="button"
 				aria-label="Close"
 				onclick={dismiss}
 				class={[
 					'grid size-24 shrink-0 cursor-pointer place-items-center rounded-full focus-ring',
-					'hover:bg-brand-neutral-warm-gray-mid',
+					// On the gray neutral background warm-gray-mid would be invisible: a darker gray (2026-11-06).
+					type === 'neutral'
+						? 'hover:bg-ui-base-hover-strong'
+						: 'hover:bg-brand-neutral-warm-gray-mid',
 					'transition duration-150 active:scale-98 motion-reduce:transition-none motion-reduce:active:scale-100'
 				]}
 			>

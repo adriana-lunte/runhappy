@@ -57,6 +57,7 @@
 	--color-ui-base-input: var(--ui-base-input);
 	--color-ui-base-ring: var(--ui-base-ring);
 	--color-ui-base-hover: var(--ui-base-hover);
+	--color-ui-base-hover-strong: var(--ui-base-hover-strong);
 	--color-ui-base-primary: var(--ui-base-primary);
 	--color-ui-base-primary-foreground: var(--ui-base-primary-foreground);
 	--color-ui-base-primary-hover: var(--ui-base-primary-hover);

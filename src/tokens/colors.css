@@ -54,6 +54,7 @@
 	--ui-base-input: #878785;
 	--ui-base-ring: #eeb600;
 	--ui-base-hover: #e5e5db;
+	--ui-base-hover-strong: #d4d4c8; /* added 2026-11-06: hover on gray surfaces (banner neutral close) */
 	--ui-base-primary: #fed54e;
 	--ui-base-primary-foreground: #202020;
 	--ui-base-primary-hover: #eeb600;
@@ -135,6 +136,7 @@
 	--ui-base-input: #707068;
 	--ui-base-ring: #eeb600;
 	--ui-base-hover: #33322c;
+	--ui-base-hover-strong: #3a3a32;
 	--ui-base-primary: #fed54e;
 	--ui-base-primary-foreground: #202020;
 	--ui-base-primary-hover: #eeb600;
