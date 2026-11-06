@@ -36,10 +36,10 @@
 			'disabled:bg-brand-neutral-warm-gray-light disabled:text-brand-neutral-warm-gray'
 		].join(' '),
 		tertiary: [
-			// inset-ring draws the border inside the button, so all variants keep the same size (as in Figma).
-			'bg-transparent text-brand-text-primary inset-ring inset-ring-brand-accent-yellow-dark',
+			// No border (removed in Figma 2026-11-06): text and icons only, yellow tint on hover.
+			'bg-transparent text-brand-text-primary',
 			'not-disabled:hover:bg-brand-accent-yellow-background',
-			'disabled:text-brand-neutral-warm-gray-mid disabled:inset-ring-brand-neutral-warm-gray-mid'
+			'disabled:text-brand-neutral-warm-gray-mid'
 		].join(' ')
 	};
 

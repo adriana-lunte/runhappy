@@ -73,6 +73,11 @@ Library published in Figma by Adriana on 2026-10-23.
   None of its 30 instances showed the yellow anymore, so only new uses are affected.
 - Library published by Adriana on 2026-10-23 (button fixes + Plus icon).
 
+**Tertiary without border (2026-11-06, Adriana's request):** stroke removed from the 5 variants of the
+`button-tertiary` master in Figma (it was `brand/accent/yellow dark`, `warm gray mid` when disabled), and the
+`inset-ring` removed in code. Idle and disabled now show only text and icons; hover and pressed keep the
+`brand/accent/yellow background` fill; focus keeps its ring (separate effects). Size unchanged (the stroke was inside).
+
 ### TextField (2026-10-23)
 
 - One `TextField` component. Figma states "Typing" and "Complete" are not props: they are the field with focus / with a value.
