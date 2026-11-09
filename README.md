@@ -135,8 +135,20 @@ import { signUpSchema } from '#lib/schemas/sign-up';
 The app uses `@sveltejs/adapter-vercel`. Code lives on GitHub: `adriana-lunte/runhappy` (branch `main`).
 
 1. In Vercel: **Add New → Project → Import** the `adriana-lunte/runhappy` repository.
-2. Framework preset: **SvelteKit** (detected). Build command `npm run build`, no environment variables needed yet.
+2. Framework preset: **SvelteKit** (detected). Build command `npm run build`.
 3. Deploy. From then on every push to `main` publishes a new version; other branches get preview links.
+
+### Self Onboarding domain
+
+A domain of its own can open Self Onboarding (`/self-onboarding`) instead of the Report Card home:
+
+1. Vercel → project → **Settings → Domains → Add** the domain (a free `*.vercel.app` name, or a custom one with
+   the DNS record Vercel shows).
+2. Vercel → **Settings → Environment Variables**: add `ONBOARDING_HOSTS` with that host name, e.g.
+   `onboarding.runhappy.ai` (several: comma-separated). Redeploy so it takes effect.
+
+Only `/` moves (307 redirect, the query string is kept); every other page still works on that domain. Without the
+variable nothing changes. Code: `src/hooks.server.ts`, `src/lib/onboarding-host.ts`, declared in `src/env.ts`.
 
 Run `npm run lint`, `npm run check` and `npm run test` before pushing.
 `npm run test` also saves the full results of its last run, with each failure's error, in

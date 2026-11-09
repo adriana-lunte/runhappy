@@ -118,3 +118,9 @@ To confirm:
   same patterns as the other components.
 - Illustrations are cropped to one 240 × 130 box; Figma crops each one a little differently.
 - StepIntro and StepFooter are page parts of this flow, not design-system components.
+
+## Own domain (2026-11-09)
+
+Adriana asked for a domain that opens the onboarding directly. Any host listed in the Vercel environment variable
+`ONBOARDING_HOSTS` redirects `/` to `/self-onboarding` (307, query string kept); other paths are untouched. The domain
+name is not chosen yet, so it is not in the code. Steps in README → "Self Onboarding domain".
