@@ -32,6 +32,11 @@ export interface ScreenIntro {
 	description: string;
 	/** "R" character illustration (decorative). */
 	illustration: string;
+	/**
+	 * Version with light outlines for dark mode (Adriana chose this on 2026-11-09). Until it exists the light one is
+	 * used in both modes. How to add one: docs/self-onboarding.md → "Dark-mode illustrations".
+	 */
+	illustrationDark?: string;
 	/** Number shown as "Step N of 6". None on the welcome screen. */
 	step?: number;
 }

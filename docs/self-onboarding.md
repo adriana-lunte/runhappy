@@ -124,3 +124,38 @@ To confirm:
 Adriana asked for a domain that opens the onboarding directly. Any host listed in the Vercel environment variable
 `ONBOARDING_HOSTS` redirects `/` to `/self-onboarding` (307, query string kept); other paths are untouched. The domain
 name is not chosen yet, so it is not in the code. Steps in README → "Self Onboarding domain".
+
+## Dark-mode illustrations (2026-11-09)
+
+In dark mode the black outlines of the "R" illustrations almost disappear on the dark background. Adriana chose
+option C: a dark-mode version of each illustration, with light outlines. The code is ready (`StepIntro` shows
+`illustrationDark` in dark mode, the normal one in light mode); until the files exist, the normal ones are used in
+both modes.
+
+### What to ask the illustrator
+
+Seven PNG files, one per current illustration in `src/lib/assets/self-onboarding/`:
+
+| Current file           | Screens          | New file                    |
+| ---------------------- | ---------------- | --------------------------- |
+| `welcome.png`          | Welcome          | `welcome-dark.png`          |
+| `inspects-website.png` | Website, Reading | `inspects-website-dark.png` |
+| `venue.png`            | Venue            | `venue-dark.png`            |
+| `knowledge.png`        | Knowledge        | `knowledge-dark.png`        |
+| `packages.png`         | Packages         | `packages-dark.png`         |
+| `hours.png`            | Hours            | `hours-dark.png`            |
+| `voice.png`            | Voice            | `voice-dark.png`            |
+
+- Same drawing, framing and canvas size as the original (Figma sources: 1448 × 1086, packages 1536 × 1024), so the
+  crop in the page stays the same.
+- Transparent background.
+- Only the black outlines and black details change, to a light color; the yellow of the character stays.
+- Light color: to confirm with Adriana. Suggestion: #f5f3ec, the value of `brand/neutral/off black` in dark mode
+  (the color text and the logo take in dark mode).
+
+### How to plug them in (developers)
+
+1. Shrink to 480 px wide like the others (`sips -Z 480 file.png`) and save in `src/lib/assets/self-onboarding/`.
+2. In `src/lib/self-onboarding/sample.ts`, import each file and add `illustrationDark: <import>` to its screen in
+   `intros` (the website and reading screens share `inspects-website-dark.png`).
+3. Check both modes in Storybook (Pages → Self Onboarding, theme toolbar) or the app.

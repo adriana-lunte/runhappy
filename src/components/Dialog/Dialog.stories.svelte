@@ -31,7 +31,10 @@
 <Story
 	name="Edit document"
 	play={async ({ canvasElement }) => {
+		// The open state is shared by every render of this story: start closed, or the modal blocks the button.
+		state.open = false;
 		const canvas = within(canvasElement);
+		await waitFor(() => expect(canvas.queryByRole('dialog')).not.toBeInTheDocument());
 		await userEvent.click(canvas.getByRole('button', { name: 'Edit About Lunte Studio' }));
 		const dialog = await canvas.findByRole('dialog', { name: 'About Lunte Studio' });
 		await expect(dialog).toHaveAttribute('open');
