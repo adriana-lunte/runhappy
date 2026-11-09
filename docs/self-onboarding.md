@@ -1,4 +1,6 @@
-# Setup flow — reference (staging)
+# Self Onboarding — reference (staging)
+
+Called "setup flow" until 2026-11-09, when Adriana renamed it **Self Onboarding**. Staging still serves it at `/setup`.
 
 Recorded from https://staging.tildei.com/setup on 2026-11-04, signed in as Adriana, with the website
 `lunte.studio` and a test address (123 Main St, Austin, TX 78701). Stopped before the last "Continue"
@@ -73,16 +75,46 @@ Seen in passing (staging issues, not to copy): on step 5 the "to" column does no
 
 File: https://www.figma.com/design/jxizwQMDvY8jc0sD9UpG21/Untitled?node-id=1-558 — page "V1".
 
-- Section **"Setup flow · copia de staging"**: 9 screens (welcome, website, loading, venue, knowledge,
+- Section **"Setup flow · copia de staging"** (V1 page): 9 screens (welcome, website, loading, venue, knowledge,
   edit dialog, packages, hours, voice) at 1280 wide, dark mode, plus a "Notas · a confirmar" card.
   Built from UI Library | Runhappy instances (buttons, text_field, dropdown, search_field, Tab, Radio,
   icon-button, icons, wordmark, symbol), library variables (color, spacing, radius) and text styles.
   Token scan: no raw fills or strokes, no unstyled text, no unbound padding, gap or radius.
 - The 10 new pieces (readiness-badge, found-banner, chip, switch, source-row, day-row, tone-card, voice-card,
-  progress-bar, setup-header) were moved to UI Library | Runhappy on 2026-11-04; the local drafts are archived.
+  progress-bar, setup-header — now `self-onboarding-header`) were moved to UI Library | Runhappy on 2026-11-04; the local drafts are archived.
 
-Library findings (fix belongs in the library masters, not done):
+Library findings: all fixed in the library and published on 2026-11-04 (logo color, field help text, carets in
+buttons, primary and secondary text on yellow). See "Library fixes found while copying the setup flow" in
+`docs/decisions.md`.
 
-- Logo `wordmark` / `symbol` use a raw hex fill, so they disappear in dark mode (overridden here with ui/base/foreground).
-- "Regular" caret icons have no fill in the master (painted here with the button label color).
-- `text_field` with Support Text=Yes is 78 tall and the help text sits outside it (instances resized here).
+## V2 (2026-11-09)
+
+Section "v2" (node 78:4394, page "V2"), updated by Adriana: style changes over V1. Light mode; the readiness badge and
+the placeholder Sparkle are gone; each step has an illustration of the Runhappy "R" character next to the description
+(image layers such as "Runhappy R Inspects a Website"); same 9 screens, texts and library components.
+
+## Code (2026-11-09)
+
+Route `/self-onboarding` → `src/pages/SelfOnboardingPage.svelte` (screens in `src/pages/self-onboarding/`, sample data and
+texts in `src/lib/self-onboarding/sample.ts`, illustrations in `src/lib/assets/self-onboarding/`). Front end only:
+sample data, the reading screen is simulated, nothing is saved. Storybook: Pages → Self Onboarding.
+
+Decided by Adriana on 2026-11-09: create all the new components; top space 64 (Figma 120 is off the scale);
+extend SiteHeader instead of a new header; size tokens added; Card gets a `muted` tone.
+
+New components: Chip, Switch, ProgressBar, Textarea, TimeField, SourceRow, DayRow, ToneCard, VoiceCard, Dialog.
+Changed: SiteHeader (`variant="flow"`, `step`, optional `product`), Card (`tone="muted"`).
+
+Decided 2026-11-09 (Adriana): only the recommended tone (Polished) shows the "Recommended" chip; Warm and Playful
+do not. Updated in Figma V2 the same day (Recommended property off on Warm and Playful).
+
+To confirm:
+
+- The last Continue (step 6) goes nowhere yet; "We don't have a website" skips to the venue.
+- Search with no matching voice shows "No results" (same text as Dropdown); not in the design.
+- Not designed in Figma yet: Textarea, TimeField, Dialog (and its rich-text editor, a Textarea for now), the spinner
+  on the reading screen, the dark layer behind the dialog.
+- Missing states in Figma: Switch, SourceRow, ToneCard, VoiceCard (hover, focus; "playing" for voices). Code uses the
+  same patterns as the other components.
+- Illustrations are cropped to one 240 × 130 box; Figma crops each one a little differently.
+- StepIntro and StepFooter are page parts of this flow, not design-system components.

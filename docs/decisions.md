@@ -753,22 +753,38 @@ Thumbnail uses the studio's "Figma project thumbnail" library (expected).
 Created on the Components page (below the sidebar, y ≈ 4300), bound to library variables, text styles and icons.
 Each description says what is still to confirm. None of them exists in code yet.
 
-| Component         | Properties                                                         | Still to confirm                                   |
-| ----------------- | ------------------------------------------------------------------ | -------------------------------------------------- |
-| `readiness-badge` | Label                                                              | mono font (no mono text style; uses UI/Overline/2) |
-| `found-banner`    | Text                                                               | replaced by `banners` (2026-11-06, see Banner)     |
-| `chip`            | tone = neutral / accent, Label, Show check                         | —                                                  |
-| `switch`          | on = yes / no                                                      | hover, focus, disabled                             |
-| `source-row`      | Title, Detail, Show icon                                           | hover, focus                                       |
-| `day-row`         | open = yes / no, Day                                               | real time input (uses text_field + Clock)          |
-| `tone-card`       | selected = yes / no, Description (option name on the nested Radio) | hover, focus                                       |
-| `voice-card`      | selected = yes / no, Name, Meta, Recommended                       | hover, focus, playing                              |
-| `progress-bar`    | — (resize "Fill")                                                  | continuous bar vs. segmented ProgressSteps in code |
-| `setup-header`    | Step, Show step                                                    | vs. SiteHeader in code (Start over)                |
+| Component                | Properties                                                         | Still to confirm                                   |
+| ------------------------ | ------------------------------------------------------------------ | -------------------------------------------------- |
+| `readiness-badge`        | Label                                                              | mono font (no mono text style; uses UI/Overline/2) |
+| `found-banner`           | Text                                                               | replaced by `banners` (2026-11-06, see Banner)     |
+| `chip`                   | tone = neutral / accent / inverse, Label, Show check               | —                                                  |
+| `switch`                 | on = yes / no                                                      | hover, focus, disabled                             |
+| `source-row`             | Title, Detail, Show icon                                           | hover, focus                                       |
+| `day-row`                | open = yes / no, Day                                               | real time input (uses text_field + Clock)          |
+| `tone-card`              | selected = yes / no, Description (option name on the nested Radio) | hover, focus                                       |
+| `voice-card`             | selected = yes / no, Name, Meta, Recommended                       | hover, focus, playing                              |
+| `progress-bar`           | — (resize "Fill")                                                  | continuous bar vs. segmented ProgressSteps in code |
+| `self-onboarding-header` | Step, Show step                                                    | vs. SiteHeader in code (Start over)                |
 
 Published by Adriana on 2026-11-04. The setup-flow screens (file jxizwQMDvY8jc0sD9UpG21, page V1) now use these
 library components (53 instances swapped, none left on the local drafts). The local drafts section was archived there
 as "_Archive 2026-11-04 · borradores de las piezas nuevas", not deleted.
+
+### Chip on cards: tone = inverse (2026-11-06, Adriana decided)
+
+On the card background (`ui/ui elements/card`, #f5f5f1) the existing chips barely show: neutral 1.16:1, accent 1.04:1.
+Adriana chose a dark, inverted pill, added as a third tone (neutral and accent unchanged).
+
+- Figma: `chip` (233:696) gets `tone=inverse` (247:738). Background `ui/base/foreground`, label and check
+  `ui/base/background`: the same pair as the selected tab, so it turns into a light pill in dark mode.
+  14.8:1 against the card in light and dark.
+- Not `ui/base/secondary`: in dark mode it is #302f2b on a #1f1f22 card (1.23:1).
+- Value name `inverse` confirmed by Adriana (2026-11-06). Published by Adriana on 2026-11-06. Not in code yet (no chip in code).
+- Where it is used (Adriana, 2026-11-06): the read pages on 1b · Reading the website (were accent; pending pages stay
+  neutral), the source tag in `source-row` ("Drafted from your site" / "From your website") and "Recommended" in
+  `voice-card`. `source-row` and `voice-card` masters changed in the library; the six 1b chips swapped in the V1 file.
+- Fix (2026-11-06): the first published `inverse` variant had its label and check not linked to the `Label` and
+  `Show check` properties, so chips showed "Home". Linked in the master; needs publishing, then V1 updated.
 
 ### Banner (2026-11-06, Adriana decided)
 
@@ -807,6 +823,26 @@ To confirm:
 - After closing, keyboard focus goes back to the page start (the banner is gone).
 - In Figma the action link sits to the right of the text block (Figma cannot flow a link inline); in code it
   follows the last word of the text.
+
+### Setup flow renamed "Self Onboarding" (2026-11-09, Adriana decided)
+
+- The flow is called **Self Onboarding** from now on, everywhere (Adriana chose "Todo").
+- Library: `setup-header` renamed `self-onboarding-header`; descriptions of the flow pieces updated. Needs publishing.
+- Onboarding file: page "🛫 Onboarding" → "🛫 Self Onboarding"; `setup-header` layers on V1 and V2 renamed.
+- Docs: `docs/setup-flow.md` → `docs/self-onboarding.md`. Earlier dated entries keep the old name.
+- Not renamed yet (to confirm with Adriana): the sections on the V1 page.
+
+### Self Onboarding in code (2026-11-09, Adriana decided)
+
+- From Figma "Platform | Runhappy" → V2 (section "v2", node 78:4394). Front end only, sample data (lunte.studio).
+- New size tokens (`src/tokens/spacing.css`): `--size-onboarding-column` 560, `--size-onboarding-illustration-height`
+  130, `--size-switch-track` 36, `--size-day-label` 96, `--size-time-field` 140. Illustration width reuses
+  `--size-hero-image` (240). New border token `--border-selected` 3px (chosen ToneCard / VoiceCard).
+- Top space of the first screens: 64 (Figma 120 is off the spacing scale).
+- Card: new `tone="muted"` (ui/ui elements/card) for this flow; the Report Card stays white.
+- SiteHeader: `variant="flow"` (no divider, full width, 24 px logo, 24/32 padding) with `step` text; `product` optional.
+- New components: Chip, Switch, ProgressBar, Textarea, TimeField, SourceRow, DayRow, ToneCard, VoiceCard, Dialog.
+  Open points are listed in `docs/self-onboarding.md` → "Code".
 
 ## Corrections to the CSS export (Figma wins)
 

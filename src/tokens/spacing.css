@@ -43,4 +43,10 @@
 	--size-page: 72rem;
 	/* Report Card home: hero illustration (approved by Adriana 2026-10-28: 192; 240 since 2026-10-30). */
 	--size-hero-image: 15rem;
+	/* Self Onboarding (Figma "Platform | Runhappy" → V2, approved by Adriana 2026-11-09). */
+	--size-onboarding-column: 35rem; /* 560 — content column and edit dialog width */
+	--size-onboarding-illustration-height: 8.125rem; /* 130 — box of the "R" illustration (width: --size-hero-image) */
+	--size-switch-track: 2.25rem; /* 36 — Switch width (height 20 = spacing-20) */
+	--size-day-label: 6rem; /* 96 — day name in DayRow, so the "to" column lines up */
+	--size-time-field: 8.75rem; /* 140 — TimeField width in DayRow */
 }

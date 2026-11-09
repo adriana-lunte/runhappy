@@ -17,7 +17,7 @@
 			docs: {
 				description: {
 					component:
-						'Top bar of a standalone Runhappy page: logo, divider, product name (a link home) and one action on the right. Not in Figma yet.'
+						'Top bar of a standalone Runhappy page: logo, divider, product name (a link home) and one action on the right. Variant "flow" is the Self Onboarding bar (Figma: self-onboarding-header): logo only, no divider, "Step N of 6" on the right.\n\n[Open in Figma](https://www.figma.com/design/Ax9De11Plc2yPyfQHrGuJn/UI-Library-%7C-Runhappy?node-id=233-811)'
 				}
 			}
 		}
@@ -34,3 +34,9 @@
 />
 
 <Story name="Without action" args={{ action: undefined, product: 'Report card · yourvenue.com' }} />
+
+<!-- Self Onboarding: logo only and the step on the right (Figma self-onboarding-header). -->
+<Story
+	name="Flow with step"
+	args={{ variant: 'flow', product: undefined, action: undefined, step: 'Step 2 of 6' }}
+/>

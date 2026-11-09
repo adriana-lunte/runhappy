@@ -6,4 +6,5 @@
 :root {
 	--border-control: 0.09375rem; /* 1.5px — checkbox / radio, idle */
 	--border-control-hover: 0.1875rem; /* 3px — checkbox / radio, hover */
+	--border-selected: 0.1875rem; /* 3px — chosen ToneCard / VoiceCard (Figma tone-card, voice-card) */
 }
