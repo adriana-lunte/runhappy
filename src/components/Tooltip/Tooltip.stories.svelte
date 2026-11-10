@@ -41,6 +41,9 @@
 	name="Hover, focus and Escape"
 	parameters={{ controls: { disable: true } }}
 	play={async ({ canvasElement }) => {
+		// The bubble fades in and out (150 ms). In a full test run the browser can be slow, and the default 1 s
+		// wait sometimes ran out before the bubble showed (2026-11-10). Give each wait more room.
+		const wait = { timeout: 3000 };
 		const canvas = within(canvasElement);
 		const trigger = canvas.getByRole('button', { name: 'Trigger' });
 		const tooltip = canvas.getByRole('tooltip', { hidden: true });
@@ -49,16 +52,16 @@
 		await expect(tooltip).not.toBeVisible();
 
 		await userEvent.hover(trigger);
-		await waitFor(() => expect(tooltip).toBeVisible());
+		await waitFor(() => expect(tooltip).toBeVisible(), wait);
 		await userEvent.keyboard('{Escape}');
-		await waitFor(() => expect(tooltip).not.toBeVisible());
+		await waitFor(() => expect(tooltip).not.toBeVisible(), wait);
 		await userEvent.unhover(trigger);
 
 		await userEvent.tab();
 		await expect(trigger).toHaveFocus();
-		await waitFor(() => expect(tooltip).toBeVisible());
+		await waitFor(() => expect(tooltip).toBeVisible(), wait);
 		await userEvent.tab();
-		await waitFor(() => expect(tooltip).not.toBeVisible());
+		await waitFor(() => expect(tooltip).not.toBeVisible(), wait);
 	}}
 >
 	{#snippet template()}
