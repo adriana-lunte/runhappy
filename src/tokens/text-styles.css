@@ -121,12 +121,30 @@
 	letter-spacing: var(--letter-spacing-tight);
 }
 
-/* Figma: UI/Headline Serif/5 */
+/* Figma: UI/Headline Serif/5 — line height 45 since 2026-11-10 (code had 54; Figma already had 45, Figma wins). */
 @utility type-ui-headline-serif-5 {
 	font-family: var(--font-serif);
 	font-size: var(--font-size-36);
-	line-height: var(--line-height-54);
+	line-height: var(--line-height-45);
 	font-weight: var(--font-weight-normal);
+	letter-spacing: var(--letter-spacing-tight);
+}
+
+/* Figma: UI/Headline Serif/5 Compact — 36/40, added 2026-11-10 (Self Onboarding welcome title). */
+@utility type-ui-headline-serif-5-compact {
+	font-family: var(--font-serif);
+	font-size: var(--font-size-36);
+	line-height: var(--line-height-40);
+	font-weight: var(--font-weight-normal);
+	letter-spacing: var(--letter-spacing-tight);
+}
+
+/* Figma: UI/Headline Serif/5 Compact Semibold — same, semibold ("Welcome!"). */
+@utility type-ui-headline-serif-5-compact-semibold {
+	font-family: var(--font-serif);
+	font-size: var(--font-size-36);
+	line-height: var(--line-height-40);
+	font-weight: var(--font-weight-semibold);
 	letter-spacing: var(--letter-spacing-tight);
 }
 
@@ -410,5 +428,5 @@
 /* Always generate every text style, even if no file uses it yet
    (Tailwind otherwise only outputs classes it finds written in the code). */
 @source inline(
-	'type-{ui-button,ui-caption,ui-headline-1,ui-headline-2,ui-headline-3,ui-headline-4,ui-headline-5,ui-headline-6,ui-headline-serif-1,ui-headline-serif-2,ui-headline-serif-3,ui-headline-serif-4,ui-headline-serif-5,ui-headline-serif-6,ui-subtitle-1,ui-subtitle-2,ui-subtitle-3,ui-body-1-regular,ui-body-1-medium,ui-body-1-semibold,ui-body-2-regular,ui-body-2-medium,ui-body-2-semibold,ui-body-3-regular,ui-body-3-medium,ui-body-3-semibold,ui-body-4-regular,ui-body-4-medium,ui-body-4-semibold,ui-body-5-regular,ui-body-5-medium,ui-body-5-semibold,ui-overline-1,ui-overline-2,web-subtitles-body,web-labels,web-display-xl,web-display-lg,web-display-md,web-display-sm,web-display-xsm,web-title-regular,web-title-medium}'
+	'type-{ui-button,ui-caption,ui-headline-1,ui-headline-2,ui-headline-3,ui-headline-4,ui-headline-5,ui-headline-6,ui-headline-serif-1,ui-headline-serif-2,ui-headline-serif-3,ui-headline-serif-4,ui-headline-serif-5,ui-headline-serif-5-compact,ui-headline-serif-5-compact-semibold,ui-headline-serif-6,ui-subtitle-1,ui-subtitle-2,ui-subtitle-3,ui-body-1-regular,ui-body-1-medium,ui-body-1-semibold,ui-body-2-regular,ui-body-2-medium,ui-body-2-semibold,ui-body-3-regular,ui-body-3-medium,ui-body-3-semibold,ui-body-4-regular,ui-body-4-medium,ui-body-4-semibold,ui-body-5-regular,ui-body-5-medium,ui-body-5-semibold,ui-overline-1,ui-overline-2,web-subtitles-body,web-labels,web-display-xl,web-display-lg,web-display-md,web-display-sm,web-display-xsm,web-title-regular,web-title-medium}'
 );

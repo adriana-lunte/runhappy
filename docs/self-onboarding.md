@@ -116,7 +116,6 @@ To confirm:
   on the reading screen, the dark layer behind the dialog.
 - Missing states in Figma: Switch, SourceRow, ToneCard, VoiceCard (hover, focus; "playing" for voices). Code uses the
   same patterns as the other components.
-- Illustrations are cropped to one 240 × 130 box; Figma crops each one a little differently.
 - StepIntro and StepFooter are page parts of this flow, not design-system components.
 
 ## Own domain (2026-11-09)
@@ -147,7 +146,8 @@ Seven PNG files, one per current illustration in `src/lib/assets/self-onboarding
 | `voice.png`            | Voice            | `voice-dark.png`            |
 
 - Same drawing, framing and canvas size as the original (Figma sources: 1448 × 1086, packages 1536 × 1024), so the
-  crop in the page stays the same.
+  same crop can be applied. The files in the project are cropped like Figma V2 and saved at 2x (see
+  `docs/decisions.md`, 2026-11-10); the dark ones need the same crop.
 - Transparent background.
 - Only the black outlines and black details change, to a light color; the yellow of the character stays.
 - Light color: to confirm with Adriana. Suggestion: #f5f3ec, the value of `brand/neutral/off black` in dark mode
@@ -155,7 +155,7 @@ Seven PNG files, one per current illustration in `src/lib/assets/self-onboarding
 
 ### How to plug them in (developers)
 
-1. Shrink to 480 px wide like the others (`sips -Z 480 file.png`) and save in `src/lib/assets/self-onboarding/`.
+1. Crop like the light version (same Figma crop, 2x) and save in `src/lib/assets/self-onboarding/`.
 2. In `src/lib/self-onboarding/sample.ts`, import each file and add `illustrationDark: <import>` to its screen in
    `intros` (the website and reading screens share `inspects-website-dark.png`).
 3. Check both modes in Storybook (Pages → Self Onboarding, theme toolbar) or the app.

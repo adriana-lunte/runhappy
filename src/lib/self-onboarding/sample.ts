@@ -96,6 +96,12 @@ export const intros: Record<Screen, ScreenIntro> = {
 	}
 };
 
+/**
+ * Welcome title as laid out in Figma V2 (2026-11-10): "Welcome!" in semibold, then two lines in regular, next to
+ * the illustration. Same words as `intros.welcome.title`.
+ */
+export const welcomeTitle = { lead: 'Welcome!', lines: ["Let's set up", 'your front desk'] };
+
 /** The website from the recorded session. */
 export const sampleSite = 'lunte.studio';
 

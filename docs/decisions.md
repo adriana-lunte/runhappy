@@ -836,13 +836,28 @@ To confirm:
 
 - From Figma "Platform | Runhappy" → V2 (section "v2", node 78:4394). Front end only, sample data (lunte.studio).
 - New size tokens (`src/tokens/spacing.css`): `--size-onboarding-column` 560, `--size-onboarding-illustration-height`
-  130, `--size-switch-track` 36, `--size-day-label` 96, `--size-time-field` 140. Illustration width reuses
+  130 (removed 2026-11-10: illustrations now take their own Figma size), `--size-switch-track` 36, `--size-day-label` 96, `--size-time-field` 140. Illustration width reuses
   `--size-hero-image` (240). New border token `--border-selected` 3px (chosen ToneCard / VoiceCard).
 - Top space of the first screens: 64 (Figma 120 is off the spacing scale).
 - Card: new `tone="muted"` (ui/ui elements/card) for this flow; the Report Card stays white.
 - SiteHeader: `variant="flow"` (no divider, full width, 24 px logo, 24/32 padding) with `step` text; `product` optional.
 - New components: Chip, Switch, ProgressBar, Textarea, TimeField, SourceRow, DayRow, ToneCard, VoiceCard, Dialog.
   Open points are listed in `docs/self-onboarding.md` → "Code".
+
+### Self Onboarding: illustration position and text styles (2026-11-10, Adriana decided)
+
+- Figma V2 updated by Adriana: on steps 1–6 the "R" illustration sits above the title (left-aligned) and the
+  description right under the title; on Welcome the illustration is left of the title, with the description and
+  "Get started" below, left-aligned.
+- **UI/Headline Serif/5 drift:** Figma already had 36/45; code had 36/54. Code now matches Figma (Figma wins). The
+  Report Card home title uses it too: lines a little closer (one line on desktop, so no visible change there).
+- **New in the library and code:** `line-height/40` and the text styles `UI/Headline Serif/5 Compact` (36/40
+  regular) and `UI/Headline Serif/5 Compact Semibold` (36/40 semibold) for the Welcome title ("Welcome!" in
+  semibold). Code: `--line-height-40`, `type-ui-headline-serif-5-compact(-semibold)`. Published by Adriana the same
+  day; the 7 step titles in V2 are now linked to Serif/5 and the Welcome title to the two Compact styles.
+- Illustrations re-cropped exactly like Figma from the originals and saved at 2x; shown with `srcset … 2x`, so each
+  one takes its Figma size (153–226 wide). `--size-onboarding-illustration-height` removed.
+- Top space stays 64 (Figma now 100 on Website/Reading and 120 on Welcome, off the spacing scale).
 
 ## Corrections to the CSS export (Figma wins)
 
