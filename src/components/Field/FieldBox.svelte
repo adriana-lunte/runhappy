@@ -1,7 +1,7 @@
 <!--
 	FieldBox — shared building block for form fields (TextField, SearchField…).
 	Figma "Input" frame: padding 16, gap 8, radius xs. The border is drawn inside (inset-ring)
-	so the height matches Figma (53). Shows the shared focus ring when the input inside has focus.
+	so the height matches Figma (53). Focus: `focus-ring-field`, a yellow border only, in both modes (2026-11-10).
 -->
 <script lang="ts" module>
 	import type { Snippet } from 'svelte';
@@ -30,8 +30,11 @@
 <div
 	class={[
 		'flex items-center gap-8 rounded-xs bg-brand-neutral-warm-gray-light p-16 inset-ring',
-		'focus-ring-within',
-		invalid ? 'inset-ring-ui-status-destructive-border' : 'inset-ring-ui-base-input',
+		'focus-ring-field',
+		// Border: gray (ui/base/input), yellow (ui/base/ring) while focused (2026-11-10); red with an error, also on focus.
+		invalid
+			? 'inset-ring-ui-status-destructive-border'
+			: 'inset-ring-ui-base-input has-focus-visible:inset-ring-ui-base-ring',
 		disabled && 'cursor-not-allowed',
 		highlightOnHover && !disabled && 'hover:bg-brand-accent-yellow-background'
 	]}

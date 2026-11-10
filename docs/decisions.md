@@ -859,6 +859,23 @@ To confirm:
   one takes its Figma size (153–226 wide). `--size-onboarding-illustration-height` removed.
 - Top space stays 64 (Figma now 100 on Website/Reading and 120 on Welcome, off the spacing scale).
 
+### Field focus: yellow only, light and dark (2026-11-10, Adriana decided)
+
+- Form fields (TextField, Textarea, TimeField, SearchField, Dropdown — everything built on `FieldBox`) now show a
+  2px yellow border (`ui/base/ring`) on focus, with no dark ring and no halo, in both modes. New utility
+  `focus-ring-field` (`src/tokens/focus.css`). The field's own gray border (`ui/base/input`) also turns yellow while
+  focused (Adriana, same day); a field with an error keeps its red border on focus.
+- Before: light mode had the dark ring + yellow halo (decision 2A, 2026-10-23); dark mode already had the yellow
+  border only (2026-11-04).
+- ⚠ Contrast: yellow on the light field (#eeb600 on #f5f5f1) is 1.7:1, under WCAG 2.2's 3:1 for focus indicators.
+  Adriana was told and chose it anyway. Dark mode: about 7:1.
+- Everything else keeps decision 2A (`focus-ring`, `focus-ring-offset`). `focus-ring-within` (containers such as the
+  VoiceCard label) is the 2A ring in both modes now; its dark-mode yellow version moved to `focus-ring-field`.
+- CLAUDE.md rule 6 updated with the exception.
+- Figma (same day, Adriana asked): the 20 focus / typing / open variants of `text_field`, `search_field` and `dropdown`
+  lost the dark shadow; the yellow `ui/base/ring` shadow is now 2px and the box border is `ui/base/ring`. Checked in
+  light and dark. Needs publishing.
+
 ## Corrections to the CSS export (Figma wins)
 
 - The export referenced typography variables that do not exist (`--fonts-size-*`, `--font-family-*`…).

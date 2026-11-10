@@ -10,12 +10,21 @@
 	@apply outline-hidden focus-visible:ring-4 focus-visible:ring-ui-base-ring focus-visible:outline-2 focus-visible:outline-offset-0 focus-visible:outline-ui-base-foreground focus-visible:outline-solid;
 }
 
-/* Same ring, for a container whose focusable element is inside it (the FieldBox of TextField, SearchField and
-   Dropdown). Text inputs match :focus-visible on click too, so it shows whenever the field is focused.
-   Dark mode (Adriana, 2026-11-04): a 2px yellow border (ui-base-ring) and no halo; yellow on the dark field is
-   about 7:1. Light mode keeps the dark ring: yellow on the light field is 1.7:1, under WCAG's 3:1. */
+/* Same ring, for a container whose focusable element is inside it (e.g. the label of a VoiceCard): the ring shows
+   when something inside has keyboard focus. */
 @utility focus-ring-within {
-	@apply has-focus-visible:ring-4 has-focus-visible:ring-ui-base-ring has-focus-visible:outline-2 has-focus-visible:outline-offset-0 has-focus-visible:outline-ui-base-foreground has-focus-visible:outline-solid dark:has-focus-visible:ring-0 dark:has-focus-visible:outline-ui-base-ring;
+	@apply has-focus-visible:ring-4 has-focus-visible:ring-ui-base-ring has-focus-visible:outline-2 has-focus-visible:outline-offset-0 has-focus-visible:outline-ui-base-foreground has-focus-visible:outline-solid;
+}
+
+/* Form fields (the FieldBox of TextField, Textarea, TimeField, SearchField and Dropdown): a 2px yellow border
+   (ui-base-ring), no dark ring and no halo, in light and dark mode (Adriana, 2026-11-10). Text inputs match
+   :focus-visible on click too, so it shows whenever the field is focused. The field's own thin border also turns
+   yellow while focused (set in FieldBox; a field with an error keeps its red border).
+   ⚠ Contrast: yellow on the light field is 1.7:1, under WCAG's 3:1 for focus indicators; on the dark field it is
+   about 7:1. Adriana chose it knowing this (2026-11-10). Before (2026-10-23 to 2026-11-10): dark ring + yellow halo
+   in light mode, yellow border in dark mode. */
+@utility focus-ring-field {
+	@apply has-focus-visible:outline-2 has-focus-visible:outline-offset-0 has-focus-visible:outline-ui-base-ring has-focus-visible:outline-solid;
 }
 
 /* Same ring with a 2px gap (page color) between the element and the dark ring, for dark filled elements where the

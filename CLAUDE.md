@@ -59,8 +59,10 @@ Imports use the aliases `#tokens/*`, `#components/*`, `#pages/*`, `#lib/*`.
      `text-ui-base-primary-foreground` (strong colors) or `text-brand-text-primary` (light tints).
      `brand-text-accent`, `brand-text-green` and `brand-text-pink` are decorative only.
    - Focus: add the `focus-ring` class (defined in `src/tokens/focus.css`): dark 2px ring
-     plus a yellow halo outside it, keyboard focus only. Never remove the dark ring.
+     plus a yellow halo outside it, keyboard focus only. Never remove the dark ring (except form fields, below).
      On dark filled elements (the selected tab pill) use `focus-ring-offset`: same ring with a 2px gap.
+   - Form fields are the one exception (Adriana, 2026-11-10): `FieldBox` uses `focus-ring-field`, a 2px yellow
+     border only, in light and dark mode. Yellow on the light field is 1.7:1 (under WCAG's 3:1); decided knowingly.
    - Form field borders use `border-ui-base-input`. `border-ui-base-border` is for decorative dividers only.
 
 ## Form fields
