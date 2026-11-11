@@ -132,7 +132,8 @@ option C: a dark-mode version of each illustration, with light outlines. The cod
 both modes.
 
 Received so far: `welcome-dark.png` (Adriana, 2026-11-11; replaced the same day by a version without the outline
-around the R), cropped like the light one and in use.
+around the R) and `inspects-website-dark.png` (Website and Reading, 2026-11-11) and `venue-dark.png` (Venue, 2026-11-11; replaced the same day by a newer version), cropped like the light ones and in
+use.
 
 ### What to ask the illustrator
 

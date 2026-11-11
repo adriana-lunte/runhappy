@@ -5,10 +5,12 @@
  * front end only, as decided on 2026-11-09.
  */
 import inspectsWebsite from '#lib/assets/self-onboarding/inspects-website.png';
+import inspectsWebsiteDark from '#lib/assets/self-onboarding/inspects-website-dark.png';
 import hours from '#lib/assets/self-onboarding/hours.png';
 import knowledge from '#lib/assets/self-onboarding/knowledge.png';
 import packages from '#lib/assets/self-onboarding/packages.png';
 import venue from '#lib/assets/self-onboarding/venue.png';
+import venueDark from '#lib/assets/self-onboarding/venue-dark.png';
 import voice from '#lib/assets/self-onboarding/voice.png';
 import welcome from '#lib/assets/self-onboarding/welcome.png';
 import welcomeDark from '#lib/assets/self-onboarding/welcome-dark.png';
@@ -56,18 +58,21 @@ export const intros: Record<Screen, ScreenIntro> = {
 		title: "What's your website?",
 		description: "We'll read it and fill in what we can, so you only need to check it.",
 		illustration: inspectsWebsite,
+		illustrationDark: inspectsWebsiteDark,
 		step: 1
 	},
 	reading: {
 		title: 'Reading {site}',
 		description: "We're learning about your business, so you don't have to type it all in.",
 		illustration: inspectsWebsite,
+		illustrationDark: inspectsWebsiteDark,
 		step: 1
 	},
 	venue: {
 		title: 'Tell us about your venue',
 		description: 'Your front desk uses this to answer questions and book at the right place.',
 		illustration: venue,
+		illustrationDark: venueDark,
 		step: 2
 	},
 	knowledge: {
