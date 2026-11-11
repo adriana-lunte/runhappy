@@ -14,6 +14,7 @@ import packages from '#lib/assets/self-onboarding/packages.png';
 import venue from '#lib/assets/self-onboarding/venue.png';
 import venueDark from '#lib/assets/self-onboarding/venue-dark.png';
 import voice from '#lib/assets/self-onboarding/voice.png';
+import voiceDark from '#lib/assets/self-onboarding/voice-dark.png';
 import welcome from '#lib/assets/self-onboarding/welcome.png';
 import welcomeDark from '#lib/assets/self-onboarding/welcome-dark.png';
 
@@ -103,6 +104,7 @@ export const intros: Record<Screen, ScreenIntro> = {
 		title: 'How should your front desk sound?',
 		description: 'Pick a name, a tone and a voice. Calls are answered with these.',
 		illustration: voice,
+		illustrationDark: voiceDark,
 		step: 6
 	}
 };
