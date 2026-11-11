@@ -11,6 +11,7 @@ import packages from '#lib/assets/self-onboarding/packages.png';
 import venue from '#lib/assets/self-onboarding/venue.png';
 import voice from '#lib/assets/self-onboarding/voice.png';
 import welcome from '#lib/assets/self-onboarding/welcome.png';
+import welcomeDark from '#lib/assets/self-onboarding/welcome-dark.png';
 
 /** Screens in order. "reading" is the loading screen between the website and the venue. */
 export const screens = [
@@ -48,7 +49,8 @@ export const intros: Record<Screen, ScreenIntro> = {
 		title: "Welcome! Let's set up your front desk",
 		description:
 			"Share your website and we'll fill in what we can. Check your venue, packages and hours, pick a voice, and we'll build a front desk that answers calls and books parties.",
-		illustration: welcome
+		illustration: welcome,
+		illustrationDark: welcomeDark
 	},
 	website: {
 		title: "What's your website?",
