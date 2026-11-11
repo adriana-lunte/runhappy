@@ -8,6 +8,7 @@ import inspectsWebsite from '#lib/assets/self-onboarding/inspects-website.png';
 import inspectsWebsiteDark from '#lib/assets/self-onboarding/inspects-website-dark.png';
 import hours from '#lib/assets/self-onboarding/hours.png';
 import knowledge from '#lib/assets/self-onboarding/knowledge.png';
+import knowledgeDark from '#lib/assets/self-onboarding/knowledge-dark.png';
 import packages from '#lib/assets/self-onboarding/packages.png';
 import venue from '#lib/assets/self-onboarding/venue.png';
 import venueDark from '#lib/assets/self-onboarding/venue-dark.png';
@@ -80,6 +81,7 @@ export const intros: Record<Screen, ScreenIntro> = {
 		description:
 			'Add the pages and notes that answer what callers ask: FAQs, party rules, deposits and cancellations. Your front desk answers from these and your website.',
 		illustration: knowledge,
+		illustrationDark: knowledgeDark,
 		step: 3
 	},
 	packages: {
