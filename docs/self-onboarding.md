@@ -132,7 +132,7 @@ option C: a dark-mode version of each illustration, with light outlines. The cod
 both modes.
 
 Received so far: `welcome-dark.png` (Adriana, 2026-11-11; replaced the same day by a version without the outline
-around the R) and `inspects-website-dark.png` (Website and Reading, 2026-11-11) and `venue-dark.png` (Venue, 2026-11-11; replaced the same day by a newer version) and `knowledge-dark.png` (Knowledge, 2026-11-11, sent as WebP) and `hours-dark.png` (Hours, 2026-11-11; sent at 1448×1086, cropped to the same frame) and `voice-dark.png` (Voice, 2026-11-11; also sent at 1448×1086), cropped like the light ones and in
+around the R) and `inspects-website-dark.png` (Website and Reading, 2026-11-11) and `venue-dark.png` (Venue, 2026-11-11; replaced the same day by a newer version) and `knowledge-dark.png` (Knowledge, 2026-11-11, sent as WebP) and `hours-dark.png` (Hours, 2026-11-11; sent at 1448×1086, cropped to the same frame) and `voice-dark.png` (Voice, 2026-11-11, sent at 1448×1086; replaced the same day by a version with light headphones), cropped like the light ones and in
 use.
 
 ### What to ask the illustrator
