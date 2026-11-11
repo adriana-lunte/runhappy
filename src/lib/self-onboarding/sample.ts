@@ -7,6 +7,7 @@
 import inspectsWebsite from '#lib/assets/self-onboarding/inspects-website.png';
 import inspectsWebsiteDark from '#lib/assets/self-onboarding/inspects-website-dark.png';
 import hours from '#lib/assets/self-onboarding/hours.png';
+import hoursDark from '#lib/assets/self-onboarding/hours-dark.png';
 import knowledge from '#lib/assets/self-onboarding/knowledge.png';
 import knowledgeDark from '#lib/assets/self-onboarding/knowledge-dark.png';
 import packages from '#lib/assets/self-onboarding/packages.png';
@@ -95,6 +96,7 @@ export const intros: Record<Screen, ScreenIntro> = {
 		title: 'When are you open?',
 		description: 'Your front desk only offers times inside these hours.',
 		illustration: hours,
+		illustrationDark: hoursDark,
 		step: 5
 	},
 	voice: {
