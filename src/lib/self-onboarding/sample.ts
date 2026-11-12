@@ -11,6 +11,7 @@ import hoursDark from '#lib/assets/self-onboarding/hours-dark.png';
 import knowledge from '#lib/assets/self-onboarding/knowledge.png';
 import knowledgeDark from '#lib/assets/self-onboarding/knowledge-dark.png';
 import packages from '#lib/assets/self-onboarding/packages.png';
+import packagesDark from '#lib/assets/self-onboarding/packages-dark.png';
 import venue from '#lib/assets/self-onboarding/venue.png';
 import venueDark from '#lib/assets/self-onboarding/venue-dark.png';
 import voice from '#lib/assets/self-onboarding/voice.png';
@@ -91,6 +92,7 @@ export const intros: Record<Screen, ScreenIntro> = {
 		description:
 			'Add the parties and packages your front desk can book. You can change them any time.',
 		illustration: packages,
+		illustrationDark: packagesDark,
 		step: 4
 	},
 	hours: {
